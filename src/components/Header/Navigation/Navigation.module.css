@@ -1,0 +1,32 @@
+.Navigation {
+    height: 52px;
+    list-style: none;
+    display: flex;
+    overflow: hidden;
+    color: black;
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
+}
+
+.Navigation ul {
+    float: left;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+@media only screen and (min-width: 768px) {
+    .Navigation ul {
+        padding: 0px 0;
+        margin-left: 5%;
+    }
+}
+
+@media only screen and (min-width: 992px) {}
+
+@media only screen and (min-width: 1200px) {
+    .navigation ul {
+        padding: 0px 0;
+        margin-left: 15%;
+    }
+}
