@@ -1,7 +1,7 @@
 .NavigationItem {
     text-transform: uppercase;
     text-decoration: none;
-    /* width: 100%; */
+    width: 100%;
     border-bottom: 1px solid black;
     height: 40px;
     line-height: 40px;
@@ -25,6 +25,7 @@
 
 @media only screen and (min-width: 768px) {
     .NavigationItem {
+        width: 20%;
         font-size: 14px;
         line-height: 46px;
         margin: 0 20px 0 0px;
@@ -38,7 +39,7 @@
 @media only screen and (min-width: 1200px) {
     .NavigationItem {
         font-size: 14px;
-        line-height: 14px;
+        line-height: 46px;
         margin: 0 30px 0 0px;
     }
 }

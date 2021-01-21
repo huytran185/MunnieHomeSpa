@@ -9,24 +9,77 @@
 }
 
 .Navigation ul {
+    display: none;
+}
+
+.Call {
+    font-family: corben, serif;
     float: left;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 20px 0;
+    line-height: 12px;
+    letter-spacing: 1px;
+    position: fixed;
+    right: 10%;
+}
+
+.Book {
+    display: none;
+}
+
+.Navigation i {
+    position: fixed;
+    left: 5%;
+    height: 52px;
+    padding: 15px 0;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 @media only screen and (min-width: 768px) {
     .Navigation ul {
+        float: left;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
         padding: 0px 0;
-        margin-left: 5%;
+        margin-left: 10%;
+        display: initial;
+    }
+    .Navigation i {
+        display: none;
+    }
+    .Book {
+        float: left;
+        text-align: center;
+        text-transform: uppercase;
+        width: 120px;
+        font-size: 15px;
+        line-height: 27px;
+        border: 2px solid black;
+        border-radius: 25px;
+        margin: 7.5px 0 7.5px 2%;
+        font-weight: 550;
+        display: initial;
+    }
+    .Call {
+        right: 12%;
     }
 }
 
-@media only screen and (min-width: 992px) {}
+@media only screen and (min-width: 992px) {
+    .Call {
+        right: 15%;
+    }
+    .Navigation ul {
+        margin-left: 15%;
+    }
+}
 
 @media only screen and (min-width: 1200px) {
-    .navigation ul {
-        padding: 0px 0;
-        margin-left: 15%;
+    .Navigation ul {
+        margin-left: 20%;
     }
 }

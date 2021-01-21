@@ -1,0 +1,4004 @@
+@font-face {
+    font-family: "Caudex-Regular";
+    src: url("../fonts/Caudex-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Coquette-Regular";
+    src: url("../fonts/Coquette.ttf");
+}
+
+@font-face {
+    font-family: "Cookie";
+    src: url("../fonts/Cookie.ttf");
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.hidden {
+    display: none !important;
+}
+
+ul {
+    list-style-type: none;
+    font-family: corben, serif;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+
+.call,
+.login,
+.service-title {
+    font-family: corben, serif;
+}
+
+.qoute,
+.index-booking,
+.service-qoute {
+    font-family: Cookie;
+}
+
+.about-title,
+.about-company,
+.button,
+.button-voucher {
+    font-family: Caudex-Regular;
+}
+
+.service-description {
+    color: black;
+    background-color: white;
+    display: block;
+    height: 100px;
+    display: none;
+}
+
+.container-header {
+    background-color: #dbb89a;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    overflow: hidden;
+    float: left;
+    padding: 10px 0;
+}
+
+.navigation {
+    overflow: hidden;
+    color: black;
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
+}
+
+.navigation ul {
+    float: left
+}
+
+.navigation li {
+    float: left;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.container-header a {
+    color: black;
+}
+
+.container-header a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.call {
+    float: left;
+    text-transform: uppercase;
+}
+
+.nav-book {
+    float: left;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.login {
+    float: left;
+}
+
+.login-image {
+    float: left;
+}
+
+.login-text {
+    float: left;
+}
+
+.container-social {
+    display: none;
+    width: 50px;
+    padding-left: 20px;
+    position: fixed;
+    left: 0;
+    top: 250px;
+}
+
+.container-social img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.container-greet {
+    background-image: url("../images/background-greet.gif");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    float: left;
+    width: 100%;
+}
+
+.container-about {
+    width: 100%;
+    display: flex;
+    float: left;
+}
+
+.about-title {
+    text-transform: uppercase;
+}
+
+.container-services {
+    float: left;
+    width: 100%;
+    background: url(../images/background-service.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+.service-title {
+    text-transform: uppercase;
+    background-color: white;
+}
+
+.service-list {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.container-voucher {
+    background-color: #f2c9aa;
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+footer {
+    float: left;
+    width: 100%;
+    background-color: #fff2e8;
+    overflow: auto;
+}
+
+.container-footer {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.footer-box:not(:last-child) .footer-content {
+    border-right: 1px solid black;
+}
+
+.footer-box a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer-box a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* Device more than 768px */
+
+@media only screen and (max-width: 768px) {
+    /* Index Page */
+    .wrapper {
+        max-width: 768px;
+        min-width: 550px;
+    }
+    .container-header {
+        height: 80px;
+        max-width: 768px;
+        min-width: 550px;
+    }
+    .navigation {
+        height: 52px;
+    }
+    .navbar {
+        position: fixed;
+        left: 5%;
+        height: 52px;
+        padding: 15px 0;
+        font-size: 20px;
+        cursor: pointer;
+    }
+    #nav-ul {
+        position: fixed;
+        left: -200px;
+        top: 80px;
+        width: 200px;
+        height: 100%;
+        background-color: #dbb89a;
+        z-index: 999;
+        border-top: 1px solid black;
+    }
+    .navigation li {
+        width: 100%;
+        float: left;
+        border-bottom: 1px solid black;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 20px;
+    }
+    .call {
+        font-weight: 600;
+        font-size: 12px;
+        padding: 20px 0;
+        line-height: 12px;
+        letter-spacing: 1px;
+        position: fixed;
+        right: 20%;
+    }
+    .nav-book {
+        width: 120px;
+        font-size: 15px;
+        line-height: 27px;
+        border: 2px solid black;
+        border-radius: 25px;
+        margin: 7.5px 0 7.5px 3%;
+        font-weight: 550;
+        display: none;
+    }
+    .login {
+        position: fixed;
+        right: 5%;
+        padding: 10px 0;
+        letter-spacing: 1px;
+        line-height: 30px;
+    }
+    .login-image {
+        padding: 5px 0;
+        font-size: 20px;
+        margin-right: 10px;
+    }
+    .login-text {
+        font-size: 16px
+    }
+    .container-greet {
+        max-width: 768px;
+        min-width: 550px;
+        width: 100%;
+    }
+    .greet {
+        position: absolute;
+        animation-name: greet;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        opacity: 0.6;
+        width: 500px;
+        height: 300px;
+        display: none;
+    }
+    @keyframes greet {
+        from {
+            top: 90px;
+            right: 400px;
+            display: none;
+        }
+        to {
+            top: 90px;
+            right: 120px;
+        }
+    }
+    .company-name {
+        font-size: 60px;
+        position: absolute;
+        font-weight: 550;
+        animation-name: company-name;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        transform-origin: bottom right;
+        width: 100%;
+        font-family: Coquette-Regular;
+        text-align: center;
+    }
+    @keyframes company-name {
+        from {
+            transform: rotate(90deg);
+            top: 0px;
+            right: 0px;
+            opacity: 0;
+        }
+        to {
+            transform: rotate(0deg);
+            top: 120px;
+            opacity: 1;
+        }
+    }
+    .qoute {
+        position: absolute;
+        font-size: 22px;
+        font-style: italic;
+        letter-spacing: 3px;
+        width: 100%;
+        min-width: 550px;
+        animation-name: qoute;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        text-align: center;
+    }
+    @keyframes qoute {
+        from {
+            top: 220px;
+            right: 0;
+            opacity: 0;
+        }
+        to {
+            top: 220px;
+            /* right: 120px; */
+            opacity: 1;
+        }
+    }
+    .index-booking {
+        margin-top: 250px;
+        margin-bottom: 70px;
+        font-size: 22px;
+        font-style: italic;
+        width: 100%;
+        height: 170px;
+        text-align: center;
+    }
+    .book-button {
+        border: 1px solid black;
+        text-align: center;
+        width: 215px;
+        height: 45px;
+        margin: 50px auto;
+        line-height: 45px;
+    }
+    .book-button>a {
+        text-decoration: none;
+        color: black;
+    }
+    .book-button>a:hover {
+        text-decoration: none;
+        color: black;
+    }
+    .container-about {
+        max-width: 768px;
+        min-width: 550px;
+    }
+    .about-box {
+        width: 100%;
+    }
+    .about-box:first-child {
+        background: url(../images/about1.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 70%;
+        display: none;
+    }
+    .about-box:last-child {
+        background-image: url(../images/about2.gif);
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: static;
+    }
+    .about-title {
+        font-size: 23.5px;
+        margin-top: 30px;
+        margin-left: 30px;
+    }
+    .about-company {
+        font-size: 45px;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-left: 50px;
+        letter-spacing: 4px;
+    }
+    .about-des {
+        font-size: 17px;
+        margin: 15px auto 0 auto;
+        width: 70%;
+        min-width: 350px;
+        letter-spacing: 1px;
+        text-align: justify;
+        margin-bottom: 30px;
+    }
+    .about-des>ul {
+        padding-inline-start: 0px;
+        margin-top: 10px;
+    }
+    .about-des i {
+        margin-right: 10px;
+    }
+    .container-services {
+        max-width: 768px;
+        min-width: 550px;
+    }
+    .service-title {
+        font-size: 20px;
+        margin: 80px auto 0 auto;
+        width: 300px;
+        letter-spacing: 4px;
+        padding: 5px;
+    }
+    .service-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 70px;
+        width: 100%;
+        max-width: 768px;
+        background-color: white;
+        padding: 50px 10px;
+    }
+    .services-title {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+    .service-index {
+        width: 60%;
+        min-width: 330px;
+        background-color: white;
+        margin-bottom: 30px;
+    }
+    .service-index img {
+        width: 100%;
+        height: auto;
+    }
+    .price {
+        margin-top: 30px;
+        font-size: 20px;
+    }
+    .service-qoute {
+        width: 100%;
+        margin-top: 45px;
+        margin-right: 210px;
+        text-align: center;
+        font-style: italic;
+        letter-spacing: 5px;
+        font-size: 22px;
+    }
+    .button {
+        margin-bottom: 50px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 40px;
+        width: 170px;
+        height: 50px;
+        border: 1px solid black;
+        clear: both;
+        line-height: 50px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .container-voucher {
+        max-width: 768px;
+        min-width: 550px;
+        padding: 70px 0px 50px 0px;
+    }
+    .voucher-title {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 90px;
+        width: 280px;
+        height: 50px;
+        background-color: #ffde5f;
+        color: white;
+        letter-spacing: 0.1em;
+        text-align: center;
+        font-size: 24px;
+        line-height: 50px;
+        text-transform: uppercase;
+        box-shadow: 5px 10px #dbba3b;
+    }
+    .carousel {
+        margin-right: auto;
+        margin-left: auto;
+        width: 100%;
+    }
+    .carousel-inner {
+        margin-right: auto;
+        margin-left: auto;
+        width: 70%;
+        height: auto;
+    }
+    .carousel-inner img {
+        height: auto;
+        min-width: 550px;
+    }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    .carousel-caption {
+        position: static;
+        height: 100px;
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+        height: 400px;
+    }
+    .button-voucher {
+        margin-top: 40px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 170px;
+        height: 50px;
+        border: 1px solid black;
+        line-height: 50px;
+        text-transform: uppercase;
+        clear: both;
+        font-weight: bold;
+    }
+    footer {
+        max-width: 768px;
+        min-width: 550px;
+    }
+    .container-footer {
+        width: 100%;
+        padding-top: 50px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+    }
+    .footer-box {
+        width: 50%;
+    }
+    .footer-box:last-child {
+        display: none;
+    }
+    .footer-box:nth-child(2) .footer-content {
+        border: none;
+    }
+    .footer-content {
+        text-align: left;
+        height: 200px;
+        font-size: 14px;
+        line-height: 1.9rem;
+        padding-right: 40px;
+        padding-left: 40px;
+        padding-top: 40px;
+    }
+    /* Service Page */
+    .container-page {
+        background-color: #f8e3d4;
+        float: left;
+        width: 100%;
+        max-width: 768px;
+        min-width: 550px;
+    }
+    .page-greet {
+        background-color: white;
+        margin-top: 170px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+        height: 50px;
+    }
+    .page-title {
+        width: 100%;
+        padding-left: 70px;
+        line-height: 1em;
+        font-size: 57px;
+        z-index: 100;
+        vertical-align: 30px;
+        float: left;
+        position: relative;
+        top: -30px;
+        font-style: italic;
+    }
+    .service-content {
+        float: left;
+        width: 100%;
+        padding-top: 80px;
+    }
+    .service-type {
+        margin: 0 auto;
+        text-align: center;
+        width: 80%;
+        min-width: 460px;
+    }
+    .type {
+        float: left;
+        width: 50%;
+        padding-bottom: 15px;
+        border-bottom: 2px groove #e5d2c4;
+        cursor: pointer;
+        font-size: 15px;
+        min-width: 230px;
+    }
+    #typeFacial {
+        border-bottom: 2px solid black;
+    }
+    .service-content .service-list {
+        background-color: transparent;
+    }
+    .service {
+        width: 70%;
+        min-width: 330px;
+        background-color: white;
+        margin-bottom: 30px;
+        margin-left: 20px;
+    }
+    .service img {
+        width: 100%;
+        height: 270px;
+    }
+    .services-name {
+        margin-top: 20px;
+        font-weight: 600;
+        font-size: 25px;
+    }
+    .service-book {
+        width: 150px;
+        height: 40px;
+        color: white;
+        background-color: black;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 16px;
+        line-height: 40px;
+    }
+    /* COntact Page */
+    .page-contact {
+        background-color: white;
+        margin-top: 150px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 100px;
+        width: 85%;
+        height: 450px;
+    }
+    .map {
+        float: left;
+        width: 50%;
+        clear: both;
+        padding-left: 50px;
+        display: none;
+    }
+    .info {
+        float: left;
+        width: 100%;
+        padding-left: 20px;
+    }
+    .info-title {
+        font-weight: 600;
+        line-height: 1.2em;
+        font-size: 18px;
+    }
+    .info-content {
+        line-height: 1.5em;
+        font-size: 14px;
+        padding: 15px 15px 15px 15px;
+    }
+    /* Voucher Page */
+    .slideshow-container {
+        width: 65%;
+        height: 275px;
+        margin-top: 100px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 80px;
+        background-color: white;
+    }
+    .slide {
+        width: 100%;
+        height: 275px;
+        display: none;
+    }
+    .slide-text {
+        width: 50%;
+        height: 275px;
+        padding-top: 100px;
+        padding-left: 10%;
+    }
+    .slide-image {
+        width: 50%;
+        height: 275px;
+        padding: 30px;
+    }
+    .slide-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .slide-description {
+        font-size: 12px;
+    }
+    .fade {
+        animation-name: fade;
+        animation-duration: 2s;
+    }
+    @keyframes fade {
+        from {
+            opacity: .4
+        }
+        to {
+            opacity: 1
+        }
+    }
+    /* Booking Page */
+    .container-booking {
+        width: 100%;
+        max-width: 768px;
+        min-width: 550px;
+        margin-top: 100px;
+        margin-bottom: 50px;
+        margin-right: auto;
+        margin-left: auto;
+        overflow: hidden;
+    }
+    .booking-form {
+        width: 90%;
+        margin: 0 auto;
+    }
+    #service-form,
+    #time-form,
+    #confirm {
+        display: none;
+    }
+    #service-form {
+        display: block;
+    }
+    .booking-form__title {
+        font-size: 30px;
+        font-weight: 700;
+    }
+    .booking-form__content {
+        margin-top: 20px;
+    }
+    .booking-type {
+        font-size: 25px;
+        font-weight: 700;
+    }
+    .booking-type::first-letter {
+        text-transform: uppercase;
+    }
+    .booking-type__list {
+        background-color: white;
+        margin: 20px 0;
+        border-radius: 10px;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    /* Round checkbox */
+    .booking-service__container {
+        display: block;
+        position: relative;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 60px;
+    }
+    .booking-service__container:not(:last-child) {
+        border-bottom: 1px solid grey;
+    }
+    /* Hide the browser's default checkbox */
+    .booking-service__container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 23px;
+        left: 20px;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+    /* On mouse-over, add a grey background color */
+    .booking-service__container:hover input~.checkmark {
+        background-color: #ccc;
+    }
+    /* When the checkbox is checked, add a blue background */
+    .booking-service__container input:checked~.checkmark {
+        background-color: #2196F3;
+    }
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+    /* Show the checkmark when checked */
+    .booking-service__container input:checked~.checkmark:after {
+        display: block;
+    }
+    /* Style the checkmark/indicator */
+    .booking-service__container .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    .booking-service__name {
+        position: absolute;
+    }
+    .booking-service__price {
+        position: absolute;
+        right: 20px;
+    }
+    .booking-service__duration {
+        font-size: 13px;
+        color: grey;
+    }
+    .booking-service__button {
+        background-color: white;
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        width: 150px;
+        height: 40px;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 19px;
+        cursor: pointer;
+        line-height: 40px;
+    }
+    .booking-service__button:hover {
+        transform: scale(1.1);
+    }
+    #time-form,
+    #confirm {
+        display: none;
+    }
+    .booking-check__container {
+        width: 34%;
+        float: left;
+        position: -webkit-sticky;
+        position: sticky;
+        z-index: 100;
+        margin-top: 225px;
+        margin-left: 5%;
+        text-align: center;
+        display: none;
+    }
+    .booking-check__receipt {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    .booking-check__header {
+        padding: 20px 0;
+        border-bottom: 1px solid grey;
+    }
+    .booking-check__title {
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .booking-check__address {
+        font-size: 16px;
+        color: grey;
+    }
+    .booking-check__service-list {
+        padding: 20px 0;
+        border-bottom: 1px solid grey;
+        overflow: hidden;
+    }
+    .booking-check__service:not(:last-child) {
+        padding-bottom: 20px;
+    }
+    .booking-check__name {
+        float: left;
+        padding-left: 20px;
+    }
+    .booking-check__duration {
+        float: left;
+        padding-left: 20px;
+        font-size: 13px;
+    }
+    .booking-check__total {
+        float: left;
+        padding: 20px 20px 20px 20px;
+    }
+    .booking-check__price {
+        position: absolute;
+        right: 20px;
+    }
+    .booking-check__button {
+        background-color: white;
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        width: 150px;
+        height: 40px;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 19px;
+        cursor: pointer;
+        line-height: 40px;
+    }
+    .booking-check__button:hover {
+        transform: scale(1.1);
+    }
+    .booking-check__cancel {
+        margin-top: 20px;
+        width: 100%;
+        float: right;
+        font-size: 15px;
+        padding: 0 20px;
+        text-align: justify;
+    }
+    .booking-form__arrow {
+        color: white;
+        margin-right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+    }
+    .booking-form__arrow:hover {
+        transform: scale(1.3);
+        color: black;
+    }
+    .booking-form__typeList {
+        width: 100%;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        height: 50px;
+        padding: 10px 20px;
+        margin-bottom: 30px;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    .booking-form__type {
+        float: left;
+        width: 20%;
+        height: 30px;
+        line-height: 30px;
+        color: black;
+        border-radius: 30px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .booking-form__type:hover {
+        color: white;
+        background-color: #dbb89a;
+    }
+    .booking-form__type:not(:last-child) {
+        margin-right: 5;
+    }
+    .booking-form__month {
+        background-color: white;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    .month-title {
+        width: 100%;
+        padding-top: 20px;
+        padding-left: 50px;
+        padding-bottom: 20px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .arrow {
+        float: left;
+        width: 10%;
+        text-align: center;
+        height: 70px;
+        line-height: 70px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+    .arrow:hover {
+        transform: scale(1.5);
+    }
+    .month-date {
+        overflow: hidden;
+        padding-bottom: 20px;
+        margin-bottom: 0;
+        border-bottom: 1px solid grey;
+    }
+    .month-date li {
+        float: left;
+        width: 15%;
+        text-align: center;
+        height: 70px;
+        font-size: 20px;
+        border: 1px solid grey;
+        margin-right: 2.5%;
+        margin-left: 2.5%;
+        border-radius: 5px;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    .month-date li:hover {
+        background-color: #dbb89a;
+        color: white;
+    }
+    .day {
+        height: 35px;
+        margin-bottom: 0;
+        line-height: 35px;
+    }
+    .date {
+        height: 35px;
+        margin-bottom: 0;
+        line-height: 35px;
+    }
+    .time-container {
+        width: 100%;
+        height: 70px;
+        cursor: pointer;
+    }
+    .time-container:not(:last-child) {
+        border-bottom: 1px solid grey;
+    }
+    .time {
+        height: 70px;
+        line-height: 70px;
+        padding-left: 25px;
+        cursor: pointer;
+    }
+    .time:hover {
+        background-color: #f2e8cb;
+    }
+    .booking-confirm__container {
+        width: 100%;
+        overflow: hidden;
+        display: none;
+    }
+    .booking-confirm__navigation {
+        width: 80%;
+        margin: 30px auto 10px auto;
+    }
+    .booking-confirm__receipt {
+        width: 80%;
+        border-radius: 10px;
+        border: 1px solid black;
+        margin: 30px auto 10px auto;
+        background-color: white;
+        box-shadow: 5px 5px 8px #888888;
+        overflow: hidden;
+    }
+    .booking-confirm__header {
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+        border-bottom: 1px solid grey;
+    }
+    .booking-confirm__company {
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .booking-confirm__box {
+        width: 100%;
+        text-align: left;
+        padding: 15px 0 20px 20px;
+        border-bottom: 1px solid grey;
+        overflow: hidden;
+    }
+    .booking-confirm__title {
+        font-weight: 600;
+        font-size: 20px;
+        padding-bottom: 10px;
+    }
+    .booking-confirm__service-info {
+        overflow: hidden;
+        padding-bottom: 10px;
+    }
+    .booking-confirm__service,
+    .booking-confirm__total {
+        width: 50%;
+        float: left;
+        font-size: 20px;
+    }
+    .booking-confirm__duration {
+        font-size: 15px;
+        width: 10%;
+        float: left;
+    }
+    .booking-confirm__price {
+        width: 30%;
+        float: right;
+        text-align: center;
+    }
+    .booking-confirm__footer {
+        width: 90%;
+        margin: 20px auto;
+        overflow: hidden;
+    }
+    .booking-confirm__confirm {
+        width: 100px;
+        text-align: center;
+        height: 40px;
+        font-size: 20px;
+        line-height: 30px;
+        float: right;
+        padding: 5px;
+        margin-right: 5%;
+        border-radius: 15px;
+        background-color: white;
+        cursor: pointer;
+    }
+    .booking-confirm__message {
+        padding: 10px 30px 0 30px;
+        text-align: justify;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .booking-confirm__cancel {
+        padding: 10px 30px 0 30px;
+        text-align: justify;
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+
+/* Device more than 768px */
+
+@media only screen and (min-width: 768px) {
+    /* Index Page */
+    .wrapper {
+        min-width: 768px;
+    }
+    .container-header {
+        height: 80px;
+        min-width: 768px;
+    }
+    .navigation {
+        height: 52px;
+    }
+    .navbar {
+        position: fixed;
+        left: 5%;
+        height: 52px;
+        padding: 15px 0;
+        font-size: 20px;
+        display: none;
+    }
+    .navigation ul {
+        padding: 20px 0;
+        margin-left: 5%;
+    }
+    .navigation li {
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0 20px 0 0px;
+    }
+    .call {
+        font-weight: 600;
+        font-size: 12px;
+        padding: 20px 0;
+        line-height: 12px;
+        letter-spacing: 1px;
+        position: fixed;
+        right: 20%;
+    }
+    .nav-book {
+        width: 120px;
+        font-size: 15px;
+        line-height: 27px;
+        border: 2px solid black;
+        border-radius: 25px;
+        margin: 7.5px 0 7.5px 3%;
+        font-weight: 550;
+        display: none;
+    }
+    .login {
+        position: fixed;
+        right: 5%;
+        padding: 10px 0;
+        letter-spacing: 1px;
+        line-height: 30px;
+    }
+    .login-image {
+        padding: 5px 0;
+        font-size: 20px;
+        margin-right: 10px;
+    }
+    .login-text {
+        font-size: 16px
+    }
+    .container-greet {
+        min-width: 768px;
+        width: 100%;
+    }
+    .greet {
+        position: absolute;
+        animation-name: greet;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        opacity: 0.6;
+        width: 500px;
+        height: 300px;
+        display: block;
+    }
+    @keyframes greet {
+        from {
+            top: 50px;
+            right: 400px;
+            display: none;
+        }
+        to {
+            top: 50px;
+            right: 120px;
+        }
+    }
+    .company-name {
+        font-size: 60px;
+        position: absolute;
+        font-weight: 550;
+        animation-name: company-name;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        transform-origin: bottom right;
+        width: 100%;
+        font-family: Coquette-Regular;
+        text-align: center;
+    }
+    @keyframes company-name {
+        from {
+            transform: rotate(90deg);
+            top: 0px;
+            right: 0px;
+            opacity: 0;
+        }
+        to {
+            transform: rotate(0deg);
+            top: 300px;
+            opacity: 1;
+        }
+    }
+    .qoute {
+        position: absolute;
+        font-size: 22px;
+        font-style: italic;
+        letter-spacing: 3px;
+        width: 100%;
+        min-width: 550px;
+        animation-name: qoute;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        text-align: center;
+    }
+    @keyframes qoute {
+        from {
+            top: 380px;
+            right: 0;
+            opacity: 0;
+        }
+        to {
+            top: 380px;
+            /* right: 120px; */
+            opacity: 1;
+        }
+    }
+    .index-booking {
+        margin-top: 450px;
+        margin-bottom: 70px;
+        font-size: 22px;
+        font-style: italic;
+        width: 100%;
+        height: 170px;
+        text-align: center;
+    }
+    .book-button {
+        border: 1px solid black;
+        text-align: center;
+        width: 215px;
+        height: 45px;
+        margin: 50px auto;
+        line-height: 45px;
+    }
+    .book-button>a {
+        text-decoration: none;
+        color: black;
+    }
+    .book-button>a:hover {
+        text-decoration: none;
+        color: black;
+    }
+    .container-about {
+        min-width: 768px;
+    }
+    .about-box {
+        width: 100%;
+    }
+    .about-box:first-child {
+        background: url(../images/about1.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 70%;
+        display: none;
+    }
+    .about-box:last-child {
+        background-image: url(../images/about2.gif);
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: static;
+    }
+    .about-title {
+        font-size: 23.5px;
+        margin-top: 30px;
+        margin-left: 30px;
+    }
+    .about-company {
+        font-size: 45px;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-left: 50px;
+        letter-spacing: 4px;
+    }
+    .about-des {
+        font-size: 17px;
+        margin-top: 15px;
+        margin: 15px auto 0 auto;
+        width: 70%;
+        min-width: 350px;
+        letter-spacing: 1px;
+        text-align: justify;
+        margin-bottom: 30px;
+    }
+    .about-des>ul {
+        padding-inline-start: 0px;
+        margin-top: 10px;
+    }
+    .about-des i {
+        margin-right: 10px;
+    }
+    .container-services {
+        min-width: 768px;
+    }
+    .service-title {
+        font-size: 20px;
+        margin: 80px auto 0 auto;
+        width: 300px;
+        letter-spacing: 4px;
+        padding: 5px;
+    }
+    .service-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 70px;
+        width: 80%;
+        max-width: 768px;
+        background-color: white;
+        padding: 50px 10px;
+    }
+    .services-title {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+    .service-index {
+        width: 40%;
+        min-width: 330px;
+        background-color: white;
+        margin-bottom: 30px;
+    }
+    .service-index:nth-child(3) {
+        display: none;
+    }
+    .service-index img {
+        width: 100%;
+        height: auto;
+    }
+    .price {
+        margin-top: 30px;
+        font-size: 20px;
+    }
+    .service-qoute {
+        width: 100%;
+        margin-top: 45px;
+        margin-right: 210px;
+        text-align: center;
+        font-style: italic;
+        letter-spacing: 5px;
+        font-size: 22px;
+    }
+    .button {
+        margin-bottom: 50px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 40px;
+        width: 170px;
+        height: 50px;
+        border: 1px solid black;
+        clear: both;
+        line-height: 50px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .container-voucher {
+        min-width: 768px;
+        padding: 70px 0px 50px 0px;
+    }
+    .voucher-title {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 90px;
+        width: 280px;
+        height: 50px;
+        background-color: #ffde5f;
+        color: white;
+        letter-spacing: 0.1em;
+        text-align: center;
+        font-size: 24px;
+        line-height: 50px;
+        text-transform: uppercase;
+        box-shadow: 5px 10px #dbba3b;
+    }
+    .carousel {
+        margin-right: auto;
+        margin-left: auto;
+        width: 100%;
+    }
+    .carousel-inner {
+        margin-right: auto;
+        margin-left: auto;
+        width: 70%;
+        height: auto;
+    }
+    .carousel-inner img {
+        height: auto;
+        min-width: 550px;
+    }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    .carousel-caption {
+        position: static;
+        height: 100px;
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+        height: 400px;
+    }
+    .button-voucher {
+        margin-top: 40px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 170px;
+        height: 50px;
+        border: 1px solid black;
+        line-height: 50px;
+        text-transform: uppercase;
+        clear: both;
+        font-weight: bold;
+    }
+    footer {
+        min-width: 768px;
+    }
+    .container-footer {
+        width: 100%;
+        padding-top: 50px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+    }
+    .footer-box {
+        width: 30%;
+    }
+    .footer-content {
+        text-align: left;
+        height: 200px;
+        font-size: 14px;
+        line-height: 1.9rem;
+        padding-right: 40px;
+        padding-left: 40px;
+        padding-top: 40px;
+    }
+    /* Service Page */
+    .container-page {
+        background-color: #f8e3d4;
+        float: left;
+        width: 100%;
+        min-width: 768px;
+    }
+    .page-greet {
+        background-color: white;
+        margin-top: 170px;
+        margin-left: auto;
+        margin-right: auto;
+        /* overflow: hidden; */
+        width: 65%;
+        height: 50px;
+    }
+    .page-title {
+        width: 100%;
+        padding-left: 70px;
+        line-height: 1em;
+        font-size: 57px;
+        z-index: 100;
+        vertical-align: 30px;
+        float: left;
+        position: relative;
+        top: -30px;
+        font-style: italic;
+    }
+    .des-content {
+        float: right;
+        text-align: justify;
+        width: 50%;
+        padding-top: 50px;
+        padding-right: 30px;
+        font-style: italic;
+        line-height: 1.5em;
+        font-size: 16px;
+    }
+    .service-content {
+        float: left;
+        width: 100%;
+        padding-top: 80px;
+    }
+    .service-type {
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        width: 80%;
+    }
+    .type {
+        float: left;
+        width: 50%;
+        padding-bottom: 15px;
+        border-bottom: 2px groove #e5d2c4;
+        cursor: pointer;
+    }
+    #typeFacial {
+        border-bottom: 2px solid black;
+    }
+    .service-content .service-list {
+        background-color: transparent;
+        width: 100%;
+    }
+    .service {
+        width: 40%;
+        /* min-width: 330px; */
+        background-color: white;
+        margin-bottom: 30px;
+        margin-left: 20px;
+    }
+    .service img {
+        width: 100%;
+        height: 270px;
+    }
+    .services-name {
+        margin-top: 20px;
+        font-weight: 600;
+        font-size: 25px;
+    }
+    .service-book {
+        width: 150px;
+        height: 40px;
+        color: white;
+        background-color: black;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 16px;
+        line-height: 40px;
+    }
+    /* COntact Page */
+    .page-contact {
+        background-color: white;
+        margin-top: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 100px;
+        width: 85%;
+        height: 450px;
+    }
+    .map {
+        float: left;
+        width: 50%;
+        clear: both;
+        padding-left: 50px;
+        display: none;
+    }
+    .info {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .info-title {
+        font-weight: 600;
+        line-height: 1.2em;
+        font-size: 18px;
+    }
+    .info-content {
+        line-height: 1.5em;
+        font-size: 14px;
+        padding: 15px 0px 0px 15px;
+    }
+    /* Voucher Page */
+    .slideshow-container {
+        width: 65%;
+        height: 275px;
+        margin-top: 100px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 80px;
+        background-color: white;
+    }
+    .slide {
+        width: 100%;
+        height: 275px;
+        display: none;
+    }
+    .slide-text {
+        width: 50%;
+        height: 275px;
+        padding-top: 100px;
+        padding-left: 10%;
+    }
+    .slide-image {
+        width: 50%;
+        height: 275px;
+        padding: 30px;
+    }
+    .slide-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .slide-description {
+        font-size: 12px;
+    }
+    .fade {
+        animation-name: fade;
+        animation-duration: 2s;
+    }
+    @keyframes fade {
+        from {
+            opacity: .4
+        }
+        to {
+            opacity: 1
+        }
+    }
+    /* Booking Page */
+    .container-booking {
+        width: 70%;
+        min-width: 700px;
+        margin-top: 100px;
+        margin-bottom: 50px;
+        margin-right: auto;
+        margin-left: auto;
+        overflow: hidden;
+    }
+    .booking-form {
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+    #service-form,
+    #time-form,
+    #confirm {
+        display: none;
+    }
+    #service-form {
+        display: block;
+    }
+    .booking-form__title {
+        font-size: 30px;
+        font-weight: 700;
+    }
+    .booking-form__content {
+        margin-top: 20px;
+    }
+    .booking-type {
+        font-size: 25px;
+        font-weight: 700;
+    }
+    .booking-type__list {
+        background-color: white;
+        margin: 20px 0;
+        border-radius: 10px;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    /* Round checkbox */
+    .booking-service__container {
+        display: block;
+        position: relative;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 60px;
+    }
+    .booking-service__container:not(:last-child) {
+        border-bottom: 1px solid grey;
+    }
+    /* Hide the browser's default checkbox */
+    .booking-service__container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 23px;
+        left: 20px;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+    /* On mouse-over, add a grey background color */
+    .booking-service__container:hover input~.checkmark {
+        background-color: #ccc;
+    }
+    /* When the checkbox is checked, add a blue background */
+    .booking-service__container input:checked~.checkmark {
+        background-color: #2196F3;
+    }
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+    /* Show the checkmark when checked */
+    .booking-service__container input:checked~.checkmark:after {
+        display: block;
+    }
+    /* Style the checkmark/indicator */
+    .booking-service__container .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    .booking-service__name {
+        position: absolute;
+    }
+    .booking-service__price {
+        position: absolute;
+        right: 20px;
+    }
+    .booking-service__duration {
+        font-size: 13px;
+        color: grey;
+    }
+    .booking-service__button {
+        background-color: white;
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        width: 150px;
+        height: 40px;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 19px;
+        cursor: pointer;
+        line-height: 40px;
+    }
+    .booking-service__button:hover {
+        transform: scale(1.1);
+    }
+    #time-form,
+    #confirm {
+        display: none;
+    }
+    .booking-check__container {
+        width: 34%;
+        float: left;
+        position: -webkit-sticky;
+        position: sticky;
+        z-index: 100;
+        margin-top: 225px;
+        margin-left: 5%;
+        text-align: center;
+        display: none;
+    }
+    .booking-check__receipt {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    .booking-check__header {
+        padding: 20px 0;
+        border-bottom: 1px solid grey;
+    }
+    .booking-check__title {
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .booking-check__address {
+        font-size: 16px;
+        color: grey;
+    }
+    .booking-check__service-list {
+        padding: 20px 0;
+        border-bottom: 1px solid grey;
+        overflow: hidden;
+    }
+    .booking-check__service:not(:last-child) {
+        padding-bottom: 20px;
+    }
+    .booking-check__name {
+        float: left;
+        padding-left: 20px;
+    }
+    .booking-check__duration {
+        float: left;
+        padding-left: 20px;
+        font-size: 13px;
+    }
+    .booking-check__total {
+        float: left;
+        padding: 20px 20px 20px 20px;
+    }
+    .booking-check__price {
+        position: absolute;
+        right: 20px;
+    }
+    .booking-check__button {
+        background-color: white;
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        width: 150px;
+        height: 40px;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 19px;
+        cursor: pointer;
+        line-height: 40px;
+    }
+    .booking-check__button:hover {
+        transform: scale(1.1);
+    }
+    .booking-check__cancel {
+        margin-top: 20px;
+        width: 100%;
+        float: right;
+        font-size: 15px;
+        padding: 0 20px;
+        text-align: justify;
+    }
+    .booking-form__arrow {
+        color: white;
+        margin-right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+    }
+    .booking-form__arrow:hover {
+        transform: scale(1.3);
+        color: black;
+    }
+    .booking-form__typeList {
+        width: 100%;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        height: 50px;
+        padding: 10px 20px;
+        margin-bottom: 30px;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    .booking-form__type {
+        float: left;
+        width: 20%;
+        height: 30px;
+        line-height: 30px;
+        color: black;
+        border-radius: 30px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .booking-form__type:hover {
+        color: white;
+        background-color: #dbb89a;
+    }
+    .booking-form__type:not(:last-child) {
+        margin-right: 5%;
+    }
+    .booking-form__month {
+        background-color: white;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    .month-title {
+        width: 100%;
+        padding-top: 20px;
+        padding-left: 50px;
+        padding-bottom: 20px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .arrow {
+        float: left;
+        width: 10%;
+        text-align: center;
+        height: 70px;
+        line-height: 70px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+    .arrow:hover {
+        transform: scale(1.5);
+    }
+    .month-date {
+        overflow: hidden;
+        padding-bottom: 20px;
+        margin-bottom: 0;
+        border-bottom: 1px solid grey;
+    }
+    .month-date li {
+        float: left;
+        width: 15%;
+        text-align: center;
+        height: 70px;
+        font-size: 20px;
+        border: 1px solid grey;
+        margin-right: 2.5%;
+        margin-left: 2.5%;
+        border-radius: 5px;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    .month-date li:hover {
+        background-color: #dbb89a;
+        color: white;
+    }
+    .day {
+        height: 35px;
+        margin-bottom: 0;
+        line-height: 35px;
+    }
+    .date {
+        height: 35px;
+        margin-bottom: 0;
+        line-height: 35px;
+    }
+    .time-container {
+        width: 100%;
+        height: 70px;
+        cursor: pointer;
+    }
+    .time-container:not(:last-child) {
+        border-bottom: 1px solid grey;
+    }
+    .time {
+        height: 70px;
+        line-height: 70px;
+        padding-left: 25px;
+        cursor: pointer;
+    }
+    .time:hover {
+        background-color: #f2e8cb;
+    }
+    .booking-confirm__container {
+        width: 100%;
+        overflow: hidden;
+        display: none;
+    }
+    .booking-confirm__navigation {
+        width: 80%;
+        margin: 30px auto 10px auto;
+    }
+    .booking-confirm__receipt {
+        width: 80%;
+        border-radius: 10px;
+        border: 1px solid black;
+        margin: 30px auto 10px auto;
+        background-color: white;
+        box-shadow: 5px 5px 8px #888888;
+        overflow: hidden;
+    }
+    .booking-confirm__header {
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+        border-bottom: 1px solid grey;
+    }
+    .booking-confirm__company {
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .booking-confirm__box {
+        width: 100%;
+        text-align: left;
+        padding: 15px 0 20px 20px;
+        border-bottom: 1px solid grey;
+        overflow: hidden;
+    }
+    .booking-confirm__title {
+        font-weight: 600;
+        font-size: 20px;
+        padding-bottom: 10px;
+    }
+    .booking-confirm__service-info {
+        overflow: hidden;
+        padding-bottom: 10px;
+    }
+    .booking-confirm__service,
+    .booking-confirm__total {
+        width: 50%;
+        float: left;
+        font-size: 20px;
+    }
+    .booking-confirm__duration {
+        font-size: 15px;
+        width: 10%;
+        float: left;
+    }
+    .booking-confirm__price {
+        width: 30%;
+        float: right;
+        text-align: center;
+    }
+    .booking-confirm__footer {
+        width: 90%;
+        margin: 20px auto;
+        overflow: hidden;
+    }
+    .booking-confirm__confirm {
+        width: 100px;
+        text-align: center;
+        height: 40px;
+        font-size: 20px;
+        line-height: 30px;
+        float: right;
+        padding: 5px;
+        margin-right: 5%;
+        border-radius: 15px;
+        background-color: white;
+        cursor: pointer;
+    }
+    .booking-confirm__message {
+        padding: 10px 30px 0 30px;
+        text-align: justify;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .booking-confirm__cancel {
+        padding: 10px 30px 0 30px;
+        text-align: justify;
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+
+/* Device more than 992px */
+
+@media only screen and (min-width: 992px) {
+    /* Index Page */
+    .wrapper {
+        min-width: 992px;
+    }
+    .container-header {
+        height: 80px;
+        min-width: 992px;
+    }
+    .navigation {
+        height: 52px;
+    }
+    .navigation ul {
+        padding: 20px 0;
+        margin-left: 5%;
+    }
+    .navigation li {
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0 20px 0 0px;
+    }
+    .call {
+        margin-left: 5%;
+        font-weight: 600;
+        font-size: 12px;
+        padding: 20px 0;
+        line-height: 12px;
+        letter-spacing: 1px;
+    }
+    .nav-book {
+        width: 120px;
+        font-size: 15px;
+        line-height: 27px;
+        border: 2px solid black;
+        border-radius: 25px;
+        margin: 7.5px 0 7.5px 3%;
+        font-weight: 550;
+        display: initial;
+    }
+    .login {
+        margin-left: 3%;
+        padding: 10px 0;
+        letter-spacing: 1px;
+        line-height: 30px;
+    }
+    .login-image {
+        padding: 5px 0;
+        font-size: 20px;
+        margin-right: 10px;
+    }
+    .login-text {
+        font-size: 16px
+    }
+    .container-social {
+        display: block;
+        width: 50px;
+        padding-left: 20px;
+        position: fixed;
+        left: 0;
+        top: 250px;
+    }
+    .container-social img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+    .container-greet {
+        min-width: 992px;
+        width: 100%;
+    }
+    .greet {
+        position: absolute;
+        animation-name: greet;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        opacity: 0.6;
+        width: 500px;
+        height: 300px;
+    }
+    @keyframes greet {
+        from {
+            top: 90px;
+            right: 400px;
+            display: none;
+        }
+        to {
+            top: 90px;
+            right: 120px;
+        }
+    }
+    .company-name {
+        font-size: 80px;
+        position: absolute;
+        font-weight: 550;
+        animation-name: company-name;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        transform-origin: bottom right;
+        min-width: 665px;
+        font-family: Coquette-Regular;
+    }
+    @keyframes company-name {
+        from {
+            transform: rotate(90deg);
+            top: 0px;
+            right: 0px;
+            opacity: 0;
+        }
+        to {
+            transform: rotate(0deg);
+            top: 320px;
+            right: 120px;
+            opacity: 1;
+        }
+    }
+    .qoute {
+        position: absolute;
+        font-size: 25px;
+        font-style: italic;
+        letter-spacing: 3px;
+        min-width: 507px;
+        animation-name: qoute;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes qoute {
+        from {
+            top: 450px;
+            right: 0;
+            opacity: 0;
+        }
+        to {
+            top: 450px;
+            right: 120px;
+            opacity: 1;
+        }
+    }
+    .index-booking {
+        float: right;
+        margin-top: 750px;
+        margin-right: 10%;
+        margin-bottom: 70px;
+        font-size: 25px;
+        font-style: italic;
+        width: 22%;
+        min-width: 335px;
+        height: 170px;
+        text-align: right;
+    }
+    .book-button {
+        border: 1px solid black;
+        text-align: center;
+        width: 215px;
+        height: 45px;
+        float: right;
+        margin-top: 50px;
+        line-height: 45px;
+    }
+    .book-button>a {
+        text-decoration: none;
+        color: black;
+    }
+    .book-button>a:hover {
+        text-decoration: none;
+        color: black;
+    }
+    .container-about {
+        min-width: 992px;
+    }
+    .about-box {
+        width: 50%;
+    }
+    .about-box:first-child {
+        background: url(../images/about1.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 70%;
+        display: block;
+    }
+    .about-box:last-child {
+        background-image: url(../images/about2.gif);
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: static;
+    }
+    .about-title {
+        font-size: 23.5px;
+        margin-top: 30px;
+        margin-left: 30px;
+    }
+    .about-company {
+        font-size: 45px;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-left: 50px;
+        letter-spacing: 4px;
+    }
+    .about-des {
+        font-size: 17px;
+        margin-top: 15px;
+        margin-left: 70px;
+        width: 70%;
+        min-width: 350px;
+        letter-spacing: 1px;
+        text-align: justify;
+        margin-bottom: 30px;
+    }
+    .about-des>ul {
+        padding-inline-start: 0px;
+        margin-top: 10px;
+    }
+    .about-des i {
+        margin-right: 10px;
+    }
+    .container-services {
+        min-width: 992px;
+    }
+    .service-title {
+        font-size: 20px;
+        margin: 80px auto 0 auto;
+        width: 300px;
+        letter-spacing: 4px;
+        padding: 5px;
+    }
+    .service-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 70px;
+        width: 80%;
+        min-width: 800px;
+        background-color: white;
+        padding: 50px 10px;
+    }
+    .services-title {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+    .service-index {
+        width: 40%;
+        min-width: 330px;
+        background-color: white;
+        margin-bottom: 30px;
+    }
+    .service-index:nth-child(3) {
+        display: none;
+    }
+    .price {
+        margin-top: 30px;
+        font-size: 20px;
+    }
+    .service-qoute {
+        width: 100%;
+        float: right;
+        margin-top: 45px;
+        margin-right: 210px;
+        text-align: right;
+        font-style: italic;
+        letter-spacing: 5px;
+        font-size: 22px;
+    }
+    .button {
+        margin-bottom: 50px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 40px;
+        width: 170px;
+        height: 50px;
+        border: 1px solid black;
+        clear: both;
+        line-height: 50px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .container-voucher {
+        min-width: 992px;
+        padding: 70px 0px 50px 0px;
+    }
+    .voucher-title {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 90px;
+        width: 280px;
+        height: 50px;
+        background-color: #ffde5f;
+        color: white;
+        letter-spacing: 0.1em;
+        text-align: center;
+        font-size: 24px;
+        line-height: 50px;
+        text-transform: uppercase;
+        box-shadow: 5px 10px #dbba3b;
+    }
+    .carousel {
+        margin-right: auto;
+        margin-left: auto;
+        width: 60%;
+    }
+    .carousel-inner {
+        margin-right: auto;
+        margin-left: auto;
+        width: 70%;
+        height: 500px;
+    }
+    .carousel-inner img {
+        height: 400px;
+        min-width: 550px;
+    }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    .carousel-caption {
+        position: static;
+        height: 100px;
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+        height: 400px;
+    }
+    .button-voucher {
+        margin-top: 40px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 170px;
+        height: 50px;
+        border: 1px solid black;
+        line-height: 50px;
+        text-transform: uppercase;
+        clear: both;
+        font-weight: bold;
+    }
+    footer {
+        min-width: 992px;
+    }
+    .container-footer {
+        width: 90%;
+        padding-top: 50px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+    }
+    .footer-box {
+        width: 30%;
+        min-width: 250px;
+    }
+    .footer-content {
+        text-align: left;
+        height: 200px;
+        font-size: 14px;
+        line-height: 1.9rem;
+        padding-right: 40px;
+        padding-left: 40px;
+        padding-top: 40px;
+    }
+    /* Service Page */
+    .container-page {
+        background-color: #f8e3d4;
+        float: left;
+        width: 100%;
+        min-width: 992px;
+    }
+    .page-greet {
+        background-color: white;
+        margin-top: 170px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 65%;
+        height: 50px;
+    }
+    .page-title {
+        width: 100%;
+        padding-left: 70px;
+        line-height: 1em;
+        font-size: 57px;
+        z-index: 100;
+        vertical-align: 30px;
+        float: left;
+        position: relative;
+        top: -30px;
+        font-style: italic;
+    }
+    .des-content {
+        float: right;
+        text-align: justify;
+        width: 50%;
+        padding-top: 50px;
+        padding-right: 30px;
+        font-style: italic;
+        line-height: 1.5em;
+        font-size: 16px;
+    }
+    .service-content {
+        float: left;
+        width: 100%;
+        padding-top: 80px;
+    }
+    .service-type {
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        width: 70%;
+    }
+    .type {
+        float: left;
+        width: 50%;
+        padding-bottom: 15px;
+        border-bottom: 2px groove #e5d2c4;
+        cursor: pointer;
+    }
+    #typeFacial {
+        border-bottom: 2px solid black;
+    }
+    .service-content .service-list {
+        background-color: transparent;
+    }
+    .service {
+        width: 30%;
+        min-width: 330px;
+        background-color: white;
+        margin-bottom: 30px;
+        margin-left: 20px;
+    }
+    .service img {
+        width: 100%;
+        height: 270px;
+    }
+    .services-name {
+        margin-top: 20px;
+        font-weight: 600;
+        font-size: 25px;
+    }
+    .service-book {
+        width: 150px;
+        height: 40px;
+        color: white;
+        background-color: black;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 16px;
+        line-height: 40px;
+    }
+    /* COntact Page */
+    .page-contact {
+        background-color: white;
+        margin-top: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 100px;
+        /* overflow: hidden; */
+        width: 85%;
+        height: 450px;
+    }
+    .map {
+        float: left;
+        width: 50%;
+        clear: both;
+        padding-left: 50px;
+        display: block;
+    }
+    .info {
+        float: right;
+        width: 50%;
+    }
+    .info-title {
+        font-weight: 600;
+        line-height: 1.2em;
+        font-size: 18px;
+    }
+    .info-content {
+        line-height: 1.5em;
+        font-size: 14px;
+        padding: 15px 0;
+    }
+    /* Voucher Page */
+    .slideshow-container {
+        width: 65%;
+        height: 275px;
+        margin-top: 100px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 80px;
+        background-color: white;
+    }
+    .slide {
+        width: 100%;
+        height: 275px;
+        display: none;
+    }
+    .slide-text {
+        width: 50%;
+        height: 275px;
+        padding-top: 100px;
+        padding-left: 10%;
+    }
+    .slide-image {
+        width: 50%;
+        height: 275px;
+        padding: 30px;
+    }
+    .slide-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .slide-description {
+        font-size: 12px;
+    }
+    .fade {
+        animation-name: fade;
+        animation-duration: 2s;
+    }
+    @keyframes fade {
+        from {
+            opacity: .4
+        }
+        to {
+            opacity: 1
+        }
+    }
+    /* Booking Page */
+    .container-booking {
+        width: 90%;
+        min-width: 700px;
+        margin-top: 100px;
+        margin-bottom: 50px;
+        margin-right: auto;
+        margin-left: auto;
+        overflow: hidden;
+    }
+    .booking-form {
+        width: 60%;
+        float: left;
+        margin-bottom: 10px;
+    }
+    #service-form,
+    #time-form,
+    #confirm {
+        display: none;
+    }
+    #service-form {
+        display: block;
+    }
+    .booking-form__title {
+        font-size: 30px;
+        font-weight: 700;
+    }
+    .booking-form__content {
+        margin-top: 20px;
+    }
+    .booking-type {
+        font-size: 25px;
+        font-weight: 700;
+    }
+    .booking-type__list {
+        background-color: white;
+        margin: 20px 0;
+        border-radius: 10px;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    /* Round checkbox */
+    .booking-service__container {
+        display: block;
+        position: relative;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 60px;
+    }
+    .booking-service__container:not(:last-child) {
+        border-bottom: 1px solid grey;
+    }
+    /* Hide the browser's default checkbox */
+    .booking-service__container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 23px;
+        left: 20px;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+    /* On mouse-over, add a grey background color */
+    .booking-service__container:hover input~.checkmark {
+        background-color: #ccc;
+    }
+    /* When the checkbox is checked, add a blue background */
+    .booking-service__container input:checked~.checkmark {
+        background-color: #2196F3;
+    }
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+    /* Show the checkmark when checked */
+    .booking-service__container input:checked~.checkmark:after {
+        display: block;
+    }
+    /* Style the checkmark/indicator */
+    .booking-service__container .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    .booking-service__name {
+        position: absolute;
+    }
+    .booking-service__price {
+        position: absolute;
+        right: 20px;
+    }
+    .booking-service__duration {
+        font-size: 13px;
+        color: grey;
+    }
+    .booking-service__button {
+        display: none;
+    }
+    #time-form,
+    #confirm {
+        display: none;
+    }
+    .booking-check__container {
+        width: 34%;
+        float: left;
+        position: -webkit-sticky;
+        position: sticky;
+        z-index: 100;
+        margin-top: 225px;
+        margin-left: 5%;
+        text-align: center;
+        display: block;
+    }
+    .booking-check__receipt {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    .booking-check__header {
+        padding: 20px 0;
+        border-bottom: 1px solid grey;
+    }
+    .booking-check__title {
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .booking-check__address {
+        font-size: 16px;
+        color: grey;
+    }
+    .booking-check__service-list {
+        padding: 20px 0;
+        border-bottom: 1px solid grey;
+        overflow: hidden;
+    }
+    .booking-check__service:not(:last-child) {
+        padding-bottom: 20px;
+    }
+    .booking-check__name {
+        float: left;
+        padding-left: 20px;
+    }
+    .booking-check__duration {
+        float: left;
+        padding-left: 20px;
+        font-size: 13px;
+    }
+    .booking-check__total {
+        float: left;
+        padding: 20px 20px 20px 20px;
+    }
+    .booking-check__price {
+        position: absolute;
+        right: 20px;
+    }
+    .booking-check__button {
+        background-color: white;
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        width: 150px;
+        height: 40px;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 19px;
+        cursor: pointer;
+        line-height: 40px;
+    }
+    .booking-check__button:hover {
+        transform: scale(1.1);
+    }
+    .booking-check__cancel {
+        margin-top: 20px;
+        width: 100%;
+        float: right;
+        font-size: 15px;
+        padding: 0 20px;
+        text-align: justify;
+    }
+    .booking-form__arrow {
+        color: white;
+        margin-right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+    }
+    .booking-form__arrow:hover {
+        transform: scale(1.3);
+        color: black;
+    }
+    .booking-form__typeList {
+        width: 100%;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        height: 50px;
+        padding: 10px 20px;
+        margin-bottom: 30px;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    .booking-form__type {
+        float: left;
+        width: 20%;
+        height: 30px;
+        line-height: 30px;
+        color: black;
+        border-radius: 30px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .booking-form__type:hover {
+        color: white;
+        background-color: #dbb89a;
+    }
+    .booking-form__type:not(:last-child) {
+        margin-right: 5%;
+    }
+    .booking-form__month {
+        background-color: white;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    .month-title {
+        width: 100%;
+        padding-top: 20px;
+        padding-left: 50px;
+        padding-bottom: 20px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .arrow {
+        float: left;
+        width: 10%;
+        text-align: center;
+        height: 70px;
+        line-height: 70px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+    .arrow:hover {
+        transform: scale(1.5);
+    }
+    .month-date {
+        overflow: hidden;
+        padding-bottom: 20px;
+        margin-bottom: 0;
+        border-bottom: 1px solid grey;
+    }
+    .month-date li {
+        float: left;
+        width: 15%;
+        text-align: center;
+        height: 70px;
+        font-size: 20px;
+        border: 1px solid grey;
+        margin-right: 2.5%;
+        margin-left: 2.5%;
+        border-radius: 5px;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    .month-date li:hover {
+        background-color: #dbb89a;
+        color: white;
+    }
+    .day {
+        height: 35px;
+        margin-bottom: 0;
+        line-height: 35px;
+    }
+    .date {
+        height: 35px;
+        margin-bottom: 0;
+        line-height: 35px;
+    }
+    .time-container {
+        width: 100%;
+        height: 70px;
+        cursor: pointer;
+    }
+    .time-container:not(:last-child) {
+        border-bottom: 1px solid grey;
+    }
+    .time {
+        height: 70px;
+        line-height: 70px;
+        padding-left: 25px;
+        cursor: pointer;
+    }
+    .time:hover {
+        background-color: #f2e8cb;
+    }
+    .booking-confirm__container {
+        width: 100%;
+        overflow: hidden;
+        display: none;
+    }
+    .booking-confirm__navigation {
+        width: 80%;
+        margin: 30px auto 10px auto;
+    }
+    .booking-confirm__receipt {
+        width: 80%;
+        border-radius: 10px;
+        border: 1px solid black;
+        margin: 30px auto 10px auto;
+        background-color: white;
+        box-shadow: 5px 5px 8px #888888;
+        overflow: hidden;
+    }
+    .booking-confirm__header {
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+        border-bottom: 1px solid grey;
+    }
+    .booking-confirm__company {
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .booking-confirm__box {
+        width: 100%;
+        text-align: left;
+        padding: 15px 0 20px 20px;
+        border-bottom: 1px solid grey;
+        overflow: hidden;
+    }
+    .booking-confirm__title {
+        font-weight: 600;
+        font-size: 20px;
+        padding-bottom: 10px;
+    }
+    .booking-confirm__service-info {
+        overflow: hidden;
+        padding-bottom: 10px;
+    }
+    .booking-confirm__service,
+    .booking-confirm__total {
+        width: 50%;
+        float: left;
+        font-size: 20px;
+    }
+    .booking-confirm__duration {
+        font-size: 15px;
+        width: 10%;
+        float: left;
+    }
+    .booking-confirm__price {
+        width: 30%;
+        float: right;
+        text-align: center;
+    }
+    .booking-confirm__footer {
+        width: 90%;
+        margin: 20px auto;
+        overflow: hidden;
+    }
+    .booking-confirm__confirm {
+        width: 100px;
+        text-align: center;
+        height: 40px;
+        font-size: 20px;
+        line-height: 30px;
+        float: right;
+        padding: 5px;
+        margin-right: 5%;
+        border-radius: 15px;
+        background-color: white;
+        cursor: pointer;
+    }
+    .booking-confirm__message {
+        padding: 10px 30px 0 30px;
+        text-align: justify;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .booking-confirm__cancel {
+        padding: 10px 30px 0 30px;
+        text-align: justify;
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+
+/* Device more than 1200px width */
+
+@media only screen and (min-width: 1200px) {
+    /* Index Page */
+    .wrapper {
+        min-width: 1200px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .container-header {
+        height: 80px;
+    }
+    .navigation {
+        height: 52px;
+    }
+    .navigation ul {
+        margin-left: 15%;
+        padding: 20px 0;
+    }
+    .navigation li {
+        font-size: 14px;
+        line-height: 14px;
+        margin: 0 30px 0 0px;
+    }
+    .call {
+        margin-left: 10%;
+        font-weight: 600;
+        font-size: 12px;
+        padding: 20px 0;
+        line-height: 12px;
+        letter-spacing: 1px;
+    }
+    .nav-book {
+        width: 120px;
+        font-size: 15px;
+        line-height: 27px;
+        border: 2px solid black;
+        border-radius: 25px;
+        margin: 7.5px 0 7.5px 3%;
+        font-weight: 550;
+        display: initial;
+    }
+    .login {
+        margin-left: 3%;
+        padding: 10px 0;
+        letter-spacing: 1px;
+        line-height: 30px;
+    }
+    .login-image {
+        padding: 5px 0;
+        font-size: 20px;
+        margin-right: 10px;
+    }
+    .login-text {
+        font-size: 16px
+    }
+    .container-social {
+        width: 50px;
+        padding-left: 20px;
+        position: fixed;
+        left: 0;
+        top: 250px;
+    }
+    .container-social img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+    .container-greet {
+        min-width: 1200px;
+    }
+    .greet {
+        position: absolute;
+        animation-name: greet;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        opacity: 0.6;
+        width: 500px;
+        height: 300px;
+    }
+    @keyframes greet {
+        from {
+            top: 90px;
+            right: 400px;
+            display: none;
+        }
+        to {
+            top: 90px;
+            right: 120px;
+        }
+    }
+    .company-name {
+        font-size: 80px;
+        position: absolute;
+        font-weight: 550;
+        animation-name: company-name;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        transform-origin: bottom right;
+        min-width: 665px;
+        font-family: Coquette-Regular;
+    }
+    @keyframes company-name {
+        from {
+            transform: rotate(90deg);
+            top: 0px;
+            right: 0px;
+            opacity: 0;
+        }
+        to {
+            transform: rotate(0deg);
+            top: 320px;
+            right: 120px;
+            opacity: 1;
+        }
+    }
+    .qoute {
+        position: absolute;
+        font-size: 25px;
+        font-style: italic;
+        letter-spacing: 3px;
+        min-width: 507px;
+        animation-name: qoute;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes qoute {
+        from {
+            top: 450px;
+            right: 0;
+            opacity: 0;
+        }
+        to {
+            top: 450px;
+            right: 120px;
+            opacity: 1;
+        }
+    }
+    .index-booking {
+        float: right;
+        margin-top: 750px;
+        margin-right: 10%;
+        margin-bottom: 70px;
+        font-size: 25px;
+        font-style: italic;
+        width: 22%;
+        min-width: 335px;
+        height: 170px;
+        text-align: right;
+    }
+    .book-button {
+        border: 1px solid black;
+        text-align: center;
+        width: 215px;
+        height: 45px;
+        float: right;
+        margin-top: 50px;
+        line-height: 45px;
+    }
+    .book-button>a {
+        text-decoration: none;
+        color: black;
+    }
+    .book-button>a:hover {
+        text-decoration: none;
+        color: black;
+    }
+    .container-about {
+        min-width: 1200px;
+    }
+    .about-box {
+        width: 50%;
+    }
+    .about-box:first-child {
+        background: url(../images/about1.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 450px;
+    }
+    .about-box:last-child {
+        background-image: url(../images/about2.gif);
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: static;
+    }
+    .about-title {
+        font-size: 26.5px;
+        margin-top: 50px;
+        margin-left: 40px;
+    }
+    .about-company {
+        font-size: 50px;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-left: 90px;
+        letter-spacing: 4px;
+    }
+    .about-des {
+        font-size: 18px;
+        margin-top: 15px;
+        margin-left: 100px;
+        width: 70%;
+        min-width: 350px;
+        letter-spacing: 1px;
+        text-align: justify;
+        margin-bottom: 70px;
+    }
+    .about-des>ul {
+        padding-inline-start: 0px;
+        margin-top: 10px;
+    }
+    .about-des i {
+        margin-right: 10px;
+    }
+    .container-services {
+        min-width: 1200px;
+    }
+    .service-title {
+        font-size: 20px;
+        margin: 80px auto 0 auto;
+        width: 300px;
+        letter-spacing: 4px;
+        padding: 5px;
+    }
+    .service-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 110px;
+        width: 80%;
+        min-width: 1100px;
+        background-color: white;
+        padding: 50px 10px;
+    }
+    .services-title {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        font-size: 30px;
+        font-weight: 600;
+    }
+    .service-index {
+        width: 30%;
+        min-width: 330px;
+        background-color: white;
+        margin-bottom: 30px;
+    }
+    .service-index:nth-child(3) {
+        display: initial;
+    }
+    .price {
+        margin-top: 30px;
+        font-size: 20px;
+    }
+    .service-qoute {
+        width: 100%;
+        float: right;
+        margin-top: 45px;
+        margin-right: 210px;
+        text-align: right;
+        font-style: italic;
+        letter-spacing: 5px;
+        font-size: 22px;
+    }
+    .button {
+        margin-bottom: 50px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 40px;
+        width: 170px;
+        height: 50px;
+        border: 1px solid black;
+        clear: both;
+        line-height: 50px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    .container-voucher {
+        min-width: 1200px;
+        padding: 70px 0px 50px 0px;
+    }
+    .voucher-title {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 90px;
+        width: 280px;
+        height: 50px;
+        background-color: #ffde5f;
+        color: white;
+        letter-spacing: 0.1em;
+        text-align: center;
+        font-size: 24px;
+        line-height: 50px;
+        text-transform: uppercase;
+        box-shadow: 5px 10px #dbba3b;
+    }
+    .carousel {
+        margin-right: auto;
+        margin-left: auto;
+        width: 60%;
+    }
+    .carousel-inner {
+        margin-right: auto;
+        margin-left: auto;
+        width: 70%;
+        height: 500px;
+    }
+    .carousel-inner img {
+        height: 400px;
+        min-width: 550px;
+    }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    .carousel-caption {
+        position: static;
+        height: 100px;
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+        height: 400px;
+    }
+    .button-voucher {
+        margin-top: 40px;
+        margin-right: auto;
+        margin-left: auto;
+        width: 170px;
+        height: 50px;
+        border: 1px solid black;
+        line-height: 50px;
+        text-transform: uppercase;
+        clear: both;
+        font-weight: bold;
+    }
+    footer {
+        min-width: 1200px;
+    }
+    .container-footer {
+        width: 70%;
+        padding-top: 50px;
+    }
+    .footer-box {
+        min-width: 330px;
+    }
+    .footer-content {
+        text-align: left;
+        height: 140px;
+        font-size: 14px;
+        line-height: 1.9rem;
+        padding-right: 40px;
+        padding-left: 40px;
+        padding-top: 40px;
+    }
+    /* Service Page */
+    .container-page {
+        background-color: #f8e3d4;
+        float: left;
+        width: 100%;
+        min-width: 1200px;
+    }
+    .page-greet {
+        background-color: white;
+        margin-top: 170px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 65%;
+        height: 50px;
+    }
+    .page-title {
+        width: 100%;
+        padding-left: 70px;
+        line-height: 1em;
+        font-size: 57px;
+        z-index: 100;
+        vertical-align: 30px;
+        float: left;
+        position: relative;
+        top: -30px;
+        font-style: italic;
+    }
+    .des-content {
+        float: right;
+        text-align: justify;
+        width: 50%;
+        padding-top: 50px;
+        padding-right: 30px;
+        font-style: italic;
+        line-height: 1.5em;
+        font-size: 16px;
+    }
+    .service-content {
+        float: left;
+        width: 100%;
+        padding-top: 80px;
+    }
+    .service-type {
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        width: 40%;
+    }
+    .type {
+        float: left;
+        width: 50%;
+        padding-bottom: 15px;
+        border-bottom: 2px groove #e5d2c4;
+        cursor: pointer;
+    }
+    #typeFacial {
+        border-bottom: 2px solid black;
+    }
+    .service-content .service-list {
+        background-color: transparent;
+    }
+    .service {
+        width: 30%;
+        min-width: 330px;
+        background-color: white;
+        margin-bottom: 30px;
+        margin-left: 20px;
+        background-color: #dbb89a;
+    }
+    .service img {
+        width: 100%;
+        height: 270px;
+    }
+    .services-name {
+        margin-top: 20px;
+        font-weight: 600;
+        font-size: 25px;
+    }
+    .service-book {
+        width: 150px;
+        height: 40px;
+        color: white;
+        background-color: black;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 16px;
+        line-height: 40px;
+    }
+    /* COntact Page */
+    .page-contact {
+        background-color: white;
+        margin-top: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 100px;
+        /* overflow: hidden; */
+        width: 75%;
+        height: 450px;
+    }
+    .map {
+        float: left;
+        width: 50%;
+        clear: both;
+        padding-left: 50px;
+    }
+    .info {
+        float: right;
+        width: 50%;
+    }
+    .info-title {
+        font-weight: 600;
+        line-height: 1.2em;
+        font-size: 18px;
+    }
+    .info-content {
+        line-height: 1.5em;
+        font-size: 14px;
+        padding: 15px 0;
+    }
+    /* Voucher Page */
+    .slideshow-container {
+        width: 65%;
+        height: 275px;
+        margin-top: 100px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 80px;
+        background-color: white;
+    }
+    .slide {
+        width: 100%;
+        height: 275px;
+        display: none;
+    }
+    .slide-text {
+        width: 50%;
+        height: 275px;
+        padding-top: 100px;
+        padding-left: 10%;
+    }
+    .slide-image {
+        width: 50%;
+        height: 275px;
+        padding: 30px;
+    }
+    .slide-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    .slide-description {
+        font-size: 12px;
+    }
+    .fade {
+        animation-name: fade;
+        animation-duration: 2s;
+    }
+    @keyframes fade {
+        from {
+            opacity: .4
+        }
+        to {
+            opacity: 1
+        }
+    }
+    /* Booking Page */
+    .container-booking {
+        width: 60%;
+        min-width: 800px;
+        margin-top: 100px;
+        margin-bottom: 50px;
+        margin-right: auto;
+        margin-left: auto;
+        overflow: hidden;
+    }
+    .booking-form {
+        width: 60%;
+        float: left;
+        margin-bottom: 10px;
+    }
+    #service-form,
+    #time-form,
+    #confirm {
+        display: none;
+    }
+    #service-form {
+        display: block;
+    }
+    .booking-form__title {
+        font-size: 30px;
+        font-weight: 700;
+    }
+    .booking-form__content {
+        margin-top: 20px;
+    }
+    .booking-type {
+        font-size: 25px;
+        font-weight: 700;
+    }
+    .booking-type__list {
+        background-color: white;
+        margin: 20px 0;
+        border-radius: 10px;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    /* Round checkbox */
+    .booking-service__container {
+        display: block;
+        position: relative;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 60px;
+    }
+    .booking-service__container:not(:last-child) {
+        border-bottom: 1px solid grey;
+    }
+    /* Hide the browser's default checkbox */
+    .booking-service__container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 23px;
+        left: 20px;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+    /* On mouse-over, add a grey background color */
+    .booking-service__container:hover input~.checkmark {
+        background-color: #ccc;
+    }
+    /* When the checkbox is checked, add a blue background */
+    .booking-service__container input:checked~.checkmark {
+        background-color: #2196F3;
+    }
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+    /* Show the checkmark when checked */
+    .booking-service__container input:checked~.checkmark:after {
+        display: block;
+    }
+    /* Style the checkmark/indicator */
+    .booking-service__container .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    .booking-service__name {
+        position: absolute;
+    }
+    .booking-service__price {
+        position: absolute;
+        right: 20px;
+    }
+    .booking-service__duration {
+        font-size: 13px;
+        color: grey;
+    }
+    #time-form,
+    #confirm {
+        display: none;
+    }
+    .booking-check__container {
+        width: 34%;
+        float: left;
+        position: -webkit-sticky;
+        position: sticky;
+        z-index: 100;
+        margin-top: 225px;
+        margin-left: 5%;
+        text-align: center;
+    }
+    .booking-check__receipt {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    .booking-check__header {
+        padding: 20px 0;
+        border-bottom: 1px solid grey;
+    }
+    .booking-check__title {
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .booking-check__address {
+        font-size: 16px;
+        color: grey;
+    }
+    .booking-check__service-list {
+        padding: 20px 0;
+        border-bottom: 1px solid grey;
+        overflow: hidden;
+    }
+    .booking-check__service:not(:last-child) {
+        padding-bottom: 20px;
+    }
+    .booking-check__name {
+        float: left;
+        padding-left: 20px;
+    }
+    .booking-check__duration {
+        float: left;
+        padding-left: 20px;
+        font-size: 13px;
+    }
+    .booking-check__total {
+        float: left;
+        padding: 20px 20px 20px 20px;
+    }
+    .booking-check__price {
+        position: absolute;
+        right: 20px;
+    }
+    .booking-check__button {
+        background-color: white;
+        float: right;
+        margin-top: 20px;
+        margin-right: 20px;
+        width: 150px;
+        height: 40px;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 19px;
+        cursor: pointer;
+        line-height: 40px;
+    }
+    .booking-check__button:hover {
+        transform: scale(1.1);
+    }
+    .booking-check__cancel {
+        margin-top: 20px;
+        width: 100%;
+        float: right;
+        font-size: 15px;
+        padding: 0 20px;
+        text-align: justify;
+    }
+    .booking-form__arrow {
+        color: white;
+        margin-right: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+    }
+    .booking-form__arrow:hover {
+        transform: scale(1.3);
+        color: black;
+    }
+    .booking-form__typeList {
+        width: 100%;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        height: 50px;
+        padding: 10px 20px;
+        margin-bottom: 30px;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    .booking-form__type {
+        float: left;
+        width: 20%;
+        height: 30px;
+        line-height: 30px;
+        color: black;
+        border-radius: 30px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .booking-form__type:hover {
+        color: white;
+        background-color: #dbb89a;
+    }
+    .booking-form__type:not(:last-child) {
+        margin-right: 5%;
+    }
+    .booking-form__month {
+        background-color: white;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    .month-title {
+        width: 100%;
+        padding-top: 20px;
+        padding-left: 50px;
+        padding-bottom: 20px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .arrow {
+        float: left;
+        width: 10%;
+        text-align: center;
+        height: 70px;
+        line-height: 70px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+    .arrow:hover {
+        transform: scale(1.5);
+    }
+    .month-date {
+        overflow: hidden;
+        padding-bottom: 20px;
+        margin-bottom: 0;
+        border-bottom: 1px solid grey;
+    }
+    .month-date li {
+        float: left;
+        width: 15%;
+        text-align: center;
+        height: 70px;
+        font-size: 20px;
+        border: 1px solid grey;
+        margin-right: 2.5%;
+        margin-left: 2.5%;
+        border-radius: 5px;
+        box-shadow: 5px 5px 8px #888888;
+    }
+    .month-date li:hover {
+        background-color: #dbb89a;
+        color: white;
+    }
+    .day {
+        height: 35px;
+        margin-bottom: 0;
+        line-height: 35px;
+    }
+    .date {
+        height: 35px;
+        margin-bottom: 0;
+        line-height: 35px;
+    }
+    .time-container {
+        width: 100%;
+        height: 70px;
+        cursor: pointer;
+    }
+    .time-container:not(:last-child) {
+        border-bottom: 1px solid grey;
+    }
+    .time {
+        height: 70px;
+        line-height: 70px;
+        padding-left: 25px;
+        cursor: pointer;
+    }
+    .time:hover {
+        background-color: #f2e8cb;
+    }
+    .booking-confirm__container {
+        width: 100%;
+        overflow: hidden;
+        display: none;
+    }
+    .booking-confirm__navigation {
+        width: 75%;
+        margin: 30px auto 10px auto;
+    }
+    .booking-confirm__receipt {
+        width: 75%;
+        border-radius: 10px;
+        border: 1px solid black;
+        margin: 30px auto 10px auto;
+        background-color: white;
+        box-shadow: 5px 5px 8px #888888;
+        overflow: hidden;
+    }
+    .booking-confirm__header {
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+        border-bottom: 1px solid grey;
+    }
+    .booking-confirm__company {
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .booking-confirm__box {
+        width: 100%;
+        text-align: left;
+        padding: 15px 0 20px 20px;
+        border-bottom: 1px solid grey;
+        overflow: hidden;
+    }
+    .booking-confirm__title {
+        font-weight: 600;
+        font-size: 20px;
+        padding-bottom: 10px;
+    }
+    .booking-confirm__service-info {
+        overflow: hidden;
+        padding-bottom: 10px;
+    }
+    .booking-confirm__service,
+    .booking-confirm__total {
+        width: 50%;
+        float: left;
+        font-size: 20px;
+    }
+    .booking-confirm__duration {
+        font-size: 15px;
+        width: 10%;
+        float: left;
+    }
+    .booking-confirm__price {
+        width: 30%;
+        float: right;
+        text-align: center;
+    }
+    .booking-confirm__footer {
+        width: 80%;
+        margin: 20px auto;
+        overflow: hidden;
+    }
+    .booking-confirm__confirm {
+        width: 100px;
+        text-align: center;
+        height: 40px;
+        font-size: 20px;
+        line-height: 30px;
+        float: right;
+        padding: 5px;
+        border-radius: 15px;
+        background-color: white;
+        cursor: pointer;
+        margin-right: 0;
+    }
+    .booking-confirm__message {
+        padding: 10px 30px 0 30px;
+        text-align: justify;
+        width: 100%;
+    }
+    .booking-confirm__cancel {
+        padding: 10px 30px 0 30px;
+        text-align: justify;
+        width: 100%;
+    }
+    .booking-service__button {
+        display: none;
+    }
+    .dateBox li {
+        cursor: pointer;
+    }
+}
