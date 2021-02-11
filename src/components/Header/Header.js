@@ -1,31 +1,28 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import classes from './Header.module.css';
 import Navigation from './Navigation/Navigation';
 import Aux from '../../hoc/Auxulliary';
 import SideDrawer from './Navigation/SideDrawer/SideDrawer';
-class Header extends Component{
-    state ={
-        showSideDrawer:false
+
+const Header = props =>{
+    const [showDrawer, setShowDrawer]= useState(false);
+    const sideDrawerClosedHandler = ()=>{
+        setShowDrawer(false);
     }
-    sideDrawerClosedHandler = ()=>{
-        this.setState({showSideDrawer: false});
-    }
-    sideDrawerToggleHandler = ()=>{
-        this.setState((prevState)=>{ 
-            return {showSideDrawer: !prevState.showSideDrawer};
+    const sideDrawerToggleHandler = ()=>{
+        setShowDrawer((prevState)=>{
+            return setShowDrawer(!prevState.showDrawer);
         });
     }
-    render(){
-        return(
+    return(
             <Aux>
                 <header className={classes.Header}>
-                    <Navigation toggleClicked={this.sideDrawerToggleHandler}/>
-                    <SideDrawer open = {this.state.showSideDrawer}
-                    closed={this.sideDrawerClosedHandler}/>
+                    <Navigation toggleClicked={sideDrawerToggleHandler}/>
+                    <SideDrawer open = {showDrawer}
+                    closed={sideDrawerClosedHandler}/>
                 </header>
                 
             </Aux>
         )
-    }
 }
 export default Header;

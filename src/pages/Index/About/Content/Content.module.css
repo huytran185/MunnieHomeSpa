@@ -1,0 +1,58 @@
+.Title {
+    font-family: Caudex-Regular;
+    text-transform: uppercase;
+    font-size: 23.5px;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.Company {
+    font-family: Caudex-Regular;
+    font-size: 45px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 50px;
+    letter-spacing: 4px;
+}
+
+.Des {
+    font-size: 17px;
+    margin: 15px auto 0 auto;
+    width: 70%;
+    min-width: 350px;
+    letter-spacing: 1px;
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
+.Des ul {
+    padding-inline-start: 0px;
+    margin-top: 10px;
+}
+
+.Des i {
+    margin-right: 10px;
+}
+
+@media only screen and (min-width:768px) {}
+
+@media only screen and (min-width:992px) {
+    .Des {
+        margin: 15px auto 0 70px;
+    }
+}
+
+@media only screen and (min-width:1200px) {
+    .Title {
+        font-size: 26.5px;
+        margin-top: 50px;
+        margin-left: 40px;
+    }
+    .Company {
+        font-size: 50px;
+        margin-left: 90px;
+    }
+    .Des {
+        margin: 15px auto 0 100px;
+    }
+}

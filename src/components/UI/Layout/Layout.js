@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Aux from '../../../hoc/Auxulliary';
 import Header from '../../Header/Header';
 import Footer from '../../Footer/Footer';
-class Layout extends Component{
-    render(){
+const layout = props =>{
         return(
             <Aux>
                 <Header/>
                 <main>
-                    {this.props.children}
+                    {props.children}
                 </main>
                 <Footer/>
             </Aux>
         )
     }
-}
-export default Layout;
+
+export default layout;

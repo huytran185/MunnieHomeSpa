@@ -2,8 +2,6 @@ import React from 'react'
 import classes from './Navigation.module.css';
 import NavigationItem from './NavigationItem/NavigationItem'
 
-
-
 const navigation = (props)=>(
     <nav className={classes.Navigation}>
         <i className="fa fa-bars" id="nav-button" onClick={props.toggleClicked}></i>

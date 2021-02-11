@@ -1,0 +1,24 @@
+.Button {
+    width: 215px;
+    height: 45px;
+    margin: 50px auto;
+    line-height: 45px;
+    font-size: 16px;
+    font-family: Caudex-Regular;
+    border: 1px solid black;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.Button a {
+    text-decoration: none;
+    color: black;
+}
+
+.Button a:hover,
+.Button a:active,
+.Button a.active {
+    text-decoration: none;
+    color: black;
+}
