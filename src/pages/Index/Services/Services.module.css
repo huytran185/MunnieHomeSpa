@@ -1,0 +1,74 @@
+.Services {
+    float: left;
+    width: 100%;
+    min-width: 550px;
+    background: url(../../../assets/images/background-service.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+.Title {
+    text-transform: uppercase;
+    background-color: white;
+    font-size: 20px;
+    margin: 80px auto 0 auto;
+    width: 300px;
+    letter-spacing: 4px;
+    padding: 5px;
+}
+
+.Service {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 768px;
+    margin: 70px auto 0 auto;
+    text-align: center;
+    background-color: white;
+    padding: 50px 10px;
+}
+
+.Qoute {
+    font-family: Cookie;
+    width: 100%;
+    margin: 45px 210px 0 0;
+    text-align: center;
+    font-style: italic;
+    letter-spacing: 5px;
+    font-size: 22px;
+}
+
+@media only screen and (min-width:768px) {
+    .Services {
+        min-width: 768px;
+    }
+    .Service {
+        min-width: 768px;
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width:992px) {
+    .Services {
+        min-width: 992px;
+    }
+    .Service {
+        min-width: 800px;
+    }
+    .Qoute {
+        float: right;
+        width: 50%;
+        text-align: right;
+    }
+}
+
+@media only screen and (min-width:1200px) {
+    .Services {
+        min-width: 1200px;
+    }
+    .Service {
+        min-width: 1100px;
+    }
+}

@@ -1,0 +1,43 @@
+.Service {
+    width: 40%;
+    min-width: 330px;
+    background-color: white;
+    margin-bottom: 30px;
+    float: center;
+}
+
+.Title {
+    margin: 30px auto 10px auto;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.Price {
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+@media only screen and (min-width:768px) {
+    .Service {
+        width: 40%;
+        float: left;
+    }
+    .Service:nth-child(3) {
+        display: none;
+    }
+}
+
+@media only screen and (min-width:992px) {
+    .Service:nth-child(3) {
+        display: none;
+    }
+}
+
+@media only screen and (min-width:1200px) {
+    .Service {
+        width: 30%;
+    }
+    .Service:nth-child(3) {
+        display: initial;
+    }
+}
