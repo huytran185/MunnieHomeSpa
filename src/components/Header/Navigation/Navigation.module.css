@@ -2,10 +2,10 @@
     height: 52px;
     list-style: none;
     display: flex;
-    overflow: hidden;
     color: black;
     border-top: 3px solid white;
     border-bottom: 3px solid white;
+    width: 100%;
 }
 
 .Navigation ul {

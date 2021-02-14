@@ -4,11 +4,7 @@
     width: 100%;
     background-color: #dbb89a;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
     z-index: 100;
-    overflow: hidden;
     float: left;
     padding: 10px 0;
 }

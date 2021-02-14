@@ -3,7 +3,7 @@
     width: 100%;
     background-color: #fff2e8;
     overflow: hidden;
-    max-width: 768px;
+    /* max-width: 768px; */
     min-width: 550px;
 }
 
