@@ -5,10 +5,10 @@ import Layout from '../../components/UI/Layout/Layout';
 import Services from './Services/Services';
 import {Helmet} from 'react-helmet';
 import Voucher from './Voucher/Voucher';
-
+import Aux from '../../hoc/Auxulliary';
 const index = (props)=>{
     return(
-        <div>
+        <Aux>
             <Helmet>
                 <title>Munnie Homéspa | Home Page</title>
             </Helmet>
@@ -18,7 +18,7 @@ const index = (props)=>{
                 <Services/>
                 <Voucher/>
             </Layout>
-        </div>
+        </Aux>
     )
 }
 export default index;

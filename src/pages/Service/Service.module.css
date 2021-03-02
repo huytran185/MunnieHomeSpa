@@ -1,0 +1,52 @@
+.Service {
+    background-color: #f8e3f4;
+    float: left;
+    width: 100%;
+    min-width: 550px;
+    z-index: 1;
+}
+
+.TypeList {
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+    min-width: 460px;
+}
+
+.ServiceList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 100px auto 0 auto;
+    width: 100%;
+    padding: 50px 10px;
+}
+
+@media only screen and (min-width: 758px) {
+    .Service {
+        min-width: 768px;
+    }
+    .TypeList {
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .Service {
+        min-width: 992px
+    }
+    .TypeList {
+        width: 40%;
+    }
+    .ServiceList {
+        width: 80%;
+        min-width: 800px;
+        margin: 100px auto 0 auto;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .Service {
+        min-width: 1200px;
+    }
+}
