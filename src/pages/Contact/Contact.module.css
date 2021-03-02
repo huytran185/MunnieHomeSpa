@@ -1,0 +1,61 @@
+.Contact {
+    background-color: white;
+    margin: 0px auto 100px auto;
+    width: 75%;
+    height: 450px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover,
+a:active,
+a.active {
+    text-decoration: none;
+    color: black;
+}
+
+.Map {
+    float: left;
+    width: 50%;
+    clear: both;
+    display: none;
+}
+
+.Map iframe {
+    margin: 60px 0px 0px 50px;
+    width: 90%;
+    height: 300px;
+    border: 0;
+    allowfullscreen: true;
+    loading: lazy;
+}
+
+.Info {
+    float: left;
+    width: 100%;
+    padding: 30px 0px 0px 20px;
+}
+
+@media only screen and (min-width: 768px) {
+    .Contact {
+        margin: 0px auto 100px auto;
+        width: 65%;
+    }
+    .Info {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .Map {
+        display: block;
+    }
+    .Info {
+        width: 50%;
+        margin: 0 auto;
+    }
+}

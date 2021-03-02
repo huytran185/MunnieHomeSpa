@@ -95,7 +95,7 @@ const Service =()=>{
     return(
         <Aux>
             <Helmet>
-                <title>Munnie Homéspa | Home Page</title>
+                <title>Munnie Homéspa | Service Page</title>
             </Helmet>
             <Layout className={classes.Service}>
                 <Page title="Service">

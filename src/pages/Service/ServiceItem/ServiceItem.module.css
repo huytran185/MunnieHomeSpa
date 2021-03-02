@@ -19,19 +19,18 @@
 
 @media only screen and (min-width:768px) {
     .ServiceItem {
-        width: 45%;
+        width: 48%;
     }
 }
 
 @media only screen and (min-width: 992px) {
     .ServiceItem {
-        width: 40%;
+        width: 48%;
     }
 }
 
 @media only screen and (min-width: 1200px) {
     .ServiceItem {
         width: 30%;
-        /* max-width: 330px; */
     }
 }

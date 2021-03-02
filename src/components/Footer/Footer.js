@@ -1,6 +1,7 @@
 import React from 'react';
 import FooterColumn from './FooterColumn/FooterColumn';
-import classes from './Footer.module.css'
+import classes from './Footer.module.css';
+import {Link} from 'react-router-dom';
 const footer =()=>(
     <div className ={classes.Footer}>
         <footer>
@@ -12,7 +13,7 @@ const footer =()=>(
             <FooterColumn title="CONTACT">
                 <ul>
                     <li>Tel: 09xx xxx xxx</li>
-                    <li><a href="https://www.facebook.com/munniehomespa">Page: facebook.com/munniehomespa</a></li>
+                    <li><Link to="/facebook">Page: facebook.com/munniehomespa</Link></li>
                     <li>Email: munniehomespa@gmail.com</li>
                 </ul>
             </FooterColumn>
