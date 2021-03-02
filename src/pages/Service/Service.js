@@ -3,8 +3,7 @@ import classes from './Service.module.css';
 import {Helmet} from 'react-helmet';
 import Layout from '../../components/UI/Layout/Layout';
 import Aux from '../../hoc/Auxulliary';
-import ServiceItem from './ServiceItem/ServiceItem'
-import Page from '../../components/PageContent/PageContent';
+import ServiceItem from './ServiceItem/ServiceItem';
 import Type from './Type/Type';
 // import axios from '../../axios-order';
 import Spinner from '../../components/UI/Spinner/Spinner';
@@ -97,10 +96,15 @@ const Service =()=>{
             <Helmet>
                 <title>Munnie Homéspa | Service Page</title>
             </Helmet>
-            <Layout className={classes.Service}>
-                <Page title="Service">
-                    {servicePage}
-                </Page>
+            <Layout>
+                <div className = {classes.Page}>
+                    <div className = {classes.Header}>
+                        <div className={classes.Title}>Service</div>
+                    </div>
+                    <div className={classes.Content}>
+                        {servicePage}
+                    </div>
+                </div>
             </Layout>
         </Aux>
     )

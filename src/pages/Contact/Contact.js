@@ -3,7 +3,6 @@ import classes from './Contact.module.css';
 import {Helmet} from 'react-helmet';
 import Layout from '../../components/UI/Layout/Layout';
 import Aux from '../../hoc/Auxulliary';
-import Page from '../../components/PageContent/PageContent';
 import Info from './Info/Info';
 import {Link} from 'react-router-dom';
 
@@ -13,8 +12,11 @@ const contact = ()=>(
             <title>Munnie Homéspa | Contact Page</title>
         </Helmet>
         <Layout >
-            <Page title="Contact Us" >
-                <div className = {classes.Contact}>
+            <div className={classes.Contact}>
+                <div className = {classes.Content}>
+                    <div className = {classes.Title}>
+                        Contact Us
+                    </div>
                     <div className= {classes.Map}>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.6699843481474!2d106.69073211473362!3d10.75989729233275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1170c30345%3A0x20c747d78d9f2b42!2zNDIyIFbDtSBWxINuIEtp4buHdCwgUGjGsOG7nW5nIEPDtCBHaWFuZywgUXXhuq1uIDEsIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2sau!4v1614690520920!5m2!1svi!2sau" 
                         title="Spa Google Map"></iframe>
@@ -33,7 +35,7 @@ const contact = ()=>(
                         </Info>
                     </div>
                 </div>
-            </Page>
+            </div>
         </Layout>
     </Aux>
 )

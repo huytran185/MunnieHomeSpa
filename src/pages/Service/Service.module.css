@@ -1,9 +1,35 @@
-.Service {
-    background-color: #f8e3f4;
+.Page {
+    background-color: #f8e3d4;
     float: left;
     width: 100%;
     min-width: 550px;
-    z-index: 1;
+}
+
+.Header {
+    background-color: white;
+    margin-top: 170px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    height: 50px;
+}
+
+.Title {
+    width: 100%;
+    padding-left: 70px;
+    line-height: 1em;
+    font-size: 57px;
+    z-index: 99;
+    vertical-align: 30px;
+    float: left;
+    position: relative;
+    top: -30px;
+    font-style: italic;
+}
+
+.Content {
+    float: left;
+    width: 100%;
 }
 
 .TypeList {
@@ -24,8 +50,11 @@
 }
 
 @media only screen and (min-width: 758px) {
-    .Service {
+    .Page {
         min-width: 768px;
+    }
+    .Header {
+        width: 65%;
     }
     .TypeList {
         width: 60%;
@@ -33,8 +62,8 @@
 }
 
 @media only screen and (min-width: 992px) {
-    .Service {
-        min-width: 992px
+    .Page {
+        min-width: 992px;
     }
     .TypeList {
         width: 40%;
@@ -47,7 +76,7 @@
 }
 
 @media only screen and (min-width: 1200px) {
-    .Service {
+    .Page {
         min-width: 1200px;
     }
     .ServiceList {
