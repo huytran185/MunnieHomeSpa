@@ -12,6 +12,7 @@ import firebase from '../../components/Firebase/firebaseConfig';
 const Service =()=>{
     const [types, setType] = useState(null);
     const [services, setServices] = useState(null);
+
     //get data from firebase using axios
     // useEffect(()=>{
     //     axios.get('https://munnie-default-rtdb.firebaseio.com/type.json')
@@ -47,6 +48,7 @@ const Service =()=>{
         newTypes[index].under = true;
         setType([...newTypes]);
     }
+
     //display Spinner and choose type and services
     let servicePage = <Spinner/>
     if(services && types){
@@ -80,6 +82,7 @@ const Service =()=>{
                         service ={service.name}
                         image = {service.image}
                         des = {service.des}
+                        english = {service.english}
                         time = {service.time}
                         price = {service.price}
                         />

@@ -9,12 +9,41 @@
 .ServiceItem img {
     width: 100%;
     height: 270px;
+    cursor: pointer;
 }
 
 .Title {
     margin-top: 20px;
     font-weight: 600;
     font-size: 25px;
+    cursor: pointer;
+}
+
+.Info {
+    width: 70%;
+    height: 400px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 10% auto;
+    float: left;
+    z-index: 200;
+    background-color: #dbb89a;
+    position: fixed;
+    transition: transform 0.3s ease-out;
+    display: flex;
+}
+
+.Box {
+    width: 50%;
+    float: left;
+    padding: 40px;
+    text-align: center;
+}
+
+.Box .Des {
+    text-align: justify;
 }
 
 @media only screen and (min-width:768px) {
@@ -33,4 +62,12 @@
     .ServiceItem {
         width: 30%;
     }
+}
+
+.Open {
+    display: block
+}
+
+.Close {
+    display: none;
 }
