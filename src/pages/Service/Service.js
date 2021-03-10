@@ -74,11 +74,11 @@ const Service =()=>{
                     })}
                 </div>
                 <div className = {classes.ServiceList}>
-                    {services.map(service=>{
+                    {services.map((service, index)=>{
                         let data = null;
                         if(service.type === chosenType){
                             data = <ServiceItem 
-                        key = {service.id}
+                        key = {index}
                         service ={service.name}
                         image = {service.image}
                         des = {service.des}

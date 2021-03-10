@@ -1,13 +1,11 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import classes from './Slider.module.css'
-import Image1 from '../../../../assets/images/1.jpg';
-import Image2 from '../../../../assets/images/2.jpg';
-import Image3 from '../../../../assets/images/3.jpg';
-import Image4 from '../../../../assets/images/4.jpg';
-const slider = ()=>{
+import firebase from '../../../../components/Firebase/firebaseConfig'
+import Spinner from '../../../../components/UI/Spinner/Spinner'
+const Sliders = ()=>{
     const settings = {
         dots: true,
         infinite: true,
@@ -18,21 +16,32 @@ const slider = ()=>{
         autoplay: true,
         arrows:false
     }
+    const [vouchers, setVouchers]= useState(null);
+    useEffect(()=>{
+        firebase.database().ref("voucher").on("value", snapshot=>{
+            let voucherList = [];
+            snapshot.forEach(snap=>{
+                voucherList.push(snap.val());
+            });
+            setVouchers(voucherList);
+        })
+    },[])
+    let display = <Spinner/>;
+    if(vouchers){
+        display = (<Slider {...settings}>
+            {vouchers.map((voucher, index)=>{
+                return <div className={classes.Slide}>
+                    <a href ={voucher.link}>
+                        <img src = {voucher.image} alt="Voucher"/>
+                    </a>
+                </div>
+            })}
+        </Slider>)
+    }
     return(
-        <Slider {...settings}>
-            <div className = {classes.Slide}>
-                <img src = {Image1} alt="Image1"/>
-            </div>
-            <div className = {classes.Slide}>
-                <img src = {Image2} alt="Image2"/>
-            </div>
-            <div className = {classes.Slide}>
-                <img src = {Image3} alt="Image3"/>
-            </div>
-            <div className = {classes.Slide}>
-                <img src = {Image4} alt="Image4"/>
-            </div>
-        </Slider>
+        <div>
+            {display}
+        </div>
     )
 }
-export default slider;
+export default Sliders;

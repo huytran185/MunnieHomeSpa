@@ -1,0 +1,29 @@
+.Page {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background-color: #f8e3d4;
+    overflow: hidden;
+}
+
+.Navigation {
+    width: 20%;
+    float: left;
+}
+
+.Dashboard {
+    width: 60%;
+    float: left;
+    text-align: center;
+}
+
+.Title {
+    width: 100%;
+    line-height: 1em;
+    font-size: 57px;
+    z-index: 99;
+    vertical-align: 30px;
+    float: left;
+    font-style: italic;
+    margin: 30px 0;
+}
