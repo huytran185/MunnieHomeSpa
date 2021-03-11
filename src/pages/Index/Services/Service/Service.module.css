@@ -1,21 +1,24 @@
 .Service {
     width: 60%;
     min-width: 330px;
-    background-color: white;
+    /* background-color: #fff6f3; */
     margin: 0px auto 30px auto;
     float: center;
 }
 
 .Service img {
-    width: 100%;
-    height: 270px;
+    width: 60%;
+    height: 150px;
     cursor: pointer;
+    border-radius: 50%;
+    margin: 50px auto;
 }
 
 .Title {
     margin: 30px auto 10px auto;
     font-size: 30px;
     font-weight: 600;
+    font-family: Coquette-Regular;
 }
 
 .Price {

@@ -1,15 +1,17 @@
 .ServiceItem {
     width: 70%;
     min-width: 330px;
-    background-color: #dbb89a;
+    background-color: #fff6f3;
     text-align: center;
     margin: 0 auto 30px auto;
 }
 
 .ServiceItem img {
-    width: 100%;
-    height: 270px;
+    width: 70%;
+    height: 180px;
+    margin: 40px auto;
     cursor: pointer;
+    border-radius: 50%;
 }
 
 .Title {
@@ -17,6 +19,8 @@
     font-weight: 600;
     font-size: 25px;
     cursor: pointer;
+    font-family: Coquette-Regular;
+    color: #dbb89a;
 }
 
 .Info {
@@ -29,10 +33,11 @@
     margin: 10% auto;
     float: left;
     z-index: 200;
-    background-color: #dbb89a;
+    background-color: #fff6f3;
     position: fixed;
     transition: transform 0.3s ease-out;
     display: flex;
+    border-radius: 10px;
 }
 
 .Box {
