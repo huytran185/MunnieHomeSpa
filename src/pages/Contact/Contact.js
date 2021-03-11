@@ -25,7 +25,7 @@ const contact = ()=>(
                         <Info title="Our Contact">
                             <p><strong>Address</strong>: 118 Trần Bạch Đằng - P. Mỹ An - Q. Ngũ Hành Sơn, Đà Nẵng</p>
                             <p><strong>Mobile</strong>: 09xx xxx xxx</p>
-                            <Link to="/facebook"><p><strong>Facebook page</strong>: @munniehomespa</p></Link>
+                            <Link to="/route" target="_blank" onClick={(event)=>{event.preventDefault(); window.open("https://www.facebook.com/munniehomespa")}}><p><strong>Facebook page</strong>: @munniehomespa</p></Link>
                             <p><strong>Email</strong>: munniehomespa@gmail.com</p>
                         </Info>
                         <Info title="Trading Hours">

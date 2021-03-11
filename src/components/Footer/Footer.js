@@ -13,7 +13,9 @@ const footer =()=>(
             <FooterColumn title="CONTACT">
                 <ul>
                     <li>Tel: 09xx xxx xxx</li>
-                    <li><Link to="/facebook">Page: facebook.com/munniehomespa</Link></li>
+                    <li><Link to="/route" target="_blank" onClick={(event)=>{event.preventDefault(); window.open("https://www.facebook.com/munniehomespa")}}>
+                        Page: @munniehomespa
+                    </Link></li>
                     <li>Email: munniehomespa@gmail.com</li>
                 </ul>
             </FooterColumn>

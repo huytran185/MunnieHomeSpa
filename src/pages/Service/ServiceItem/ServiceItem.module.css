@@ -1,9 +1,9 @@
 .ServiceItem {
     width: 70%;
     min-width: 330px;
-    margin-bottom: 30px;
     background-color: #dbb89a;
     text-align: center;
+    margin: 0 auto 30px auto;
 }
 
 .ServiceItem img {
@@ -20,7 +20,7 @@
 }
 
 .Info {
-    width: 70%;
+    width: 60%;
     height: 400px;
     top: 0;
     left: 0;
@@ -48,13 +48,14 @@
 
 @media only screen and (min-width:768px) {
     .ServiceItem {
-        width: 48%;
+        width: 45%;
+        margin: 0 0 30px 30px;
     }
 }
 
 @media only screen and (min-width: 992px) {
     .ServiceItem {
-        width: 48%;
+        width: 45%;
     }
 }
 

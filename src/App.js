@@ -16,8 +16,8 @@ function App() {
           <Route path="/contact" exact component={Contact}/>
           <Route path="/login" exact component={Login}/>
           <Route path="/dashboard" exact component={Dashboard}/>
-          <Route path="/facebook" exact render={()=>{window.location.href ="https://www.facebook.com"; return null;}}/>
-          <Route path="/instagram" exact render={()=>{window.location.href ="https://www.instagram.com"; return null;}}/>
+          {/* <Route path="/facebook" exact render={()=>{window.open("https://www.facebook.com/munniehomespa"); return null;}}/> */}
+          <Route path="/instagram" exact render={()=>{window.open("https://www.instagram.com"); return null;}}/>
           <Route  path='*' exact={true} component={Error}/>
         </Switch>
     </Router>

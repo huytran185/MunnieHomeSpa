@@ -43,7 +43,7 @@
 .ServiceList {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin: 100px auto 0 auto;
     width: 100%;
     padding: 50px 10px;
@@ -81,6 +81,6 @@
     }
     .ServiceList {
         min-width: 1100px;
-        margin: 0px auto;
+        margin: 100px auto 0 auto;
     }
 }

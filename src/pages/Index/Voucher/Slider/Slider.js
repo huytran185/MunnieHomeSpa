@@ -30,8 +30,8 @@ const Sliders = ()=>{
     if(vouchers){
         display = (<Slider {...settings}>
             {vouchers.map((voucher, index)=>{
-                return <div className={classes.Slide}>
-                    <a href ={voucher.link}>
+                return <div className={classes.Slide} key={index}>
+                    <a href ={voucher.link} target="_blank" rel="noopener noreferrer">
                         <img src = {voucher.image} alt="Voucher"/>
                     </a>
                 </div>

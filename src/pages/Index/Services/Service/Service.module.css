@@ -1,9 +1,15 @@
 .Service {
-    width: 40%;
+    width: 60%;
     min-width: 330px;
     background-color: white;
-    margin-bottom: 30px;
+    margin: 0px auto 30px auto;
     float: center;
+}
+
+.Service img {
+    width: 100%;
+    height: 270px;
+    cursor: pointer;
 }
 
 .Title {
@@ -35,7 +41,7 @@
 
 @media only screen and (min-width:1200px) {
     .Service {
-        width: 30%;
+        width: 33%;
     }
     .Service:nth-child(3) {
         display: initial;

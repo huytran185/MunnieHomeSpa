@@ -5,7 +5,7 @@ import Facebook from '../../../../src/assets/images/facebook.png'
 import Instagram from '../../../../src/assets/images/instagram.png'
 const social = ()=>(
     <div className={classes.Social}>
-        <Link to="/facebook">
+        <Link to="/route" target="_blank" onClick={(event)=>{event.preventDefault(); window.open("https://www.facebook.com/munniehomespa")}}>
             <img src = {Facebook} alt = "Facebook"/>
         </Link>
         <Link to="/instagram">
