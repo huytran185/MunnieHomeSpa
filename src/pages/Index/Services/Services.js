@@ -4,7 +4,7 @@ import Button from '../../../components/UI/Button/Button';
 import Service from './Service/Service';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import firebase from '../../../components/Firebase/firebaseConfig'
-
+import {Link} from 'react-router-dom';
 const Services = () =>{
     const [services, setService] = useState(null);
     useEffect(()=>{
@@ -43,7 +43,7 @@ const Services = () =>{
                         so let's enjoy your time
                 </div>
                 <div className="clearfix"></div>
-                <Button>Book Now</Button>
+                <Link to="/service"><Button>Book Now</Button></Link>
             </div>
         )
     }
