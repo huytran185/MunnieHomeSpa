@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import classes from './addService.module.css';
+import classes from '../Admin.module.css';
 import Input from '../../../components/UI/Input/Input';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 // import axios from '../../axios-order';
-import firebase, { storage } from '../../../components/Firebase/firebaseConfig';
+import {inputChangedHandler, submitHandler} from '../../InputHandler/InputHandler';
 const AddService = ()=>{
     const [form, setForm] = useState({
         name: {
@@ -13,7 +13,14 @@ const AddService = ()=>{
                 name: 'name',
                 placeholder: 'New Service Name...'
             },
-            value: ''
+            value: '',
+            validation:{
+                required: true,
+                format: '^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\W|_]+$'
+            },
+            valid: false,
+            touched:false,
+            errorMess: 'Please input the valid Name'
         },
         english:{
             elementType: 'text',
@@ -22,7 +29,14 @@ const AddService = ()=>{
                 name: 'english',
                 placeholder: 'Service English Name...'
             },
-            value: ''
+            value: '',
+            validation:{
+                required: true,
+                format: '^(?![ .]+$)[a-zA-Z .]*$'
+            },
+            valid: false,
+            touched:false,
+            errorMess: 'Please input the valid English Name'
         },
         type:{
             elementType: 'select',
@@ -33,7 +47,12 @@ const AddService = ()=>{
                     {value: 'shampoo', display:'Shampoo and Eyelash Extensions'}
                 ]
             },
-            value: ''
+            value: '',
+            validation:{
+                required: true,
+            },
+            valid: false,
+            touched:false
         },
         des:{
             elementType: 'textarea',
@@ -44,7 +63,13 @@ const AddService = ()=>{
                 rows: 4,
                 cols: 50,
             },
-            value: ''
+            value: '',
+            validation:{
+                required: true,
+            },
+            valid: false,
+            touched:false,
+            errorMess: 'Please input the valid Description'
         },
         time:{
             elementType: 'text',
@@ -53,7 +78,14 @@ const AddService = ()=>{
                 name: 'time',
                 placeholder: 'Service Duration ...'
             },
-            value: ''
+            value: '',
+            validation:{
+                required: true,
+                format: '^[0-9]*$'
+            },
+            valid: false,
+            touched:false,
+            errorMess: 'Please input the valid Time'
         },
         price:{
             elementType: 'text',
@@ -62,7 +94,14 @@ const AddService = ()=>{
                 name: 'price',
                 placeholder: 'Service Price ...'
             },
-            value: ''
+            value: '',
+            validation:{
+                required: true,
+                format: '^\\d+(,\\d{3})*(\\.\\d{1,2})?$'
+            },
+            valid: false,
+            touched:false,
+            errorMess: 'Please input the valid Price'
         },
         rank:{
             elementType: 'text',
@@ -71,7 +110,14 @@ const AddService = ()=>{
                 name: 'rank',
                 placeholder: 'Service Rank ...'
             },
-            value: ''
+            value: '',
+            validation:{
+                required: true,
+                format: '^[0-9]*$'
+            },
+            valid: false,
+            touched:false,
+            errorMess: 'Please input the valid Rank'
         },
         image:{
             elementType: 'file',
@@ -80,9 +126,13 @@ const AddService = ()=>{
                 name: 'image',
                 accept:'.jpg, .jpeg, .png, .gif'
             },
-            value:''
+            value:'',
+            touched:false,
+            valid:false
         },
     })
+    const [formIsValid, setFormIsValid]= useState(false);
+
     const [loading, setLoading] = useState(false);
     const formArray =[];
     for(let key in form){
@@ -91,92 +141,29 @@ const AddService = ()=>{
             config: form[key],
         });
     }
-    const inputChangedHandler = (event, id)=>{
-        const updatedForm = {...form};
-        const updatedElement = {...updatedForm[id]};
-        if(id === "image"){
-            updatedElement.value = event.target.files[0];
-        }
-        else{
-            updatedElement.value = event.target.value;
-        }
-        updatedForm[id]= updatedElement;
-        setForm(updatedForm);
-    }
 
-    const submitHandler = async (event)=>{
-        event.preventDefault();
-        setLoading(true);
-        let promise = new Promise(function(resolve, reject){
-            let image = {};
-            image = form['image'].value;
-            firebase.storage().ref(`${image.name}`).put(image).on(
-                "state_changed",
-                snapshot=>{},
-                error=>{
-                    setLoading(false);
-                    console.log(error);
-                },()=>{
-                    storage.ref().child(image.name).getDownloadURL()
-                        .then(url=>{
-                            setLoading(false);
-                            resolve(url);
-                        })
-                }
-            )
-        })
-        let imageUrl = await promise;
-        const formData = {};
-        for(let element in form){
-            if(element === "image"){
-                formData[element] = imageUrl;
-            }
-            else{
-                formData[element] = form[element].value;
-            }
-        }
-        uploadHandler(formData);
-    }
-    const uploadHandler = (formData)=>{
-        // axios.post('https://munnie-default-rtdb.firebaseio.com/service.json', formData)
-        //     .then(response =>{
-        //         setLoading(false);
-        //         console.log("Success");
-        //     })
-        //     .catch(error =>{
-        //         setLoading(false);
-        //         console.log(error);
-        //     })
-        let r = Math.random().toString(36).substring(7);
-        firebase.database().ref('service/'+ r)
-            .set(formData,(error)=>{
-                if(error){
-                    setLoading(false);
-                    console.log("Fail");
-                }else{
-                    setLoading(false);
-                    console.log("Success");
-                }
-            });
-    }
     let displayForm = (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={(event)=>submitHandler(event,setLoading, form,"service/")}>
         {formArray.map(element=>(
             <Input
                 key={element.id}
                 elementType={element.config.elementType}
                 elementConfig={element.config.elementConfig}
                 value={element.config.value}
-                changed={(event)=>inputChangedHandler(event,element.id)}
+                invalid={!element.config.valid}
+                shouldValidate={element.config.validation}
+                touched={element.config.touched}
+                errorMess = {element.config.errorMess}
+                changed={(event)=>inputChangedHandler(form, setFormIsValid, setForm, event,element.id)}
             />
         ))}
-        <Input elementType="button">Add New Service</Input>
+        <Input elementType="button" disabled={!formIsValid}>Add New Service</Input>
     </form>);
     if(loading){
         displayForm = <Spinner />;
     }
     return(
-        <div className = {classes.AddService}>
+        <div className = {classes.FormContainer}>
             {displayForm}
         </div>
     )

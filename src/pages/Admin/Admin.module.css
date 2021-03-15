@@ -27,3 +27,15 @@
     font-style: italic;
     margin: 30px 0;
 }
+
+.FormContainer {
+    width: 100%;
+    float: left;
+    margin: 50px auto;
+}
+
+.FormContainer form {
+    width: 100%;
+    float: left;
+    margin: auto;
+}

@@ -18,3 +18,19 @@
     outline: none;
     background-color: #ccc;
 }
+
+.Invalid {
+    border: 1px solid red;
+    /* background-color: salmon; */
+}
+
+.Error {
+    color: red;
+    margin: 5px 0;
+    float: left
+}
+
+button:disabled {
+    color: #ccc;
+    cursor: not-allowed!important;
+}
