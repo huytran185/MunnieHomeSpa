@@ -3,18 +3,12 @@ import classes from './Services.module.css';
 import Button from '../../../components/UI/Button/Button';
 import Service from './Service/Service';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-import firebase from '../../../components/Firebase/firebaseConfig'
 import {Link} from 'react-router-dom';
+import {getService} from '../../getData';
 const Services = () =>{
     const [services, setService] = useState(null);
     useEffect(()=>{
-        firebase.database().ref("service").on("value", snapshot=>{
-            let serviceList = [];
-            snapshot.forEach(snap=>{
-                serviceList.push(snap.val());
-            });
-            setService(serviceList);
-        })
+        getService(setService);
     }, [])
     let display = <Spinner/>;
     if(services){

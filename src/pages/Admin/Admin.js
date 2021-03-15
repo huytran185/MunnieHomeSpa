@@ -1,40 +1,40 @@
 import React, {useState} from 'react';
 import classes from './Admin.module.css';
 import Aux from '../../hoc/Auxulliary';
-import AddService from './addService/addService';
-import AddVoucher from './addVoucher/addVoucher';
-import ListService from './listService/listService';
-import ListVoucher from './listVoucher/listVoucher';
-import AddStaff from './addStaff/addStaff';
-import AddCustomer from './addCustomer/addCustomer';
+import AddForm from './addForm/addForm';
+import ListInfo from './listInfo/listInfo';
+import {voucherConfig,serviceConfig,customerConfig, staffConfig} from './dataConfig.js';
 export const Admin = ()=>{
     const [title, setTitle] = useState("Dashboard");
-
+    const [vouchers,setVoucher] = useState(voucherConfig);
+    const [services,setService] = useState(serviceConfig);
+    const[customers, setCustomer] = useState(customerConfig)
+    const [staff, setStaff] = useState(staffConfig)
     let page = null;
     switch(title){
         case "Add Service":
-            page= <AddService/>;
+            page= <AddForm formType = "service" data={services} setData={setService}/>;
             break;
         case "Add Voucher":
-            page=<AddVoucher/>;
-            break;
-        case "List of Voucher":
-            page = <ListVoucher/>;
-            break;
-        case "List of Services":
-            page = <ListService/>;
+            page=<AddForm formType = "voucher" data={vouchers} setData = {setVoucher}/>;
             break;
         case "Add Staff":
-            page= <AddStaff/>;
+            page= <AddForm formType="staff" data={staff} setData={setStaff}/>;
             break;
         case "Add Customer":
-            page=<AddCustomer/>;
+            page=<AddForm formType="customer" data = {customers} setData={setCustomer}/>;
+            break;
+        case "List of Voucher":
+            page = <ListInfo listType = "voucher"/>;
+            break;
+        case "List of Services":
+            page = <ListInfo listType = "service"/>;
             break;
         case "List of Staff":
-            page = <ListVoucher/>;
+            page = <ListInfo listType = "staff"/>;
             break;
         case "List of Customer":
-            page = <ListService/>;
+            page = <ListInfo listType = "customer"/>;
             break;
         default:
             page = <div>Dashboard</div>;

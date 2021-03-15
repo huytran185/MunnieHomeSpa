@@ -2,48 +2,23 @@ import React, {useState} from 'react'
 import classes from '../Admin.module.css';
 import Input from '../../../components/UI/Input/Input';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-import {inputChangedHandler, submitHandler} from '../../InputHandler/InputHandler';
+import {inputChangedHandler, submitHandler} from '../../InputHandler';
 
-const AddVoucher = ()=>{
-    const [form, setForm] = useState({
-        link:{
-            elementType: 'text',
-            elementConfig: {
-                type:'text',
-                name: 'link',
-                placeholder: 'Link to Facebook...'
-            },
-            value: '',
-            validation:{
-                required: true,
-                format: '(?:(?:http|https):\\/\\/)?(?:www.)?facebook.com\\/(?:(?:\\w)*#!\\/)?(?:pages\\/)?(?:[?\\w\\-]*\\/)?(?:profile.php\\?id=(?=\\d.*))?([\\w\\-]*)?'
-            },
-            valid: false,
-            touched:false,
-            errorMess: 'Please input the valid Link to Facebook'
-        },
-        image:{
-            elementType: 'file',
-            elementConfig:{
-                type:'file',
-                name: 'image',
-                accept:'.jpg, .jpeg, .png'
-            }
-        },
-    })
+const AddForm = (props)=>{
+
     const [formIsValid, setFormIsValid] = useState(false)
     const [loading, setLoading] = useState(false);
 
     const formArray =[];
-    for(let key in form){
+    for(let key in props.data){
         formArray.push({
             id:key,
-            config: form[key],
+            config: props.data[key],
             
         });
     }
     let displayForm = (
-        <form onSubmit={(event)=>submitHandler(event,setLoading, form, "voucher/")}>
+        <form onSubmit={(event)=>submitHandler(event,setLoading, props.data, props.formType)}>
             {formArray.map(element=>(
                 <Input
                     key={element.id}
@@ -54,7 +29,7 @@ const AddVoucher = ()=>{
                     shouldValidate={element.config.validation}
                     touched={element.config.touched}
                     errorMess = {element.config.errorMess}
-                    changed={(event)=>inputChangedHandler(form, setFormIsValid, setForm, event,element.id)}
+                    changed={(event)=>inputChangedHandler(props.data, setFormIsValid, props.setData, event,element.id)}
                 />
             ))}
             <Input elementType="button" disabled={!formIsValid}>Add New Voucher</Input>
@@ -69,4 +44,4 @@ const AddVoucher = ()=>{
     )
 }
 
-export default AddVoucher;
+export default AddForm;

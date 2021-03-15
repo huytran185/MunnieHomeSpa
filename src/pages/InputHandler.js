@@ -1,4 +1,4 @@
-import firebase, { storage } from '../../components/Firebase/firebaseConfig';
+import firebase, { storage } from '../components/Firebase/firebaseConfig';
 
 const checkValidity=(id,value,rules)=>{
     let isValid = true;
@@ -8,7 +8,6 @@ const checkValidity=(id,value,rules)=>{
             }
             if(rules.format){
                 let re = new RegExp(rules.format);
-                console.log(rules.format);
                 isValid = re.test(value.trim()) && isValid;
             }
         }else{
@@ -45,7 +44,7 @@ export const submitHandler = async (event, setLoading, form, type)=>{
         event.preventDefault();
         setLoading(true);
         let imageUrl = null;
-        if(type === "service/" || type === "voucher/"){
+        if(type === "service" || type === "voucher"){
             imageUrl = await new Promise(function(resolve, reject){
                 let image = {};
                 image = form['image'].value;
@@ -87,7 +86,7 @@ const uploadHandler = (formData, setLoading, type)=>{
         //         console.log(error);
         //     })
         let r = Math.random().toString(36).substring(7);
-        firebase.database().ref(type+ r)
+        firebase.database().ref(type+"/"+ r)
             .set(formData,(error)=>{
                 if(error){
                     setLoading(false);

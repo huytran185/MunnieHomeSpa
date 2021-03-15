@@ -5,41 +5,17 @@ import Layout from '../../components/UI/Layout/Layout';
 import Aux from '../../hoc/Auxulliary';
 import ServiceItem from './ServiceItem/ServiceItem';
 import Type from './Type/Type';
-// import axios from '../../axios-order';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import firebase from '../../components/Firebase/firebaseConfig';
-
+import {getType, getService} from '../getData';
 const Service =()=>{
     const [types, setType] = useState(null);
     const [services, setServices] = useState(null);
 
-    //get data from firebase using axios
-    // useEffect(()=>{
-    //     axios.get('https://munnie-default-rtdb.firebaseio.com/type.json')
-    //         .then(response=>{
-    //             setType(response.data)
-    //         });
-    //     axios.get('https://munnie-default-rtdb.firebaseio.com/service.json')
-    //         .then(response=>{
-    //             setServices(response.data)
-    //         });
-    // },[])
+    
     //get data from firebase using firebase npm
     useEffect(() => {
-        firebase.database().ref("type").on("value",snapshot=>{
-            let typeList = [];
-            snapshot.forEach(snap=>{
-                typeList.push(snap.val());
-            });
-            setType(typeList);
-        });
-        firebase.database().ref("service").on("value", snapshot=>{
-            let serviceList = [];
-            snapshot.forEach(snap=>{
-                serviceList.push(snap.val());
-            });
-            setServices(serviceList);
-        })
+        getType(setType);
+        getService(setServices)
     }, [])
     //choose Type and display Service
     const chooseTypeHandler = (e, index, id)=>{

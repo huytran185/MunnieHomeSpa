@@ -1,5 +1,6 @@
 import React from 'react';
-import classes from './Input.module.css'
+import classes from './Input.module.css';
+import Aux from '../../../hoc/Auxulliary'
 const input = (props)=>{
     let inputElement = null;
     let errorMess = null;
@@ -10,52 +11,59 @@ const input = (props)=>{
     }
     switch(props.elementType){
         case('text'):
-            inputElement = <div>
+            inputElement = (
+            <div className={classes.Input}>
                 <input
                 className={inputClasses.join(' ')}
                 {...props.elementConfig} 
                 value={props.value}
                 onChange={props.changed}/>
                 <div className={classes.Error}>{errorMess}</div>
-                </div>;
+            </div>);
             break;
         case ('textarea'):
-            inputElement = <div>
+            inputElement = (
+            <div className={classes.Input}>
                 <textarea 
                 className={inputClasses.join(' ')}
                 {...props.elementConfig} 
                 value={props.value}
                 onChange={props.changed}/>
                 <p className={classes.Error}>{errorMess}</p>
-                </div>;
+            </div>);
             break;
         case ('select'):
             inputElement = (
-            <select 
-                className = {inputClasses.join(' ')}
-                value={props.value}
-                onChange={props.changed}>
-                    {props.elementConfig.options.map(option=>(
-                        <option key={option.value} 
-                        value={option.value}>
-                            {option.display}
-                        </option>
-                    ))}
-            </select>);
+            <div className={classes.Input}>
+                <select 
+                    className = {inputClasses.join(' ')}
+                    value={props.value}
+                    onChange={props.changed}>
+                        {props.elementConfig.options.map(option=>(
+                            <option key={option.value} 
+                            value={option.value}>
+                                {option.display}
+                            </option>
+                        ))}
+                </select>
+            </div>);
             break;
         case('file'):
-            inputElement = <input 
+            inputElement = (<div className={classes.Input}><input 
                 className={classes.InputElement}
                 {...props.elementConfig}
-                onChange={props.changed}/>;
+                onChange={props.changed}/>
+            </div>);
             break;
         case('button'):
-            inputElement = <button className = {classes.InputElement}
+            inputElement =(<div className={classes.Input}>
+                <button className = {classes.InputElement}
                 onClick={props.clicked}
                 disabled={props.disabled}
                 style={{cursor:'pointer'}}>
                 {props.children}
-                </button>;
+                </button>
+            </div>);
             break;
         case('hidden'):
             inputElement = <input {...props.elementConfig} value={props.value}/>;
@@ -65,9 +73,10 @@ const input = (props)=>{
     }
     
     return(
-        <div className={classes.Input}>
+        <Aux>
             {inputElement}
-        </div>
+        </Aux>
+            
     )
 }
 export default input;

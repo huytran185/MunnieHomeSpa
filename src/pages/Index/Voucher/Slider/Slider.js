@@ -3,8 +3,8 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import classes from './Slider.module.css'
-import firebase from '../../../../components/Firebase/firebaseConfig'
 import Spinner from '../../../../components/UI/Spinner/Spinner'
+import {getVoucher} from '../../../getData';
 const Sliders = ()=>{
     const settings = {
         dots: true,
@@ -18,13 +18,8 @@ const Sliders = ()=>{
     }
     const [vouchers, setVouchers]= useState(null);
     useEffect(()=>{
-        firebase.database().ref("voucher").on("value", snapshot=>{
-            let voucherList = [];
-            snapshot.forEach(snap=>{
-                voucherList.push(snap.val());
-            });
-            setVouchers(voucherList);
-        })
+        getVoucher(setVouchers);
+        
     },[])
     let display = <Spinner/>;
     if(vouchers){
