@@ -7,12 +7,12 @@
 }
 
 .Navigation {
-    width: 20%;
+    width: 15%;
     float: left;
 }
 
 .Dashboard {
-    width: 60%;
+    width: 75%;
     float: left;
     text-align: center;
 }
@@ -38,4 +38,23 @@
     width: 100%;
     float: left;
     margin: auto;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    width: 12.5%;
+    height: 25px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

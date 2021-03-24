@@ -16,7 +16,7 @@
     margin: 30px 0;
 }
 
-form {
+.Login form {
     width: 40%;
     margin: auto;
     background-color: white;
@@ -25,7 +25,7 @@ form {
     margin-top: 5%;
 }
 
-input {
+.Login input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;

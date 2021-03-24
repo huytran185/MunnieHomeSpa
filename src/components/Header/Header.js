@@ -21,7 +21,6 @@ const Header = props =>{
                     <SideDrawer open = {showDrawer}
                     closed={sideDrawerClosedHandler}/>
                 </header>
-                
             </Aux>
         )
 }

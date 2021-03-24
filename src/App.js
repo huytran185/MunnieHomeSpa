@@ -5,10 +5,10 @@ import Contact from './pages/Contact/Contact';
 import Error from './pages/Error/Error';
 import Login from './pages/Login/Login';
 import {Admin} from './pages/Admin/Admin';
-
 function App() {
   return (
     <Router>
+
       <Switch>
           <Route path="/" exact component={Index}/>
           <Route path="/home" exact component={Index}/>
@@ -19,7 +19,8 @@ function App() {
           {/* <Route path="/facebook" exact render={()=>{window.open("https://www.facebook.com/munniehomespa"); return null;}}/> */}
           <Route path="/instagram" exact render={()=>{window.open("https://www.instagram.com"); return null;}}/>
           <Route  path='*' exact={true} component={Error}/>
-        </Switch>
+      </Switch>
+
     </Router>
   );
 }

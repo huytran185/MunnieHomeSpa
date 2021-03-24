@@ -1,64 +1,88 @@
 import React, {useState} from 'react';
 import classes from './Admin.module.css';
 import Aux from '../../hoc/Auxulliary';
-import AddForm from './addForm/addForm';
-import ListInfo from './listInfo/listInfo';
-import {voucherConfig,serviceConfig,customerConfig, staffConfig} from './dataConfig.js';
+import Header from './AHeader/Header';
+import Service from './Service/Service';
+import Staff from './Staff/Staff';
+import Voucher from './Voucher/Voucher';
+import Customer from './Customer/Customer';
+import Type from './Type/Type';
+
 export const Admin = ()=>{
     const [title, setTitle] = useState("Dashboard");
-    const [vouchers,setVoucher] = useState(voucherConfig);
-    const [services,setService] = useState(serviceConfig);
-    const[customers, setCustomer] = useState(customerConfig)
-    const [staff, setStaff] = useState(staffConfig)
+
+    const [header] = useState([
+        {
+            name:'Service',
+            method: ()=>setTitle("Service"),
+        },
+        {
+            name:'Voucher',
+            method: ()=>setTitle("Voucher"),
+        },
+        {
+            name:'Type',
+            method: ()=>setTitle("Type"),
+        },
+        {
+            name:'Staff',
+            method: ()=>setTitle("Staff"),
+        },
+        {
+            name:'Customer',
+            method: ()=>setTitle("Customer"),
+        }
+    ])
     let page = null;
     switch(title){
-        case "Add Service":
-            page= <AddForm formType = "service" data={services} setData={setService}/>;
+        case "Service":
+            page = <Service/>
             break;
-        case "Add Voucher":
-            page=<AddForm formType = "voucher" data={vouchers} setData = {setVoucher}/>;
+        case "Voucher":
+            page = <Voucher/>
             break;
-        case "Add Staff":
-            page= <AddForm formType="staff" data={staff} setData={setStaff}/>;
+        case "Type":
+            page = <Type/>
             break;
-        case "Add Customer":
-            page=<AddForm formType="customer" data = {customers} setData={setCustomer}/>;
+        case "Staff":
+            page = <Staff/>
             break;
-        case "List of Voucher":
-            page = <ListInfo listType = "voucher"/>;
-            break;
-        case "List of Services":
-            page = <ListInfo listType = "service"/>;
-            break;
-        case "List of Staff":
-            page = <ListInfo listType = "staff"/>;
-            break;
-        case "List of Customer":
-            page = <ListInfo listType = "customer"/>;
+        case "Customer":
+            page = <Customer/>
             break;
         default:
-            page = <div>Dashboard</div>;
+            page = <div>Booking Page</div>;
+        // case "Service":
+        //     page = <Service/>
+        //     break;
+        // case "Add Voucher":
+        //     page=<AddForm formType = "voucher" data={vouchers} setData = {setVoucher}/>;
+        //     break;
+        // case "Add Staff":
+        //     page= <AddForm formType="staff" data={staff} setData={setStaff}/>;
+        //     break;
+        // case "Add Customer":
+        //     page=<AddForm formType="customer" data = {customers} setData={setCustomer}/>;
+        //     break;
+        // case "List of Voucher":
+        //     page = <ListInfo listType = "voucher"/>;
+        //     break;
+        // case "List of Services":
+        //     page = <ListInfo listType = "service"/>;
+        //     break;
+        // case "List of Staff":
+        //     page = <ListInfo listType = "staff"/>;
+        //     break;
+        // case "List of Customer":
+        //     page = <ListInfo listType = "customer"/>;
+        //     break;
+        // default:
+        //     page = <div>Dashboard</div>;
     }
     return(
         <Aux >
-            <div className = {classes.Page}>
-                <div className = {classes.Navigation}>
-                    <div className={classes.Welcome}>Welcome, Admin</div>
-                    <div className={classes.Item} onClick={()=>setTitle("List of Services")}>List of Services</div>
-                    <div className={classes.Item} onClick={()=>setTitle("List of Voucher")}>List of Voucher</div>
-                    <div className={classes.Item} onClick={()=>setTitle("List of Staff")}>List of Staff</div>
-                    <div className={classes.Item} onClick={()=>setTitle("List of Customer")}>List of Customer</div>
-
-                    <div className={classes.Item} onClick={()=>setTitle("Add Service")}>Add Services</div>
-                    <div className={classes.Item} onClick={()=>setTitle("Add Voucher")}>Add Voucher</div>
-                    <div className={classes.Item} onClick={()=>setTitle("Add Staff")}>Add Staff</div>
-                    <div className={classes.Item} onClick={()=>setTitle("Add Customer")}>Add Customer</div>
-                </div>
-                <div className={classes.Dashboard}>
-                    <div className = {classes.Title}>{title}</div>
-                    {page}
-                </div>
-            </div>
+            <Header data={header}/>
+            {page}
         </Aux>
     )
 }

@@ -1,6 +1,10 @@
-import firebase from 'firebase';
-import "firebase/storage";
+// import firebase from 'firebase/app';
+// import "firebase/storage";
+// import 'firebase/storage';
 
+import firebase from 'firebase/app';
+import 'firebase/database';
+import 'firebase/storage';
 var firebaseConfig = {
     apiKey: "AIzaSyDmxifEygKCgCbpVk9OpCBA3zyKRNokIsI",
     authDomain: "munnie.firebaseapp.com",

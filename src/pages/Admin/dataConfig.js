@@ -263,6 +263,40 @@ export const customerConfig = {
         valid:true
     }
 }
+export const typeConfig = {
+    id: {
+        elementType: 'text',
+        elementConfig: {
+            type:'text',
+            name: 'name',
+            placeholder: 'New Type ID...'
+        },
+        value: '',
+        validation:{
+            required: true,
+            format: '^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\W|_]+$'
+        },
+        valid: false,
+        touched:false,
+        errorMess: 'Please input the valid ID'
+    },
+    name: {
+        elementType: 'text',
+        elementConfig: {
+            type:'text',
+            name: 'name',
+            placeholder: 'New Type Name...'
+        },
+        value: '',
+        validation:{
+            required: true,
+            format: '^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\W|_]+$'
+        },
+        valid: false,
+        touched:false,
+        errorMess: 'Please input the valid Type Name'
+    },
+}
 export const staffConfig = {
     name:{
         elementType: 'text',

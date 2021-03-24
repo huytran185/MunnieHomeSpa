@@ -20,24 +20,25 @@ const checkValidity=(id,value,rules)=>{
 
 export const inputChangedHandler=(form, setFormIsValid, setForm,event,id)=>{
     const updatedForm = {...form};
-        const updatedElement = {...updatedForm[id]};
-        if(id === "image"){
-            updatedElement.value = event.target.files[0];
-        }
-        else{
-            updatedElement.value = event.target.value;
-        }
-        updatedElement.valid = checkValidity(id,updatedElement.value,updatedElement.validation);
-        updatedElement.touched = true;
+    const updatedElement = {...updatedForm[id]};
+    if(id === "image"){
+        updatedElement.value = event.target.files[0];
+    }
+    else{
+        updatedElement.value = event.target.value;
+    }
+    console.log(form);
+    updatedElement.valid = checkValidity(id,updatedElement.value,updatedElement.validation);
+    updatedElement.touched = true;
 
-        updatedForm[id]= updatedElement;
+    updatedForm[id]= updatedElement;
 
-        let formIsValid = true;
-        for(let element in updatedForm){
-            formIsValid = updatedForm[element].valid && formIsValid;
-        }
-        setFormIsValid(formIsValid)
-        setForm(updatedForm);
+    let formIsValid = true;
+    for(let element in updatedForm){
+        formIsValid = updatedForm[element].valid && formIsValid;
+    }
+    setFormIsValid(formIsValid)
+    setForm(updatedForm);
 }
 
 export const submitHandler = async (event, setLoading, form, type)=>{

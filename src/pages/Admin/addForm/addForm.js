@@ -10,15 +10,16 @@ const AddForm = (props)=>{
     const [loading, setLoading] = useState(false);
 
     const formArray =[];
-    for(let key in props.data){
+    for(let key in props.config){
         formArray.push({
             id:key,
-            config: props.data[key],
+            config: props.config[key],
             
         });
     }
+    console.log(formArray)
     let displayForm = (
-        <form onSubmit={(event)=>submitHandler(event,setLoading, props.data, props.formType)}>
+        <form onSubmit={(event)=>submitHandler(event,setLoading, props.config, props.formType)}>
             {formArray.map(element=>(
                 <Input
                     key={element.id}
@@ -29,7 +30,7 @@ const AddForm = (props)=>{
                     shouldValidate={element.config.validation}
                     touched={element.config.touched}
                     errorMess = {element.config.errorMess}
-                    changed={(event)=>inputChangedHandler(props.data, setFormIsValid, props.setData, event,element.id)}
+                    changed={(event)=>inputChangedHandler(props.config, setFormIsValid, props.setConfig, event,element.id)}
                 />
             ))}
             <Input elementType="button" disabled={!formIsValid}>Add New Voucher</Input>
@@ -39,6 +40,7 @@ const AddForm = (props)=>{
     }
     return(
         <div className={classes.FormContainer}>
+            <div className={classes.Title1}>{props.title}</div>
            {displayForm}
         </div>
     )
