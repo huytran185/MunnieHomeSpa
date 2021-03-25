@@ -10,51 +10,36 @@ import firebase from '../components/Firebase/firebaseConfig';
 
 //Get Type from firebase
 export const getType = (setType)=>{
-    firebase.database().ref("type").on("value",snapshot=>{
-            let typeList = [];
-            snapshot.forEach(snap=>{
-                typeList.push(snap.val());
-            });
-            setType(typeList);
+    firebase.database().ref().child("type").on("value",snapshot=>{
+        if(snapshot.val() !=null)
+            setType({...snapshot.val()})
         });
 }
 //Get Services from firebase
 export const getService = (setServices)=>{
-    firebase.database().ref("service").on("value", snapshot=>{
-            let serviceList = [];
-            snapshot.forEach(snap=>{
-                serviceList.push(snap.val());
-            });
-            setServices(serviceList);
+    firebase.database().ref().child("service").on("value", snapshot=>{
+        if(snapshot.val()!=null)
+            setServices({...snapshot.val()})
         })
 }
 //get Voucher from firebase
 export const getVoucher = (setVouchers)=>{
-    firebase.database().ref("voucher").on("value", snapshot=>{
-            let voucherList = [];
-            snapshot.forEach(snap=>{
-                voucherList.push(snap.val());
-            });
-            setVouchers(voucherList);
+    firebase.database().ref().child("voucher").on("value", snapshot=>{
+        if(snapshot.val()!=null)
+            setVouchers({...snapshot.val()})
         })
 }
 //get Staff from Firebase
 export const getStaff = (setStaff)=>{
     firebase.database().ref("staff").on("value", snapshot=>{
-            let staffList = [];
-            snapshot.forEach(snap=>{
-                staffList.push(snap.val());
-            });
-            setStaff(staffList);
+        if(snapshot.val()!=null)
+            setStaff({...snapshot.val()})
         })
 }
 //get Customer from Firebase
 export const getCustomer = (setCustomer)=>{
     firebase.database().ref("customer").on("value", snapshot=>{
-            let customerList = [];
-            snapshot.forEach(snap=>{
-                customerList.push(snap.val());
-            });
-            setCustomer(customerList);
+        if(snapshot.val()!=null)
+            setCustomer({...snapshot.val()})
         })
 }

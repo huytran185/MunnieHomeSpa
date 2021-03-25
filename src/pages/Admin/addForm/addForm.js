@@ -17,9 +17,9 @@ const AddForm = (props)=>{
             
         });
     }
-    console.log(formArray)
+    
     let displayForm = (
-        <form onSubmit={(event)=>submitHandler(event,setLoading, props.config, props.formType)}>
+        <form onSubmit={(event)=>submitHandler(event,setLoading, props.config, props.formType,props.currentID)}>
             {formArray.map(element=>(
                 <Input
                     key={element.id}
@@ -30,10 +30,10 @@ const AddForm = (props)=>{
                     shouldValidate={element.config.validation}
                     touched={element.config.touched}
                     errorMess = {element.config.errorMess}
-                    changed={(event)=>inputChangedHandler(props.config, setFormIsValid, props.setConfig, event,element.id)}
+                    changed={(event)=>inputChangedHandler(props.config, setFormIsValid, props.setCon, event,element.id)}
                 />
             ))}
-            <Input elementType="button" disabled={!formIsValid}>Add New Voucher</Input>
+            <Input elementType="button" disabled={!formIsValid}>{props.title}</Input>
         </form>);
     if(loading){
         displayForm = <Spinner/>;

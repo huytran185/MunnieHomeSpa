@@ -27,7 +27,6 @@ export const inputChangedHandler=(form, setFormIsValid, setForm,event,id)=>{
     else{
         updatedElement.value = event.target.value;
     }
-    console.log(form);
     updatedElement.valid = checkValidity(id,updatedElement.value,updatedElement.validation);
     updatedElement.touched = true;
 
@@ -41,7 +40,7 @@ export const inputChangedHandler=(form, setFormIsValid, setForm,event,id)=>{
     setForm(updatedForm);
 }
 
-export const submitHandler = async (event, setLoading, form, type)=>{
+export const submitHandler = async (event, setLoading, form, type,currentID)=>{
         event.preventDefault();
         setLoading(true);
         let imageUrl = null;
@@ -74,9 +73,9 @@ export const submitHandler = async (event, setLoading, form, type)=>{
                 formData[element] = form[element].value;
             }
         }
-        uploadHandler(formData, setLoading, type);
+        uploadHandler(formData, setLoading, type,currentID);
     }
-const uploadHandler = (formData, setLoading, type)=>{
+const uploadHandler = (formData, setLoading, type, currentID)=>{
         // axios.post('https://munnie-default-rtdb.firebaseio.com/service.json', formData)
         //     .then(response =>{
         //         setLoading(false);
@@ -86,9 +85,32 @@ const uploadHandler = (formData, setLoading, type)=>{
         //         setLoading(false);
         //         console.log(error);
         //     })
-        let r = Math.random().toString(36).substring(7);
-        firebase.database().ref(type+"/"+ r)
-            .set(formData,(error)=>{
+        // let r = Math.random().toString(36).substring(7);
+        // firebase.database().ref(type+"/"+ r)
+        //     .set(formData,(error)=>{
+        //         if(error){
+        //             setLoading(false);
+        //             console.log("Fail");
+        //         }else{
+        //             setLoading(false);
+        //             console.log("Success");
+        //         }
+        //     });
+        if(currentID){
+            firebase.database().ref().child(type + '/'+ currentID).set(
+                formData,(error)=>{
+                    if(error){
+                    setLoading(false);
+                    console.log("Fail");
+                }else{
+                    setLoading(false);
+                    console.log("Success");
+                }
+                }
+            )
+        }else{
+        firebase.database().ref().child(type).push(
+            formData,(error)=>{
                 if(error){
                     setLoading(false);
                     console.log("Fail");
@@ -96,5 +118,20 @@ const uploadHandler = (formData, setLoading, type)=>{
                     setLoading(false);
                     console.log("Success");
                 }
-            });
+            }
+        )
+        }
     }
+export const deleteHandler=(id, type)=>{
+    firebase.database().ref().child(type+'/'+id).remove(
+        error =>{
+            if(error){
+                    // setLoading(false);
+                    console.log("Fail");
+            }else{
+                    // setLoading(false);
+                    console.log("Success");
+            }
+        }
+    )
+}
