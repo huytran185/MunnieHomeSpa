@@ -3,7 +3,7 @@ import AddForm from '../addForm/addForm';
 import {serviceConfig} from '../dataConfig';
 import {getService} from '../../getData';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-import Search from '../../../components/Search/Search';
+
 import DisplayTable from '../displayTable/displayTable';
 import {serviceTable} from '../tableConfig';
 const Service = ()=>{
@@ -44,12 +44,14 @@ const Service = ()=>{
         config={editItem} 
         setCon={setEditItem}
         currentID = {currentID}
+        cancel={setStatus}
         title="Edit Service"/>
     }
     if(status === "add"){
         page = <AddForm formType = "service" 
         config={config}
         setCon={setConfig}
+        cancel={setStatus}
         title="Add New Service"
         />
     }
@@ -58,7 +60,6 @@ const Service = ()=>{
             <aside>
                 <div onClick={()=>setStatus("list")}>List of Service</div>
                 <div onClick={()=>setStatus("add")}>Add New Service</div>
-                <Search/>
             </aside>
             {page}
         </div>

@@ -3,7 +3,6 @@ import AddForm from '../addForm/addForm';
 import {customerConfig} from '../dataConfig';
 import {getCustomer} from '../../getData';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-import Search from '../../../components/Search/Search';
 import DisplayTable from '../displayTable/displayTable';
 import {customerTable} from '../tableConfig';
 const Voucher = ()=>{
@@ -43,12 +42,14 @@ const Voucher = ()=>{
         config={editItem} 
         setCon={setEditItem}
         currentID = {currentID}
+        cancel={setStatus}
         title="Edit Customer"/>
     }
     if(status === "add"){
         page = <AddForm formType = "customer"
         config={config} 
         setCon={setConfig}
+        cancel={setStatus}
         title="Add New Customer"/>
     }
     return(
@@ -56,7 +57,6 @@ const Voucher = ()=>{
             <aside>
                 <div onClick={()=>setStatus("list")}>List of Service</div>
                 <div onClick={()=>setStatus("add")}>Add New Service</div>
-                <Search/>
             </aside>
             {page}
         </div>

@@ -7,11 +7,15 @@ import Staff from './Staff/Staff';
 import Voucher from './Voucher/Voucher';
 import Customer from './Customer/Customer';
 import Type from './Type/Type';
-
+import Dashboard from './Dashboard/Dashboard';
 export const Admin = ()=>{
     const [title, setTitle] = useState("Dashboard");
 
     const [header] = useState([
+        {
+            name:'Dashboard',
+            method:()=>setTitle("Dashboard")
+        },
         {
             name:'Service',
             method: ()=>setTitle("Service"),
@@ -50,34 +54,11 @@ export const Admin = ()=>{
         case "Customer":
             page = <Customer/>
             break;
+        case "Dashboard":
+            page= <Dashboard/>
+            break;
         default:
-            page = <div>Booking Page</div>;
-        // case "Service":
-        //     page = <Service/>
-        //     break;
-        // case "Add Voucher":
-        //     page=<AddForm formType = "voucher" data={vouchers} setData = {setVoucher}/>;
-        //     break;
-        // case "Add Staff":
-        //     page= <AddForm formType="staff" data={staff} setData={setStaff}/>;
-        //     break;
-        // case "Add Customer":
-        //     page=<AddForm formType="customer" data = {customers} setData={setCustomer}/>;
-        //     break;
-        // case "List of Voucher":
-        //     page = <ListInfo listType = "voucher"/>;
-        //     break;
-        // case "List of Services":
-        //     page = <ListInfo listType = "service"/>;
-        //     break;
-        // case "List of Staff":
-        //     page = <ListInfo listType = "staff"/>;
-        //     break;
-        // case "List of Customer":
-        //     page = <ListInfo listType = "customer"/>;
-        //     break;
-        // default:
-        //     page = <div>Dashboard</div>;
+            page = <Dashboard/>;
     }
     return(
         <Aux >

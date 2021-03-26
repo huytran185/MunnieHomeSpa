@@ -3,7 +3,6 @@ import AddForm from '../addForm/addForm';
 import {staffConfig} from '../dataConfig';
 import {getStaff} from '../../getData';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-import Search from '../../../components/Search/Search';
 import DisplayTable from '../displayTable/displayTable';
 import {staffTable} from '../tableConfig';
 const Staff = ()=>{
@@ -44,12 +43,14 @@ const Staff = ()=>{
         config={editItem} 
         setCon={setEditItem}
         currentID = {currentID}
+        cancel={setStatus}
         title="Edit Type"/>
     }
     if(status === "add"){
         page = <AddForm formType = "staff" 
         config={config} 
         setCon={setConfig}
+        cancel={setStatus}
         title="Add New Staff"/>
     }
     return(
@@ -57,7 +58,6 @@ const Staff = ()=>{
             <aside>
                 <div onClick={()=>setStatus("list")}>List of Service</div>
                 <div onClick={()=>setStatus("add")}>Add New Service</div>
-                <Search/>
             </aside>
             {page}
         </div>

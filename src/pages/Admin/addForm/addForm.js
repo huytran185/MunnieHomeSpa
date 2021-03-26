@@ -34,6 +34,7 @@ const AddForm = (props)=>{
                 />
             ))}
             <Input elementType="button" disabled={!formIsValid}>{props.title}</Input>
+            <Input elementType = "button" clicked={()=>props.cancel("list")}>Cancel</Input>
         </form>);
     if(loading){
         displayForm = <Spinner/>;

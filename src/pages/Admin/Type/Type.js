@@ -3,7 +3,6 @@ import AddForm from '../addForm/addForm';
 import {typeConfig} from '../dataConfig';
 import {getType} from '../../getData';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-import Search from '../../../components/Search/Search';
 import DisplayTable from '../displayTable/displayTable';
 import {typeTable} from '../tableConfig';
 const Type = ()=>{
@@ -29,7 +28,6 @@ const Type = ()=>{
         setCurrentId(id)
         setStatus("edit");
     }
-
     let page = <Spinner/>;
     if(status === "list" && data){
         page = <DisplayTable 
@@ -43,12 +41,14 @@ const Type = ()=>{
         config={editItem} 
         setCon={setEditItem}
         currentID = {currentID}
+        cancel={setStatus}
         title="Edit Type"/>
     }
     if(status === "add"){
         page = <AddForm formType = "type"
         config={config} 
         setCon={setConfig}
+        cancel={setStatus}
         title="Add New Type"/>
     }
     return(
@@ -56,7 +56,6 @@ const Type = ()=>{
             <aside>
                 <div onClick={()=>setStatus("list")}>List of Service</div>
                 <div onClick={()=>setStatus("add")}>Add New Service</div>
-                <Search/>
             </aside>
             {page}
         </div>

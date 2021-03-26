@@ -1,7 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Aux from '../../../hoc/Auxulliary'
-import {deleteHandler} from '../../InputHandler'
+import {deleteHandler} from '../../InputHandler';
+import Search from '../../../components/Search/Search';
 const DisplayTable = (props) => {
+    const [search, setSearch]= useState('');
+    const [filteredItem, setFilteredItem] = useState([])
+    
+
     let tableArray = [];
     if(props.data){
         for(let el in props.data){
@@ -18,6 +23,18 @@ const DisplayTable = (props) => {
             })
         }
     }
+    useEffect(()=>{
+        setFilteredItem(tableArray.filter(element=>{
+            
+            return element["data"][0]["content"].toLowerCase().includes(search.toLowerCase())
+        }))
+    },[search])
+
+    // if(props.data){
+    //     tableArray.filter((element,index)=>{
+    //         return element["data"][0]["content"].toLowerCase().includes(search.toLowerCase())
+    //     })
+    // }
     let display = (
         <table>
             <thead>
@@ -30,7 +47,7 @@ const DisplayTable = (props) => {
                 </tr>
             </thead>
             <tbody>
-                    {tableArray.map((element, index)=>{
+                    {filteredItem.map((element, index)=>{
                         return(
                             <Row id = {element.id} 
                             setId = {props.setId}
@@ -43,6 +60,7 @@ const DisplayTable = (props) => {
     )
     return (
         <Aux>
+            <Search onChanged={(e)=>setSearch(e.target.value)}/>
             {display}
         </Aux>
     )
