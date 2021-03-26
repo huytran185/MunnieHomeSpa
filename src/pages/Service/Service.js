@@ -19,17 +19,17 @@ const Service =()=>{
     }, [])
     //choose Type and display Service
     const chooseTypeHandler = (e, index, id)=>{
-        let newTypes = [...types];
-        newTypes.map(type=>(type.under = false));
+        let newTypes = {...types};
+        Object.values(newTypes).map(type=>(type.under = false));
         newTypes[index].under = true;
-        setType([...newTypes]);
+        setType({...newTypes});
     }
 
     //display Spinner and choose type and services
     let servicePage = <Spinner/>
     if(services && types){
         let chosenType = null;
-        types.find(type=>{
+        Object.values(types).find(type=>{
             if(type.under === true){
                 chosenType = type.id;
                 return chosenType;
@@ -39,7 +39,7 @@ const Service =()=>{
         servicePage = (
             <div>
                 <div className={classes.TypeList}>
-                    {types.map((type,index)=>{
+                    {Object.values(types).map((type,index)=>{
                         return <Type
                         id={type.id}
                         key={type.id}
@@ -50,7 +50,7 @@ const Service =()=>{
                     })}
                 </div>
                 <div className = {classes.ServiceList}>
-                    {services.map((service, index)=>{
+                    {Object.values(services).map((service, index)=>{
                         let data = null;
                         if(service.type === chosenType){
                             data = <ServiceItem 

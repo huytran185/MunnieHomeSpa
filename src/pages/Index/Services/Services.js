@@ -12,8 +12,9 @@ const Services = () =>{
     }, [])
     let display = <Spinner/>;
     if(services){
+        console.log(services)
         display = (<div className={classes.Service}>
-            {services.slice(0,3).map((service, index)=>{
+            {Object.values(services).slice(0,3).map((service, index)=>{
                 return <Service 
                     key = {index}
                     service ={service.name}
