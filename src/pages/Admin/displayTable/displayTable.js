@@ -2,39 +2,38 @@ import React, {useState, useEffect} from 'react';
 import Aux from '../../../hoc/Auxulliary'
 import {deleteHandler} from '../../InputHandler';
 import Search from '../../../components/Search/Search';
+import Pagination from '../../../components/Pagination/Pagination';
 const DisplayTable = (props) => {
     const [search, setSearch]= useState('');
-    const [filteredItem, setFilteredItem] = useState([])
-    
-
-    let tableArray = [];
-    if(props.data){
-        for(let el in props.data){
-            let content=[];
-            for(let key in props.config){
-                content.push({
-                    content: props.data[el][props.config[key]["name"]],
-                    type: props.config[key]["type"]
+    const [filteredItem, setFilteredItem] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(2);
+    const last = currentPage *itemsPerPage;
+    const first = last - itemsPerPage;
+    const currentArray = filteredItem.slice(first, last)
+    useEffect(()=>{
+        let tableArray = [];
+        if(props.data){
+            for(let el in props.data){
+                let content=[];
+                for(let key in props.config){
+                    content.push({
+                        content: props.data[el][props.config[key]["name"]],
+                        type: props.config[key]["type"]
+                    })
+                }
+                tableArray.push({
+                    id: el,
+                    data: content
                 })
             }
-            tableArray.push({
-                id: el,
-                data: content
-            })
         }
-    }
-    useEffect(()=>{
         setFilteredItem(tableArray.filter(element=>{
             
             return element["data"][0]["content"].toLowerCase().includes(search.toLowerCase())
         }))
-    },[search])
+    },[search,props.data,props.config])
 
-    // if(props.data){
-    //     tableArray.filter((element,index)=>{
-    //         return element["data"][0]["content"].toLowerCase().includes(search.toLowerCase())
-    //     })
-    // }
     let display = (
         <table>
             <thead>
@@ -47,7 +46,7 @@ const DisplayTable = (props) => {
                 </tr>
             </thead>
             <tbody>
-                    {filteredItem.map((element, index)=>{
+                    {currentArray.map((element, index)=>{
                         return(
                             <Row id = {element.id} 
                             setId = {props.setId}
@@ -58,10 +57,17 @@ const DisplayTable = (props) => {
             </tbody>
         </table>
     )
+    //Change Page
+    const paginate = (pageNumber)=>setCurrentPage(pageNumber)
     return (
         <Aux>
             <Search onChanged={(e)=>setSearch(e.target.value)}/>
             {display}
+            <Pagination 
+            itemsPerPage={itemsPerPage} 
+            totalItems={filteredItem.length}
+            paginate ={paginate}
+            currentPage = {currentPage}/>
         </Aux>
     )
 }
