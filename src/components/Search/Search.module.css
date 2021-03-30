@@ -9,9 +9,9 @@
     border-right: none;
     padding: 5px;
     height: 36px;
-    border-radius: 5px 0 0 5px;
+    /* border-radius: 5px 0 0 5px; */
     outline: none;
-    color: #9DBFAF;
+    color: black;
 }
 
 .SearchTerm:focus {
@@ -25,7 +25,7 @@
     background: #dbb89a;
     text-align: center;
     color: #fff;
-    border-radius: 0 5px 5px 0;
+    /* border-radius: 0 5px 5px 0; */
     cursor: pointer;
     font-size: 20px;
 }

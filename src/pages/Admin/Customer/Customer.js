@@ -1,17 +1,18 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import AddForm from '../addForm/addForm';
 import {customerConfig} from '../dataConfig';
 import {getCustomer} from '../../getData';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import DisplayTable from '../displayTable/displayTable';
 import {customerTable} from '../tableConfig';
+import Notifications from '../../../components/UI/Notifications/Notifications'
 const Voucher = ()=>{
     const [config,setConfig] = useState(customerConfig);
     const [status, setStatus] = useState("list");
     const [data, setData] = useState(null);
     const [editItem, setEditItem]= useState(null);
     const [currentID, setCurrentId] = useState(null)
-
+    const notificationRef = useRef();
     useEffect(()=>{
         getCustomer(setData);
     }, [])
@@ -43,22 +44,25 @@ const Voucher = ()=>{
         setCon={setEditItem}
         currentID = {currentID}
         cancel={setStatus}
-        title="Edit Customer"/>
+        title="Edit Customer"
+        notificationRef={notificationRef}/>
     }
     if(status === "add"){
         page = <AddForm formType = "customer"
         config={config} 
         setCon={setConfig}
         cancel={setStatus}
-        title="Add New Customer"/>
+        title="Add New Customer"
+        notificationRef={notificationRef}/>
     }
     return(
         <div>
             <aside>
-                <div onClick={()=>setStatus("list")}>List of Service</div>
-                <div onClick={()=>setStatus("add")}>Add New Service</div>
+                <div onClick={()=>setStatus("list")}>Thông tin khách hàng</div>
+                <div onClick={()=>setStatus("add")}>Thêm khách hàng</div>
             </aside>
             {page}
+            <Notifications ref={notificationRef}/>
         </div>
         
     )

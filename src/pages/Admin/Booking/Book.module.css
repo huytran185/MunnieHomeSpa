@@ -1,0 +1,38 @@
+.Book {
+    width: 70%;
+    margin: 50px auto;
+    background-color: white;
+}
+
+.Form {
+    border: 5px solid #dbb89a;
+    padding: 50px;
+    border-radius: 55px;
+}
+
+.Search {
+    width: 100%;
+    margin: auto;
+    position: relative;
+}
+
+.Suggest {
+    background-color: lightgrey;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.Suggest:hover {
+    font-weight: bold;
+}
+
+.SuggestContainer {
+    z-index: 999;
+    position: absolute;
+    width: 100%;
+}
+
+.Add {
+    cursor: pointer;
+}

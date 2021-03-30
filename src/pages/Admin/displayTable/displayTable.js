@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Aux from '../../../hoc/Auxulliary'
 import {deleteHandler} from '../../InputHandler';
 import Search from '../../../components/Search/Search';
 import Pagination from '../../../components/Pagination/Pagination';
+import Notifications from '../../../components/UI/Notifications/Notifications'
+
 const DisplayTable = (props) => {
     const [search, setSearch]= useState('');
     const [filteredItem, setFilteredItem] = useState([]);
@@ -11,6 +13,7 @@ const DisplayTable = (props) => {
     const last = currentPage *itemsPerPage;
     const first = last - itemsPerPage;
     const currentArray = filteredItem.slice(first, last)
+    const notificationRef = useRef();
     useEffect(()=>{
         let tableArray = [];
         if(props.data){
@@ -35,27 +38,28 @@ const DisplayTable = (props) => {
     },[search,props.data,props.config])
 
     let display = (
-        <table>
-            <thead>
-                <tr>
-                    {Object.values(props.config).map((element,index)=>(
-                    <Item content = {element.title}
-                    key={index}/>  
-                    ))}
-                    <Item content = "Action"/>
-                </tr>
-            </thead>
-            <tbody>
-                    {currentArray.map((element, index)=>{
-                        return(
-                            <Row id = {element.id} 
-                            setId = {props.setId}
-                            content = {element} 
-                            key={index}
-                            type={props.type} />
-                    )})}
-            </tbody>
-        </table>
+            <table>
+                <thead>
+                    <tr>
+                        {Object.values(props.config).map((element,index)=>(
+                        <Item content = {element.title}
+                        key={index}/>  
+                        ))}
+                        <Item content = "Action"/>
+                    </tr>
+                </thead>
+                <tbody>
+                        {currentArray.map((element, index)=>{
+                            return(
+                                <Row id = {element.id} 
+                                setId = {props.setId}
+                                content = {element} 
+                                key={index}
+                                type={props.type} 
+                                notificationRef = {notificationRef}/>
+                        )})}
+                </tbody>
+            </table>
     )
     //Change Page
     const paginate = (pageNumber)=>setCurrentPage(pageNumber)
@@ -68,6 +72,7 @@ const DisplayTable = (props) => {
             totalItems={filteredItem.length}
             paginate ={paginate}
             currentPage = {currentPage}/>
+            <Notifications ref={notificationRef}/>
         </Aux>
     )
 }
@@ -84,7 +89,8 @@ const Row = (props)=>{
             <Item type="action"
                 id={props.id}
                 setId = {props.setId}
-                tableType = {props.type}/>
+                tableType = {props.type}
+                notificationRef={props.notificationRef}/>
         </tr>
     )
     return(
@@ -94,6 +100,7 @@ const Row = (props)=>{
     )
 }
 const Item = (props)=>{
+
     let display = null;
     if(props.type === "image"){
         display = <img src={props.content} 
@@ -108,13 +115,16 @@ const Item = (props)=>{
     }else if(props.type === "action"){
         display = (<div className="btn text-primary">
             <i className="fa fa-edit" onClick = {()=>props.setId(props.id)}/>
-            <i className="fa fa-trash" onClick = {()=>deleteHandler(props.id,props.tableType)}></i>
+            <i className="fa fa-trash" onClick = {()=>deleteHandler(props.id,props.tableType,props.notificationRef)}></i>
         </div>)
     }
     else{
         display = <div>{props.content}</div>
     }
     return(
-        <td>{display}</td>
+        <td>
+            {display}
+            
+        </td>
     )
 }

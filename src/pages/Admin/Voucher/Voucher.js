@@ -1,17 +1,19 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect,useRef} from 'react'
 import AddForm from '../addForm/addForm';
 import {voucherConfig} from '../dataConfig';
 import {getVoucher} from '../../getData';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import DisplayTable from '../displayTable/displayTable';
 import {voucherTable} from '../tableConfig';
+import Notifications from '../../../components/UI/Notifications/Notifications'
+
 const Voucher = ()=>{
     const [config,setConfig] = useState(voucherConfig);
     const [status, setStatus] = useState("list");
     const [data, setData] = useState(null);
     const [editItem, setEditItem]= useState(null);
     const [currentID, setCurrentId] = useState(null)
-
+    const notificationRef = useRef();
     useEffect(()=>{
         getVoucher(setData);
     }, [])
@@ -43,22 +45,25 @@ const Voucher = ()=>{
         setCon={setEditItem}
         currentID = {currentID}
         cancel={setStatus}
-        title="Add New Voucher"/>
+        title="Add New Voucher"
+        notificationRef={notificationRef}/>
     }
     if(status === "add"){
         page = <AddForm formType = "voucher" 
         config={config} 
         setCon={setConfig}
         cancel={setStatus}
-        title="Add New Voucher"/>
+        title="Add New Voucher"
+        notificationRef={notificationRef}/>
     }
     return(
         <div>
             <aside>
-                <div onClick={()=>setStatus("list")}>List of Service</div>
-                <div onClick={()=>setStatus("add")}>Add New Service</div>
+                <div onClick={()=>setStatus("list")}>Thông tin Voucher</div>
+                <div onClick={()=>setStatus("add")}>Thêm Voucher</div>
             </aside>
             {page}
+            <Notifications ref={notificationRef}/>
         </div>
         
     )

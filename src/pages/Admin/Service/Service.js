@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import AddForm from '../addForm/addForm';
 import {serviceConfig} from '../dataConfig';
 import {getService} from '../../getData';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-
+import Notifications from '../../../components/UI/Notifications/Notifications'
 import DisplayTable from '../displayTable/displayTable';
 import {serviceTable} from '../tableConfig';
 const Service = ()=>{
@@ -11,7 +11,8 @@ const Service = ()=>{
     const [status, setStatus] = useState("list");
     const [data, setData] = useState(null);
     const [editItem, setEditItem]= useState(null);
-    const [currentID, setCurrentId] = useState(null)
+    const [currentID, setCurrentId] = useState(null);
+    const notificationRef = useRef();
     useEffect(()=>{
         getService(setData);
     }, [])
@@ -45,7 +46,8 @@ const Service = ()=>{
         setCon={setEditItem}
         currentID = {currentID}
         cancel={setStatus}
-        title="Edit Service"/>
+        title="Edit Service"
+        notificationRef={notificationRef}/>
     }
     if(status === "add"){
         page = <AddForm formType = "service" 
@@ -53,15 +55,17 @@ const Service = ()=>{
         setCon={setConfig}
         cancel={setStatus}
         title="Add New Service"
+        notificationRef={notificationRef}
         />
     }
     return(
         <div>
             <aside>
-                <div onClick={()=>setStatus("list")}>List of Service</div>
-                <div onClick={()=>setStatus("add")}>Add New Service</div>
+                <div onClick={()=>setStatus("list")}>Thông tin dịch vụ</div>
+                <div onClick={()=>setStatus("add")}>Thêm dịch vụ</div>
             </aside>
             {page}
+            <Notifications ref={notificationRef}/>
         </div>
         
     )

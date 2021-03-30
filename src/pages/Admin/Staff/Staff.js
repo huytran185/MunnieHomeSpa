@@ -1,16 +1,19 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect, useRef} from 'react'
 import AddForm from '../addForm/addForm';
 import {staffConfig} from '../dataConfig';
 import {getStaff} from '../../getData';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import DisplayTable from '../displayTable/displayTable';
 import {staffTable} from '../tableConfig';
+import Notifications from '../../../components/UI/Notifications/Notifications'
+
 const Staff = ()=>{
     const [config,setConfig] = useState(staffConfig);
     const [status, setStatus] = useState("list");
     const [data, setData] = useState(null);
     const [editItem, setEditItem]= useState(null);
     const [currentID, setCurrentId] = useState(null)
+    const notificationRef = useRef();
     useEffect(()=>{
         getStaff(setData);
     }, [])
@@ -44,22 +47,25 @@ const Staff = ()=>{
         setCon={setEditItem}
         currentID = {currentID}
         cancel={setStatus}
-        title="Edit Type"/>
+        title="Edit Type"
+        notificationRef={notificationRef}/>
     }
     if(status === "add"){
         page = <AddForm formType = "staff" 
         config={config} 
         setCon={setConfig}
         cancel={setStatus}
-        title="Add New Staff"/>
+        title="Add New Staff"
+        notificationRef={notificationRef}/>
     }
     return(
         <div>
             <aside>
-                <div onClick={()=>setStatus("list")}>List of Service</div>
-                <div onClick={()=>setStatus("add")}>Add New Service</div>
+                <div onClick={()=>setStatus("list")}>Thông tin nhân viên</div>
+                <div onClick={()=>setStatus("add")}>Thêm nhân viên</div>
             </aside>
             {page}
+            <Notifications ref={notificationRef}/>
         </div>
         
     )
