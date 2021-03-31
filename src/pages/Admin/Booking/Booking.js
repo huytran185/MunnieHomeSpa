@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useRef} from 'react';
 import classes from './Book.module.css';
 import Input from '../../../components/UI/Input/Input'
 import Customer from './Customer/Customer'

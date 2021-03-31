@@ -4,6 +4,32 @@ import {deleteHandler} from '../../InputHandler';
 import Search from '../../../components/Search/Search';
 import Pagination from '../../../components/Pagination/Pagination';
 import Notifications from '../../../components/UI/Notifications/Notifications'
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
 
 const DisplayTable = (props) => {
     const [search, setSearch]= useState('');
@@ -13,6 +39,7 @@ const DisplayTable = (props) => {
     const last = currentPage *itemsPerPage;
     const first = last - itemsPerPage;
     const currentArray = filteredItem.slice(first, last)
+
     const notificationRef = useRef();
     useEffect(()=>{
         let tableArray = [];
@@ -38,17 +65,17 @@ const DisplayTable = (props) => {
     },[search,props.data,props.config])
 
     let display = (
-            <table>
-                <thead>
-                    <tr>
+            <Table>
+                <TableHead>
+                    <TableRow>
                         {Object.values(props.config).map((element,index)=>(
                         <Item content = {element.title}
                         key={index}/>  
                         ))}
                         <Item content = "Action"/>
-                    </tr>
-                </thead>
-                <tbody>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
                         {currentArray.map((element, index)=>{
                             return(
                                 <Row id = {element.id} 
@@ -58,20 +85,22 @@ const DisplayTable = (props) => {
                                 type={props.type} 
                                 notificationRef = {notificationRef}/>
                         )})}
-                </tbody>
-            </table>
+                </TableBody>
+            </Table>
     )
     //Change Page
     const paginate = (pageNumber)=>setCurrentPage(pageNumber)
     return (
         <Aux>
-            <Search onChanged={(e)=>setSearch(e.target.value)}/>
-            {display}
+            <TableContainer component={Paper}>
+                <Search onChanged={(e)=>setSearch(e.target.value)}/>
+                {display}
+            </TableContainer>
             <Pagination 
-            itemsPerPage={itemsPerPage} 
-            totalItems={filteredItem.length}
-            paginate ={paginate}
-            currentPage = {currentPage}/>
+                itemsPerPage={itemsPerPage} 
+                totalItems={filteredItem.length}
+                paginate ={paginate}
+                currentPage = {currentPage}/>
             <Notifications ref={notificationRef}/>
         </Aux>
     )
@@ -80,7 +109,7 @@ export default DisplayTable;
 
 const Row = (props)=>{
     let display = (
-        <tr>
+        <StyledTableRow>
             {props.content.data.map((item, index)=>{
                 return(<Item content={item.content}
                     type={item.type} 
@@ -91,7 +120,7 @@ const Row = (props)=>{
                 setId = {props.setId}
                 tableType = {props.type}
                 notificationRef={props.notificationRef}/>
-        </tr>
+        </StyledTableRow>
     )
     return(
         <Aux>
@@ -122,9 +151,8 @@ const Item = (props)=>{
         display = <div>{props.content}</div>
     }
     return(
-        <td>
+        <StyledTableCell>
             {display}
-            
-        </td>
+        </StyledTableCell>
     )
 }
