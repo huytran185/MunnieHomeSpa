@@ -26,8 +26,8 @@ function App() {
 
       </Router>
       <MessengerCustomerChat
-        pageId="<munniehomespa>"
-        appId="<309432867282551>"
+        pageId="101053918473845"
+        appId="309432867282551"
       />
     </Aux>
   );
