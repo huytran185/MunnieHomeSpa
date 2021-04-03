@@ -1,22 +1,16 @@
 import React, {useState, useEffect, useRef} from 'react';
-import Aux from '../../../hoc/Auxulliary'
-import {deleteHandler} from '../../InputHandler';
-import Search from '../../../components/Search/Search';
-import Pagination from '../../../components/Pagination/Pagination';
-import Notifications from '../../../components/UI/Notifications/Notifications'
+import Aux from '../../hoc/Auxulliary'
+import {deleteHandler} from '../InputHandler';
+import Search from '../../components/Search/Search';
+import Pagination from '../../components/Pagination/Pagination';
+import Notifications from '../../components/UI/Notifications/Notifications'
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box} from '@material-ui/core';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
+    backgroundColor: '#dbb89a',
+    color: 'black',
   },
   body: {
     fontSize: 14,
@@ -26,16 +20,24 @@ const StyledTableCell = withStyles((theme) => ({
 const StyledTableRow = withStyles((theme) => ({
   root: {
     '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
+      backgroundColor: '#fff6f3',
     },
   },
 }))(TableRow);
-
+const useStyles = makeStyles({
+    Search:{
+        margin: '20px 0',
+    },
+    Table:{
+        margin: '0 0 10px 0',
+    }
+})
 const DisplayTable = (props) => {
+    const classes = useStyles();
     const [search, setSearch]= useState('');
     const [filteredItem, setFilteredItem] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(2);
+    const [itemsPerPage] = useState(3);
     const last = currentPage *itemsPerPage;
     const first = last - itemsPerPage;
     const currentArray = filteredItem.slice(first, last)
@@ -92,8 +94,10 @@ const DisplayTable = (props) => {
     const paginate = (pageNumber)=>setCurrentPage(pageNumber)
     return (
         <Aux>
-            <TableContainer component={Paper}>
-                <Search onChanged={(e)=>setSearch(e.target.value)}/>
+            <Box className={classes.Search}>
+                    <Search onChanged={(e)=>setSearch(e.target.value)}/>
+                </Box>
+            <TableContainer component={Paper} className={classes.Table}>
                 {display}
             </TableContainer>
             <Pagination 

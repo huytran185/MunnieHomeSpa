@@ -1,12 +1,17 @@
 import React, {useState, useEffect, useRef} from 'react'
-import AddForm from '../addForm/addForm';
-import {serviceConfig} from '../dataConfig';
-import {getService} from '../../getData';
-import Spinner from '../../../components/UI/Spinner/Spinner';
-import Notifications from '../../../components/UI/Notifications/Notifications'
-import DisplayTable from '../displayTable/displayTable';
-import {serviceTable} from '../tableConfig';
+import AddForm from './addForm';
+import Header from '../../components/AHeader/Header'
+import {serviceConfig} from './dataConfig';
+import {getService} from '../getData';
+import Spinner from '../../components/UI/Spinner/Spinner';
+import Notifications from '../../components/UI/Notifications/Notifications'
+import DisplayTable from './displayTable';
+import {serviceTable} from './tableConfig';
+import {Box, Typography} from '@material-ui/core'
+import useStyles from './styles.js';
+import Button from './Button.js'
 const Service = ()=>{
+    const classes = useStyles();
     const [config,setConfig] = useState(serviceConfig);
     const [status, setStatus] = useState("list");
     const [data, setData] = useState(null);
@@ -59,15 +64,19 @@ const Service = ()=>{
         />
     }
     return(
-        <div>
-            <aside>
-                <div onClick={()=>setStatus("list")}>Thông tin dịch vụ</div>
-                <div onClick={()=>setStatus("add")}>Thêm dịch vụ</div>
-            </aside>
-            {page}
-            <Notifications ref={notificationRef}/>
+        <div className={classes.Page}>
+            <Header/>
+            <Box className={classes.Display}>
+                <Box textAlign="center">
+                    <Typography variant="h3">
+                        Service
+                    </Typography>
+                </Box>
+                <Button setStatus={setStatus}/>
+                {page}
+                <Notifications ref={notificationRef}/>
+            </Box>
         </div>
-        
     )
 }
 export default Service

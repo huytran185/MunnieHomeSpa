@@ -1,13 +1,17 @@
 import React, {useState, useEffect, useRef} from 'react'
-import AddForm from '../addForm/addForm';
-import {typeConfig} from '../dataConfig';
-import {getType} from '../../getData';
-import Spinner from '../../../components/UI/Spinner/Spinner';
-import DisplayTable from '../displayTable/displayTable';
-import {typeTable} from '../tableConfig';
-import Notifications from '../../../components/UI/Notifications/Notifications'
-
+import AddForm from './addForm';
+import Header from '../../components/AHeader/Header'
+import {typeConfig} from './dataConfig';
+import {getType} from '../getData';
+import Spinner from '../../components/UI/Spinner/Spinner';
+import DisplayTable from './displayTable';
+import {typeTable} from './tableConfig';
+import Notifications from '../../components/UI/Notifications/Notifications'
+import {Typography, Box} from '@material-ui/core'
+import Button from './Button.js'
+import useStyles from './styles.js'
 const Type = ()=>{
+    const classes = useStyles();
     const [config,setConfig] = useState(typeConfig);
     const [status, setStatus] = useState("list");
     const [data, setData] = useState(null);
@@ -56,15 +60,19 @@ const Type = ()=>{
         notificationRef={notificationRef}/>
     }
     return(
-        <div>
-            <aside>
-                <div onClick={()=>setStatus("list")}>Thông tin loại dịch vụ</div>
-                <div onClick={()=>setStatus("add")}>Thêm loại dịch vụ</div>
-            </aside>
-            {page}
-            <Notifications ref={notificationRef}/>
+        <div className={classes.Page}>
+            <Header/>
+            <Box className={classes.Display}>
+                <Box textAlign="center">
+                    <Typography variant="h3">
+                        Customer
+                    </Typography>
+                </Box>
+                <Button setStatus={setStatus}/>
+                {page}
+                <Notifications ref={notificationRef}/>
+            </Box>
         </div>
-        
     )
 }
 export default Type

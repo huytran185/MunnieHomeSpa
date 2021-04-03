@@ -1,16 +1,18 @@
-import React, {useState, useRef} from 'react';
-import classes from './Book.module.css';
-import Input from '../../../components/UI/Input/Input'
+import React, {useState, useRef, useEffect} from 'react';
+import useStyles from './styles.js';
+import Input from '../../components/UI/Input/Input'
 import Customer from './Customer/Customer'
 import Service from './Service/Service'
 import Time from './Time/Time'
 import Staff from './Staff/Staff'
-import firebase from '../../../components/Firebase/firebaseConfig';
-import Spinner from '../../../components/UI/Spinner/Spinner';
-import Aux from '../../../hoc/Auxulliary';
-import Notifications from '../../../components/UI/Notifications/Notifications'
+import firebase from '../../components/Firebase/firebaseConfig';
+import Spinner from '../../components/UI/Spinner/Spinner';
+import Aux from '../../hoc/Auxulliary';
+import Notifications from '../../components/UI/Notifications/Notifications'
+import {Box, Typography} from '@material-ui/core';
 
 const Booking = (props) => {
+    const classes = useStyles();
     const [bookInfo, setBookInfo] = useState({
         customerId: '',
         customerName: '',
@@ -24,6 +26,15 @@ const Booking = (props) => {
         staffId: '',
         staffName:'',
     })
+    const [formIsValid, setFormIsValid] = useState(false);
+    
+    useEffect(()=>{
+        let formIsValid = true;
+        for(let el in bookInfo){
+            formIsValid = bookInfo[el];
+            setFormIsValid(formIsValid);
+        }
+    },[bookInfo])
     const [loading, setLoading]= useState(false);
     const notificationRef = useRef();
     const submitHandler=(e)=>{
@@ -59,8 +70,11 @@ const Booking = (props) => {
         props.setShowForm(false);
     }
     let display = (
-        <div  className={classes.Book}>
+        <Box  className={classes.root}>
             <form className={classes.Form} >
+                <Box textAlign="center">
+                    <Typography variant="h4">Tạo lịch hẹn</Typography>
+                </Box>
                 <Customer bookInfo={bookInfo} setInfo = {setBookInfo} />
                 <hr/>
                 <Service bookInfo={bookInfo} setInfo = {setBookInfo}/>
@@ -68,10 +82,10 @@ const Booking = (props) => {
                 <Time bookInfo={bookInfo} setInfo={setBookInfo}/>
                 <hr/>
                 <Staff bookInfo={bookInfo} setInfo={setBookInfo}/>
-                <Input clicked = {(e)=>submitHandler(e)} elementType="button">Add Booking</Input>
+                <Input disabled = {!formIsValid} clicked = {(e)=>submitHandler(e)} elementType="button">Add Booking</Input>
                 <Input clicked = {(e)=>cancelHandler(e)} elementType="button">Cancel Booking</Input>
             </form>
-        </div>
+        </Box>
     );
     if(loading){
         display = <Spinner/>

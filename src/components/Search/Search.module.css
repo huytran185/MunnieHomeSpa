@@ -1,31 +1,8 @@
-.Search {
+/* .Search {
     position: relative;
     display: flex;
-}
+} */
 
 .SearchTerm {
     width: 100%;
-    border: 3px solid #dbb89a;
-    border-right: none;
-    padding: 5px;
-    height: 36px;
-    /* border-radius: 5px 0 0 5px; */
-    outline: none;
-    color: black;
-}
-
-.SearchTerm:focus {
-    color: black;
-}
-
-.SearchButton {
-    width: 40px;
-    height: 36px;
-    border: 1px solid #dbb89a;
-    background: #dbb89a;
-    text-align: center;
-    color: #fff;
-    /* border-radius: 0 5px 5px 0; */
-    cursor: pointer;
-    font-size: 20px;
 }

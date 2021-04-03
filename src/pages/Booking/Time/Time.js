@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
@@ -33,24 +33,6 @@ const Time = (props) => {
         staffName: props.bookInfo.staffName,
       })
     }
-    //add 30 minutes
-    // if(time){
-    //     time.setMinutes( time.getMinutes() + 30 );
-    // }
-    // let year = time.getFullYear();
-    // let month = time.getMonth()+1;
-    // let dt = time.getDate();
-    // let hour = time.getHours();
-    // let minute = time.getMinutes();
-
-    // if (dt < 10) {
-    // dt = '0' + dt;
-    // }
-    // if (month < 10) {
-    // month = '0' + month;
-    // }
-
-    // console.log(year+'-' + month + '-'+dt + ' '+hour + ':' + minute);
     return (
         <fieldset className={classes.container}>
             <legend>Thời gian</legend>

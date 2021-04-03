@@ -1,13 +1,17 @@
 import React, {useState, useEffect,useRef} from 'react'
-import AddForm from '../addForm/addForm';
-import {voucherConfig} from '../dataConfig';
-import {getVoucher} from '../../getData';
-import Spinner from '../../../components/UI/Spinner/Spinner';
-import DisplayTable from '../displayTable/displayTable';
-import {voucherTable} from '../tableConfig';
-import Notifications from '../../../components/UI/Notifications/Notifications'
-
+import AddForm from './addForm';
+import Header from '../../components/AHeader/Header'
+import {voucherConfig} from './dataConfig';
+import {getVoucher} from '../getData';
+import Spinner from '../../components/UI/Spinner/Spinner';
+import DisplayTable from './displayTable';
+import {voucherTable} from './tableConfig';
+import Notifications from '../../components/UI/Notifications/Notifications'
+import {Typography, Box} from '@material-ui/core'
+import Button from './Button.js'
+import useStyles from './styles.js'
 const Voucher = ()=>{
+    const classes = useStyles();
     const [config,setConfig] = useState(voucherConfig);
     const [status, setStatus] = useState("list");
     const [data, setData] = useState(null);
@@ -57,15 +61,19 @@ const Voucher = ()=>{
         notificationRef={notificationRef}/>
     }
     return(
-        <div>
-            <aside>
-                <div onClick={()=>setStatus("list")}>Thông tin Voucher</div>
-                <div onClick={()=>setStatus("add")}>Thêm Voucher</div>
-            </aside>
-            {page}
-            <Notifications ref={notificationRef}/>
+        <div className={classes.Page}>
+            <Header/>
+            <Box className={classes.Display}>
+                <Box textAlign="center">
+                    <Typography variant="h3">
+                        Voucher
+                    </Typography>
+                </Box>
+                <Button setStatus={setStatus}/>
+                {page}
+                <Notifications ref={notificationRef}/>
+            </Box>
         </div>
-        
     )
 }
 export default Voucher

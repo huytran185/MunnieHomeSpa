@@ -118,10 +118,8 @@ export const deleteHandler=(id, type, notification)=>{
     firebase.database().ref().child(type+'/'+id).remove(
         error =>{
             if(error){
-                    // setLoading(false);
                     notification.current.createNotification('error', 'Không thể xoá thông tin')
             }else{
-                    // setLoading(false);
                     notification.current.createNotification('success', 'Xoá thông tin thành công')
             }
         }

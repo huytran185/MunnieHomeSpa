@@ -51,7 +51,7 @@ export const staffTable = {
 }
 export const customerTable = {
     name:{
-        title:"Name",
+        title:"Customer Name",
         name:"name",
         type:"text"
     },

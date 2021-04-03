@@ -1,12 +1,17 @@
 import React, {useState, useEffect, useRef} from 'react'
-import AddForm from '../addForm/addForm';
-import {customerConfig} from '../dataConfig';
-import {getCustomer} from '../../getData';
-import Spinner from '../../../components/UI/Spinner/Spinner';
-import DisplayTable from '../displayTable/displayTable';
-import {customerTable} from '../tableConfig';
-import Notifications from '../../../components/UI/Notifications/Notifications'
-const Voucher = ()=>{
+import AddForm from './addForm';
+import Header from '../../components/AHeader/Header'
+import {customerConfig} from './dataConfig';
+import {getCustomer} from '../getData';
+import Spinner from '../../components/UI/Spinner/Spinner';
+import DisplayTable from './displayTable';
+import {customerTable} from './tableConfig';
+import Notifications from '../../components/UI/Notifications/Notifications'
+import { Box, Typography} from '@material-ui/core'
+import useStyles from './styles.js'
+import Button from './Button.js'
+const Customer = ()=>{
+    const classes = useStyles();
     const [config,setConfig] = useState(customerConfig);
     const [status, setStatus] = useState("list");
     const [data, setData] = useState(null);
@@ -56,15 +61,19 @@ const Voucher = ()=>{
         notificationRef={notificationRef}/>
     }
     return(
-        <div>
-            <aside>
-                <div onClick={()=>setStatus("list")}>Thông tin khách hàng</div>
-                <div onClick={()=>setStatus("add")}>Thêm khách hàng</div>
-            </aside>
-            {page}
-            <Notifications ref={notificationRef}/>
+        <div className={classes.Page}>
+            <Header/>
+            <Box className={classes.Display}>
+                <Box textAlign="center">
+                        <Typography variant="h3">
+                            Customer
+                        </Typography>
+                </Box>
+                <Button setStatus={setStatus}/>
+                {page}
+                <Notifications ref={notificationRef}/>
+            </Box>
         </div>
-        
     )
 }
-export default Voucher
+export default Customer;

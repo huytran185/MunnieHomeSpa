@@ -1,9 +1,10 @@
 import React, {useEffect, useState, useRef} from 'react'
-import classes from "../Book.module.css"
-import {getStaff} from '../../../getData'
-import Search from '../../../../components/Search/Search';
-
+import useStyles from "../styles.js"
+import {getStaff} from '../../getData'
+import Search from '../../../components/Search/Search';
+import {Typography} from '@material-ui/core'
 const Staff = (props) => {
+    const classes = useStyles();
     const [data, setData] = useState(null);
     const [search, setSearch] = useState('');
     const [display, setDisplay] = useState(false);
@@ -11,7 +12,7 @@ const Staff = (props) => {
         name: ''
     })
     const wrapperRef = useRef(null);
-    const [config, setConfig] = useState({
+    const [config] = useState({
         name:{
             title:"Staff Name",
             name:"name",
@@ -67,27 +68,48 @@ const Staff = (props) => {
             staffName: name
         })
     }
-
+    const onChangeSearchHandler = (e)=>{
+        setSearch(e.target.value);
+        if(!e.target.value){
+            setSelected({name: '', phone: ''})
+            props.setInfo({
+            customerId: props.bookInfo.customerId,
+            customerName: props.bookInfo.customerName,
+            customerPhone: props.bookInfo.customerPhone,
+            customerEmail: props.bookInfo.customerEmail,
+            serviceId: props.bookInfo.serviceId,
+            serviceName: props.bookInfo.serviceName,
+            duration: props.bookInfo.duration,
+            price: props.bookInfo.price,
+            start: props.bookInfo.start,
+            staffId: '',
+            staffName: '',
+        })
+        }
+    }
     return (
-        <fieldset ref = {wrapperRef} className={classes.Search}>
+        <fieldset ref = {wrapperRef}>
             <legend>Thông tin nhân viên</legend>
-            <Search valued = {search}
-            onChanged={(e)=>setSearch(e.target.value)}
-            onClicked={()=>setDisplay(!display)}/>
-            {display && (
-                <div className={classes.SuggestContainer}>
-                    {tableArray.filter(element=>{
-                        
-                        return element["data"]["name"].toLowerCase().includes(search.toLowerCase())
-                    }).map(v=>{
-                        return <div className={classes.Suggest}
-                        key={v.id}
-                        onClick={()=>suggestSelectHandler(v["id"],v["data"]["name"])}>
-                            {v["data"]["name"]}
-                        </div>
-                    })}
-                </div>)}
-            <div className={classes.Info}>Tên nhân viên: {selected["name"]}</div>
+            <div className={classes.Search}>
+                <Search valued = {search}
+                placeholder ="Nhập tên nhân viên"
+                onChanged={(e)=>onChangeSearchHandler(e)}
+                onClicked={()=>setDisplay(!display)}/>
+                {display && (
+                    <div className={classes.SuggestContainer}>
+                        {tableArray.filter(element=>{
+                            
+                            return element["data"]["name"].toLowerCase().includes(search.toLowerCase())
+                        }).map(v=>{
+                            return <div className={classes.Suggest}
+                            key={v.id}
+                            onClick={()=>suggestSelectHandler(v["id"],v["data"]["name"])}>
+                                {v["data"]["name"]}
+                            </div>
+                        })}
+                    </div>)}
+            </div>
+            <Typography variant="body1" display="block" className={classes.Info}>Tên nhân viên: {selected["name"]}</Typography>
         </fieldset>
     )
 }

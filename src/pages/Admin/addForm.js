@@ -1,12 +1,11 @@
 import React, {useState} from 'react'
-import classes from '../Admin.module.css';
-import Input from '../../../components/UI/Input/Input';
-import Spinner from '../../../components/UI/Spinner/Spinner';
-import {inputChangedHandler, submitHandler} from '../../InputHandler';
-import Notifications from '../../../components/UI/Notifications/Notifications'
-
+import Input from '../../components/UI/Input/Input';
+import Spinner from '../../components/UI/Spinner/Spinner';
+import {inputChangedHandler, submitHandler} from '../InputHandler';
+import Notifications from '../../components/UI/Notifications/Notifications'
+import {Box} from '@material-ui/core';
 const AddForm = (props)=>{
-
+    
     const [formIsValid, setFormIsValid] = useState(false)
     const [loading, setLoading] = useState(false);
     const formArray =[];
@@ -17,7 +16,6 @@ const AddForm = (props)=>{
             
         });
     }
-    
     let displayForm = (
         <form onSubmit={(event)=>submitHandler(event,setLoading, props.config, props.formType,props.currentID, props.notificationRef,props.cancel)}>
             {formArray.map(element=>(
@@ -40,13 +38,11 @@ const AddForm = (props)=>{
         displayForm = <Spinner/>;
     }
     return(
-        <div className={classes.FormContainer}>
-            <div className={classes.Title1}>{props.title}</div>
-            <div className={classes.Form}>
+        <Box component="div">
+            {/* <Box component="div" >{props.title}</Box> */}
                 {displayForm}
-            </div>
             <Notifications ref={props.notificationRef}/>
-        </div>
+        </Box>
     )
 }
 

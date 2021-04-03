@@ -5,7 +5,7 @@ export const voucherConfig= {
         elementConfig: {
             type:'text',
             name: 'link',
-            placeholder: 'Link to Facebook...'
+            label: 'Facebook Link'
         },
         value: '',
         validation:{
@@ -35,7 +35,7 @@ export const serviceConfig = {
         elementConfig: {
             type:'text',
             name: 'name',
-            placeholder: 'New Service Name...'
+            label: 'Service Name'
         },
         value: '',
         validation:{
@@ -51,7 +51,7 @@ export const serviceConfig = {
         elementConfig: {
             type:'text',
             name: 'english',
-            placeholder: 'Service English Name...'
+            label: 'English Name'
         },
         value: '',
         validation:{
@@ -83,7 +83,7 @@ export const serviceConfig = {
         elementConfig:{
             type:'textarea',
             name: 'des',
-            placeholder: 'Service Description...',
+            placeholder: 'Service Description',
             rows: 4,
             cols: 50,
         },
@@ -100,7 +100,7 @@ export const serviceConfig = {
         elementConfig: {
             type:'text',
             name: 'time',
-            placeholder: 'Service Duration ...'
+            label: 'Service Duration'
         },
         value: '',
         validation:{
@@ -116,7 +116,7 @@ export const serviceConfig = {
         elementConfig: {
             type:'text',
             name: 'price',
-            placeholder: 'Service Price ...'
+            label: 'Service Price'
         },
         value: '',
         validation:{
@@ -132,7 +132,7 @@ export const serviceConfig = {
         elementConfig: {
             type:'text',
             name: 'rank',
-            placeholder: 'Service Rank ...'
+            label: 'Service Rank'
         },
         value: '',
         validation:{
@@ -162,7 +162,7 @@ export const customerConfig = {
         elementConfig:{
             type: 'text',
             name: 'name',
-            placeholder: 'New Customer Name...'
+            label: 'Customer Name'
         },
         value: '',
         validation:{
@@ -178,7 +178,7 @@ export const customerConfig = {
         elementConfig:{
             type: 'text',
             name: 'phone',
-            placeholder: 'Customer Phone Number...'
+            label: 'Phone Number'
         },
         value: '',
         validation:{
@@ -194,7 +194,8 @@ export const customerConfig = {
         elementConfig:{
             type: 'text',
             name: 'dob',
-            placeholder: 'Date of Birth: dd/mm/yyyy'
+            label: 'Date of Birth',
+            placeholder: 'dd/mm/yyyy',
         },
         value:'',
         validation:{
@@ -210,7 +211,7 @@ export const customerConfig = {
         elementConfig:{
             type:'text',
             name: 'email',
-            placeholder:'Customer Email...'
+            label:'Customer Email'
         },
         value: '',
         validation:{
@@ -226,7 +227,7 @@ export const customerConfig = {
         elementConfig:{
             type:'text',
             name: 'facebook',
-            placeholder:'Customer Facebook...'
+            label:'Customer Facebook'
         },
         value: '',
         validation:{
@@ -269,7 +270,7 @@ export const typeConfig = {
         elementConfig: {
             type:'text',
             name: 'name',
-            placeholder: 'New Type ID...'
+            label: 'Type ID'
         },
         value: '',
         validation:{
@@ -285,7 +286,7 @@ export const typeConfig = {
         elementConfig: {
             type:'text',
             name: 'name',
-            placeholder: 'New Type Name...'
+            label: 'Type Name'
         },
         value: '',
         validation:{
@@ -303,7 +304,7 @@ export const staffConfig = {
         elementConfig:{
             type: 'text',
             name: 'name',
-            placeholder: 'New Staff Name...'
+            label: 'Staff Name'
         },
         value: '',
         validation:{
@@ -319,7 +320,7 @@ export const staffConfig = {
         elementConfig:{
             type: 'text',
             name: 'phone',
-            placeholder: 'Staff Phone Number...'
+            label: 'Phone Number'
         },
         value: '',
         validation:{
@@ -335,7 +336,8 @@ export const staffConfig = {
         elementConfig:{
             type: 'text',
             name: 'dob',
-            placeholder: 'Date of Birth: dd/mm/yyyy'
+            label: 'Date of Birth',
+            placeholder: 'dd/mm/yyyy'
         },
         value:'',
         validation:{
@@ -351,7 +353,7 @@ export const staffConfig = {
         elementConfig:{
             type:'text',
             name: 'email',
-            placeholder:'Staff Email...'
+            label:'Staff Email'
         },
         value: '',
         validation:{
@@ -367,7 +369,7 @@ export const staffConfig = {
         elementConfig:{
             type:'text',
             name: 'position',
-            placeholder:'Staff Position...'
+            label:'Staff Position'
         },
         value:'',
         validation:{
@@ -383,7 +385,7 @@ export const staffConfig = {
         elementConfig:{
             type:'text',
             name:'commission rate',
-            placeholder: 'Commission Rate...'
+            label: 'Commission Rate',
         },
         value: '',
         validation:{
@@ -392,14 +394,14 @@ export const staffConfig = {
         },
         valid: false,
         touched:false,
-        errorMess: 'Please input the Commission Rate'
+        errorMess: 'Commission Rate Format: X%'
     },
     salary:{
         elementType:'text',
         elementConfig:{
             type:'text',
             name:'Salary',
-            placeholder: 'Salary...'
+            label: 'Salary'
         },
         value: '',
         validation:{
@@ -408,6 +410,6 @@ export const staffConfig = {
         },
         valid: false,
         touched:false,
-        errorMess: 'Please input the Salary'
+        errorMess: 'Salary must have VND'
     }
 }

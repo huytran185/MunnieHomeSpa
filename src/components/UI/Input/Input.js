@@ -1,7 +1,11 @@
 import React from 'react';
-import classes from './Input.module.css';
-import Aux from '../../../hoc/Auxulliary'
-const input = (props)=>{
+import useStyle from './styles';
+import Aux from '../../../hoc/Auxulliary';
+import {TextField} from '@material-ui/core';
+
+
+const Input = (props)=>{
+    const classes = useStyle();
     let inputElement = null;
     let errorMess = null;
     const inputClasses = [classes.InputElement]
@@ -13,7 +17,7 @@ const input = (props)=>{
         case('text'):
             inputElement = (
             <div className={classes.Input}>
-                <input
+                <TextField label="test" variant="outlined"
                 className={inputClasses.join(' ')}
                 {...props.elementConfig} 
                 value={props.value}
@@ -79,4 +83,4 @@ const input = (props)=>{
             
     )
 }
-export default input;
+export default Input;
