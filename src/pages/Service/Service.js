@@ -6,65 +6,82 @@ import Aux from '../../hoc/Auxulliary';
 import ServiceItem from './ServiceItem/ServiceItem';
 import Type from './Type/Type';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import {getType, getService} from '../getData';
-const Service =()=>{
-    const [types, setType] = useState(null);
-    const [services, setServices] = useState(null);
+import { useDispatch, useSelector } from 'react-redux'
+import {getService} from '../../actions/service';
+import {getType, selectType} from '../../actions/type';
 
-    
+const Service =()=>{
+    const serviceList = useSelector(state=>state.service.list);
+    const serviceLoading = useSelector(state=>state.service.loading);
+    const serviceError = useSelector(state=>state.service.error);
+    const typeList = useSelector(state=>state.type.list);
+    const typeLoading = useSelector(state=>state.type.loading);
+    const typeError = useSelector(state=>state.type.error);
+    const dispatch = useDispatch();
     //get data from firebase using firebase npm
     useEffect(() => {
-        getType(setType);
-        getService(setServices)
+        if(Object.keys(serviceList).length === 0){
+            dispatch(getService())
+        }
+        if(Object.keys(typeList).length === 0){
+            dispatch(getType())
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     //choose Type and display Service
-    const chooseTypeHandler = (e, index, id)=>{
-        let newTypes = {...types};
+    const chooseTypeHandler = (index)=>{
+        let newTypes = {...typeList};
         Object.values(newTypes).map(type=>(type.under = false));
         newTypes[index].under = true;
-        setType({...newTypes});
+        dispatch(selectType(newTypes));
     }
-
+    console.log(serviceList)
     //display Spinner and choose type and services
     let servicePage = <Spinner/>
-    if(services && types){
+    if(!serviceLoading && !typeLoading){
         let chosenType = null;
-        Object.values(types).find(type=>{
+        Object.values(typeList).find(type=>{
             if(type.under === true){
                 chosenType = type.id;
                 return chosenType;
             }
             return null;
         })
+        let typeDisplay = [];
+        for(let key in typeList){
+            typeDisplay.push(
+                <Type
+                id={typeList[key].data}
+                key={key}
+                name={typeList[key].name}
+                under={typeList[key].under}
+                clicked= {()=>chooseTypeHandler(key)}
+                />
+            )
+        }
+        let serviceDisplay = [];
+        for(let key in serviceList){
+            if(serviceList[key]['type'] === chosenType){
+                serviceDisplay.push(
+                    <ServiceItem
+                    key = {key}
+                    service = {serviceList[key]['name']}
+                    image = {serviceList[key]['image']}
+                    des = {serviceList[key]['des']}
+                    english = {serviceList[key]['english']}
+                    time = {serviceList[key]['time']}
+                    price = {serviceList[key]['price']}
+                    />
+                )
+            }
+        }
         servicePage = (
             <div>
                 <div className={classes.TypeList}>
-                    {Object.values(types).map((type,index)=>{
-                        return <Type
-                        id={type.id}
-                        key={type.id}
-                        name={type.name}
-                        under={type.under}
-                        clicked= {(e)=>chooseTypeHandler(e,index, type.id)}
-                        />
-                    })}
+                    {typeDisplay}
                 </div>
                 <div className = {classes.ServiceList}>
-                    {Object.values(services).map((service, index)=>{
-                        let data = null;
-                        if(service.type === chosenType){
-                            data = <ServiceItem 
-                        key = {index}
-                        service ={service.name}
-                        image = {service.image}
-                        des = {service.des}
-                        english = {service.english}
-                        time = {service.time}
-                        price = {service.price}
-                        />
-                        }
-                        return data;
-                    })}
+                    {serviceDisplay}
                 </div>
             </div>
         )

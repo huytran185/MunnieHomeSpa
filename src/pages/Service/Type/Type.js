@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './Type.module.css';
-
+import PropTypes from 'prop-types';
 const Type = (props)=>{
     return(
         <div 
@@ -11,5 +11,12 @@ const Type = (props)=>{
             {props.name}
         </div>
     )
+}
+
+Type.propTypes={
+    id: PropTypes.string,
+    name: PropTypes.string,
+    under: PropTypes.bool,
+    clicked: PropTypes.func,
 }
 export default Type;

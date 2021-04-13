@@ -32,14 +32,19 @@ export const getVoucher = (setVouchers)=>{
 //get Staff from Firebase
 export const getStaff = (setStaff)=>{
     firebase.database().ref("staff").on("value", snapshot=>{
-        if(snapshot.val()!=null)
-            setStaff({...snapshot.val()})
-        })
-}
+        let list = []
+        snapshot.forEach(snap=>{
+            list.push(snap.val())
+        });
+        // setStaff(list);
+        setStaff(list);
+})};
 //get Customer from Firebase
-export const getCustomer = (setCustomer)=>{
+export const getCustomer = async(setCustomer)=>{
     firebase.database().ref("customer").on("value", snapshot=>{
-        if(snapshot.val()!=null)
-            setCustomer({...snapshot.val()})
-        })
-}
+        let list = []
+        snapshot.forEach(snap=>{
+            list.push(snap.val());
+        });
+        setCustomer(list);
+})}

@@ -53,11 +53,10 @@ export const submitHandler = async (event, setLoading, form, type,currentID, not
                     snapshot=>{},
                     error=>{
                         setLoading(false);
-                        console.log(error);
+                        notification.current.createNotification('error', 'Không thể đăng hình ảnh')
                     },()=>{
                         storage.ref().child(image.name).getDownloadURL()
                             .then(url=>{
-                                setLoading(false);
                                 resolve(url);
                             })
                     }
@@ -90,13 +89,13 @@ const uploadHandler = (formData, setLoading, type, currentID, notification, canc
             firebase.database().ref().child(type + '/'+ currentID).set(
                 formData,(error)=>{
                     if(error){
-                    setLoading(false);
-                    notification.current.createNotification('error', 'Không thể thay đổi thông tin')
-                }else{
-                    setLoading(false);
-                    notification.current.createNotification('success', 'Thay đổi thông tin thành công');
-                    cancel('list');
-                }
+                        setLoading(false);
+                        notification.current.createNotification('error', 'Không thể thay đổi thông tin')
+                    }else{
+                        setLoading(false);
+                        notification.current.createNotification('success', 'Thay đổi thông tin thành công');
+                        cancel('list');
+                    }
                 }
             )
         }else{
@@ -114,14 +113,14 @@ const uploadHandler = (formData, setLoading, type, currentID, notification, canc
         )
         }
     }
-export const deleteHandler=(id, type, notification)=>{
-    firebase.database().ref().child(type+'/'+id).remove(
-        error =>{
-            if(error){
-                    notification.current.createNotification('error', 'Không thể xoá thông tin')
-            }else{
-                    notification.current.createNotification('success', 'Xoá thông tin thành công')
-            }
-        }
-    )
-}
+// export const deleteHandler=(id, type, notification)=>{
+//     firebase.database().ref().child(type+'/'+id).remove(
+//         error =>{
+//             if(error){
+//                     notification.current.createNotification('error', 'Không thể xoá thông tin')
+//             }else{
+//                     notification.current.createNotification('success', 'Xoá thông tin thành công')
+//             }
+//         }
+//     )
+// }

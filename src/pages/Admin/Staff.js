@@ -2,34 +2,41 @@ import React, {useState,useEffect, useRef} from 'react'
 import AddForm from './addForm';
 import Header from '../../components/AHeader/Header'
 import {staffConfig} from './dataConfig';
-import {getStaff} from '../getData';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import DisplayTable from './displayTable';
 import {staffTable} from './tableConfig';
 import Notifications from '../../components/UI/Notifications/Notifications'
 import {Typography, Box} from '@material-ui/core'
 import Button from './Button.js'
-import useStyles from './styles.js'
+import useStyles from './styles.js';
+import { useDispatch, useSelector } from 'react-redux';
+import {getStaff} from '../../actions/staff';
 const Staff = ()=>{
     const classes = useStyles();
     const [config,setConfig] = useState(staffConfig);
     const [status, setStatus] = useState("list");
-    const [data, setData] = useState(null);
+    // const [data, setData] = useState(null);
     const [editItem, setEditItem]= useState(null);
     const [currentID, setCurrentId] = useState(null)
     const notificationRef = useRef();
+    const staffList = useSelector(state=>state.staff.list);
+    const staffLoading = useSelector(state=>state.staff.loading);
+    const staffError = useSelector(state=>state.staff.error);
+    const dispatch = useDispatch();
     useEffect(()=>{
-        getStaff(setData);
+        if(Object.keys(staffList).length === 0){
+            dispatch(getStaff())
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     useEffect(()=>{
         setConfig(staffConfig);
     }, [status])
-
     const editHandler =(id)=>{
         let newConfig = JSON.parse(JSON.stringify(config));
 
         for(let key in newConfig){
-            newConfig[key]["value"] = data[id][key];
+            newConfig[key]["value"] = staffList[id][key];
         }
         setEditItem(newConfig);
         setCurrentId(id)
@@ -38,12 +45,13 @@ const Staff = ()=>{
     }
 
     let page = <Spinner/>;
-    if(status === "list" && data){
+    if(status === "list" && !staffLoading){
         page = <DisplayTable 
         type="staff"
-        data={data} 
+        data={staffList} 
         config={staffTable}
-        setId = {editHandler}/>
+        setId = {editHandler}
+        notificationRef={notificationRef}/>
     }
     if(status === "edit"){
         page = <AddForm formType = "staff"
@@ -68,10 +76,12 @@ const Staff = ()=>{
             <Box className={classes.Display}>
                 <Box textAlign="center">
                     <Typography variant="h3">
-                        Customer
+                        Staff
                     </Typography>
                 </Box>
-                <Button setStatus={setStatus}/>
+                <Button setStatus={setStatus} 
+                status={status}
+                name='Staff'/>
                 {page}
                 <Notifications ref={notificationRef}/>
             </Box>

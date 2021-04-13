@@ -1,13 +1,18 @@
 import React, {useEffect, useState, useRef} from 'react'
 import useStyles from "../styles.js"
-import {getCustomer} from '../../getData'
 import Search from '../../../components/Search/Search';
 import {Typography} from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import {getCustomer} from '../../../actions/customer';
 const Customer = (props) => {
     const classes = useStyles();
-    const [data, setData] = useState(null);
+    // const [data, setData] = useState(null);
     const [search, setSearch] = useState('');
     const [display, setDisplay] = useState(false);
+    const customerList = useSelector(state=>state.customer.list);
+    const customerLoading = useSelector(state=>state.customer.loading);
+    const customerError = useSelector(state=>state.customer.error);
+    const dispatch = useDispatch();
     const [selected, setSelected] = useState({
         name: '', phone: ''
     })
@@ -31,7 +36,10 @@ const Customer = (props) => {
     })
 
     useEffect(()=>{
-        getCustomer(setData);
+        if(Object.keys(customerList).length === 0){
+            dispatch(getCustomer())
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     
     useEffect(()=>{
@@ -48,11 +56,11 @@ const Customer = (props) => {
     }
 
     let tableArray = [];
-        if(data){
-            for(let el in data){
+        if(!customerLoading){
+            for(let el in customerList){
                 let content={};
                 for(let key in config){
-                    content[config[key]["name"]]= data[el][config[key]["name"]]
+                    content[config[key]["name"]]= customerList[el][config[key]["name"]]
                 }
                 tableArray.push({
                     id: el,
@@ -66,17 +74,11 @@ const Customer = (props) => {
         setDisplay(!display);
         setSelected({name: name, phone: phone})
         props.setInfo({
-            customerId:id, 
-            customerName:name,
-            customerPhone:phone,
-            customerEmail:email,
-            serviceId: props.bookInfo.serviceId,
-            serviceName: props.bookInfo.serviceName,
-            duration: props.bookInfo.duration,
-            price: props.bookInfo.price,
-            start: props.bookInfo.start,
-            staffId: props.bookInfo.staffId,
-            staffName: props.bookInfo.staffName,
+            ...props.bookInfo,
+            customerId:{value:id}, 
+            customerName:{value:name},
+            customerPhone:{value:phone},
+            customerEmail:{value:email},
         })
     }
     const onChangeSearchHandler = (e)=>{
@@ -84,17 +86,11 @@ const Customer = (props) => {
         if(!e.target.value){
             setSelected({name: '', phone: ''})
             props.setInfo({
-            customerId:'', 
-            customerName:'',
-            customerPhone:'',
-            customerEmail:'',
-            serviceId: props.bookInfo.serviceId,
-            serviceName: props.bookInfo.serviceName,
-            duration: props.bookInfo.duration,
-            price: props.bookInfo.price,
-            start: props.bookInfo.start,
-            staffId: props.bookInfo.staffId,
-            staffName: props.bookInfo.staffName,
+                ...props.bookInfo,
+                customerId:'', 
+                customerName:'',
+                customerPhone:'',
+                customerEmail:'',
         })
         }
     }

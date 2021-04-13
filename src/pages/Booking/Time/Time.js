@@ -20,17 +20,8 @@ const Time = (props) => {
     // const [time,setTime] = useState();
     const selectTimeHandler = (time)=>{
       props.setInfo({
-        customerId: props.bookInfo.customerId,
-        customerName: props.bookInfo.customerName,
-        customerPhone: props.bookInfo.customerPhone,
-        customerEmail: props.bookInfo.customerEmail,
-        serviceId: props.bookInfo.serviceId,
-        serviceName: props.bookInfo.serviceName,
-        duration: props.bookInfo.duration,
-        price: props.bookInfo.price,
-        start: time,
-        staffId: props.bookInfo.staffId,
-        staffName: props.bookInfo.staffName,
+        ...props.bookInfo,
+        start: {value:time},
       })
     }
     return (

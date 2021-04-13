@@ -32,6 +32,9 @@ const useStyle = makeStyles({
             color: '#ccc',
             cursor:'not-allowed!important'
         },
+    },
+    Capitalize:{
+        textTransform: 'capitalize',
     }
 });
 export default useStyle;

@@ -4,29 +4,46 @@ import Button from '../../../components/UI/Button/Button';
 import Service from './Service/Service';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import {Link} from 'react-router-dom';
-import {getService} from '../../getData';
+import { useDispatch, useSelector } from 'react-redux'
+import {getService} from '../../../actions/service';
+
 const Services = () =>{
-    const [services, setService] = useState(null);
+    const list = useSelector(state=>state.service.list);
+    const loading = useSelector(state=>state.service.loading);
+    const error = useSelector(state=>state.service.error);
+    if(error){
+        console.log(error);
+    }
+    console.log(list);
+    const dispatch = useDispatch();
     useEffect(()=>{
-        getService(setService);
+        if(Object.keys(list).length === 0){
+            dispatch(getService())
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     let display = <Spinner/>;
-    if(services){
-        console.log(services)
-        display = (<div className={classes.Service}>
-            {Object.values(services).slice(0,3).map((service, index)=>{
-                return <Service 
-                    key = {index}
-                    service ={service.name}
-                    image = {service.image}
-                    eng = {service.english}
-                    time = {service.time}
-                    price = {service.price}
-            />
-            })}
-            </div>
+    if(!loading){
+        let serviceDisplay = [];
+        for(let key in list){
+            serviceDisplay.push(
+                <Service
+                    key = {key}
+                    service ={list[key].name}
+                    image = {list[key].image}
+                    eng = {list[key].english}
+                    time = {list[key].time}
+                    price = {list[key].price}
+                />
+            )
+        }
+    display = (
+        <div className={classes.Service}>
+            {serviceDisplay.slice(0,3)}
+        </div>
         )
     }
+
         return(
             <div className={classes.Services}>
                 <div className={classes.Title}>

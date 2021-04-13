@@ -2,7 +2,6 @@ import React, {useState, useEffect, useRef} from 'react'
 import AddForm from './addForm';
 import Header from '../../components/AHeader/Header'
 import {customerConfig} from './dataConfig';
-import {getCustomer} from '../getData';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import DisplayTable from './displayTable';
 import {customerTable} from './tableConfig';
@@ -10,16 +9,25 @@ import Notifications from '../../components/UI/Notifications/Notifications'
 import { Box, Typography} from '@material-ui/core'
 import useStyles from './styles.js'
 import Button from './Button.js'
+import { useDispatch, useSelector } from 'react-redux';
+import {getCustomer} from '../../actions/customer';
 const Customer = ()=>{
     const classes = useStyles();
     const [config,setConfig] = useState(customerConfig);
     const [status, setStatus] = useState("list");
-    const [data, setData] = useState(null);
     const [editItem, setEditItem]= useState(null);
     const [currentID, setCurrentId] = useState(null)
     const notificationRef = useRef();
+    const customerList = useSelector(state=>state.customer.list);
+    const customerLoading = useSelector(state=>state.customer.loading);
+    const customerError = useSelector(state=>state.customer.error);
+    const dispatch = useDispatch();
     useEffect(()=>{
-        getCustomer(setData);
+        // getCustomer(setData);
+        if(Object.keys(customerList).length === 0){
+            dispatch(getCustomer())
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     useEffect(()=>{
         setConfig(customerConfig);
@@ -28,7 +36,7 @@ const Customer = ()=>{
     const editHandler =(id)=>{
         let newConfig = JSON.parse(JSON.stringify(config));
         for(let key in newConfig){
-            newConfig[key]["value"] = data[id][key];
+            newConfig[key]["value"] = customerList[id][key];
         }
         setEditItem(newConfig);
         setCurrentId(id)
@@ -36,12 +44,13 @@ const Customer = ()=>{
     }
 
     let page = <Spinner/>;
-    if(status === "list" && data){
+    if(status === "list" && !customerLoading){
         page = <DisplayTable 
-        data={data} 
+        data={customerList} 
         config ={customerTable} 
         type="customer"
-        setId = {editHandler}/>
+        setId = {editHandler}
+        notificationRef={notificationRef}/>
     }
     if(status === "edit"){
         page = <AddForm formType = "customer"
@@ -69,7 +78,9 @@ const Customer = ()=>{
                             Customer
                         </Typography>
                 </Box>
-                <Button setStatus={setStatus}/>
+                <Button setStatus={setStatus} 
+                status={status}
+                name='Customer'/>
                 {page}
                 <Notifications ref={notificationRef}/>
             </Box>

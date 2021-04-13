@@ -1,17 +1,22 @@
 import React, {useEffect, useState, useRef} from 'react'
 import useStyles from "../styles.js"
-import {getStaff} from '../../getData'
 import Search from '../../../components/Search/Search';
 import {Typography} from '@material-ui/core'
+import { useDispatch, useSelector } from 'react-redux';
+import {getStaff} from '../../../actions/staff';
 const Staff = (props) => {
     const classes = useStyles();
-    const [data, setData] = useState(null);
+    // const [data, setData] = useState(null);
     const [search, setSearch] = useState('');
     const [display, setDisplay] = useState(false);
     const [selected, setSelected] = useState({
         name: ''
     })
     const wrapperRef = useRef(null);
+    const staffList = useSelector(state=>state.staff.list);
+    const staffLoading = useSelector(state=>state.staff.loading);
+    const staffError = useSelector(state=>state.staff.error);
+    const dispatch = useDispatch();
     const [config] = useState({
         name:{
             title:"Staff Name",
@@ -21,7 +26,10 @@ const Staff = (props) => {
     })
 
     useEffect(()=>{
-        getStaff(setData);
+        if(Object.keys(staffList).length === 0){
+            dispatch(getStaff())
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     useEffect(()=>{
@@ -38,11 +46,11 @@ const Staff = (props) => {
     }
 
     let tableArray = [];
-        if(data){
-            for(let el in data){
+        if(!staffLoading){
+            for(let el in staffList){
                 let content={};
                 for(let key in config){
-                    content[config[key]["name"]]= data[el][config[key]["name"]]
+                    content[config[key]["name"]]= staffList[el][config[key]["name"]]
                 }
                 tableArray.push({
                     id: el,
@@ -55,17 +63,9 @@ const Staff = (props) => {
         setDisplay(!display);
         setSelected({name: name});
         props.setInfo({
-            customerId: props.bookInfo.customerId,
-            customerName: props.bookInfo.customerName,
-            customerPhone: props.bookInfo.customerPhone,
-            customerEmail: props.bookInfo.customerEmail,
-            serviceId: props.bookInfo.serviceId,
-            serviceName: props.bookInfo.serviceName,
-            duration: props.bookInfo.duration,
-            price: props.bookInfo.price,
-            start: props.bookInfo.start,
-            staffId:id,
-            staffName: name
+            ...props.bookInfo,
+            staffId:{value:id},
+            staffName: {value:name}
         })
     }
     const onChangeSearchHandler = (e)=>{
@@ -73,17 +73,9 @@ const Staff = (props) => {
         if(!e.target.value){
             setSelected({name: '', phone: ''})
             props.setInfo({
-            customerId: props.bookInfo.customerId,
-            customerName: props.bookInfo.customerName,
-            customerPhone: props.bookInfo.customerPhone,
-            customerEmail: props.bookInfo.customerEmail,
-            serviceId: props.bookInfo.serviceId,
-            serviceName: props.bookInfo.serviceName,
-            duration: props.bookInfo.duration,
-            price: props.bookInfo.price,
-            start: props.bookInfo.start,
-            staffId: '',
-            staffName: '',
+                ...props.bookInfo,
+                staffId: '',
+                staffName: '',
         })
         }
     }

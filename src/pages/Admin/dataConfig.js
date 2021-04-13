@@ -65,11 +65,7 @@ export const serviceConfig = {
     type:{
         elementType: 'select',
         elementConfig:{
-            options:[
-                {value:'', display:'Please select Service Type'},
-                {value:'facial', display:'Facial Skincare'},
-                {value: 'shampoo', display:'Shampoo and Eyelash Extensions'}
-            ]
+            options:[]
         },
         value: '',
         validation:{

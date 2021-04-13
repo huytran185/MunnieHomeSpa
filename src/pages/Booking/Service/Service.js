@@ -1,14 +1,19 @@
 import React, {useState, useEffect,useRef} from 'react'
 import Search from '../../../components/Search/Search';
-import {getService} from '../../getData'
 import useStyles from '../styles.js';
 import {Typography} from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import {getService} from '../../../actions/service';
 const Service = (props) => {
     const classes = useStyles();
-    const [data, setData] = useState(null);
+    // const [data, setData] = useState(null);
     const [search, setSearch] = useState('');
     const [display, setDisplay] = useState(false);
     const wrapperRef = useRef(null);
+    const serviceList = useSelector(state=>state.service.list);
+    const serviceLoading = useSelector(state=>state.service.loading);
+    const serviceError = useSelector(state=>state.service.error);
+    const dispatch = useDispatch();
     const [selected, setSelected] = useState({
         name:'',
         time:'',
@@ -33,7 +38,10 @@ const Service = (props) => {
         },
     })
     useEffect(()=>{
-        getService(setData);
+        if(Object.keys(serviceList).length === 0){
+            dispatch(getService())
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     useEffect(()=>{
@@ -49,11 +57,11 @@ const Service = (props) => {
         }
     }
     let tableArray = [];
-        if(data){
-            for(let el in data){
+        if(!serviceLoading){
+            for(let el in serviceList){
                 let content={};
                 for(let key in config){
-                    content[config[key]["name"]]= data[el][config[key]["name"]]
+                    content[config[key]["name"]]= serviceList[el][config[key]["name"]]
                 }
                 tableArray.push({
                     id: el,
@@ -67,17 +75,11 @@ const Service = (props) => {
         setDisplay(!display);
         setSelected({name: name, time: time, price: price})
         props.setInfo({
-            customerId: props.bookInfo.customerId,
-            customerName: props.bookInfo.customerName,
-            customerPhone: props.bookInfo.customerPhone,
-            customerEmail: props.bookInfo.customerEmail,
-            serviceId: id, 
-            serviceName: name, 
-            duration: time, 
-            price: price,
-            start: props.bookInfo.start,
-            staffId: props.bookInfo.staffId,
-            staffName: props.bookInfo.staffName,
+            ...props.bookInfo,
+            serviceId: {value:id}, 
+            serviceName: {value:name}, 
+            duration: {value:time}, 
+            price: {value:price},
         })
     }
     const onChangeSearchHandler = (e)=>{
@@ -85,17 +87,11 @@ const Service = (props) => {
         if(!e.target.value){
             setSelected({name: '', phone: ''})
             props.setInfo({
-            customerId: props.bookInfo.customerId,
-            customerName: props.bookInfo.customerName,
-            customerPhone: props.bookInfo.customerPhone,
-            customerEmail: props.bookInfo.customerEmail,
-            serviceId: '',
-            serviceName: '',
-            duration: '',
-            price: '',
-            start: props.bookInfo.start,
-            staffId: props.bookInfo.staffId,
-            staffName: props.bookInfo.staffName,
+                ...props.bookInfo,
+                serviceId: '',
+                serviceName: '',
+                duration: '',
+                price: '',
         })
         }
     }

@@ -2,7 +2,6 @@ import React, {useState, useEffect,useRef} from 'react'
 import AddForm from './addForm';
 import Header from '../../components/AHeader/Header'
 import {voucherConfig} from './dataConfig';
-import {getVoucher} from '../getData';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import DisplayTable from './displayTable';
 import {voucherTable} from './tableConfig';
@@ -10,16 +9,24 @@ import Notifications from '../../components/UI/Notifications/Notifications'
 import {Typography, Box} from '@material-ui/core'
 import Button from './Button.js'
 import useStyles from './styles.js'
+import { useDispatch, useSelector } from 'react-redux';
+import {getVoucher} from '../../actions/voucher';
 const Voucher = ()=>{
     const classes = useStyles();
     const [config,setConfig] = useState(voucherConfig);
     const [status, setStatus] = useState("list");
-    const [data, setData] = useState(null);
+    // const [data, setData] = useState(null);
     const [editItem, setEditItem]= useState(null);
     const [currentID, setCurrentId] = useState(null)
     const notificationRef = useRef();
+    const voucherList = useSelector(state=>state.voucher.list);
+    const voucherLoading = useSelector(state=>state.voucher.loading);
+    const voucherError = useSelector(state=>state.voucher.error);
+    const dispatch = useDispatch();
     useEffect(()=>{
-        getVoucher(setData);
+        if(Object.keys(voucherList).length === 0){
+            dispatch(getVoucher())
+        }
     }, [])
     useEffect(()=>{
         setConfig(voucherConfig);
@@ -28,7 +35,7 @@ const Voucher = ()=>{
     const editHandler =(id)=>{
         let newConfig = JSON.parse(JSON.stringify(config));
         for(let key in newConfig){
-            newConfig[key]["value"] = data[id][key];
+            newConfig[key]["value"] = voucherList[id][key];
         }
         setEditItem(newConfig);
         setCurrentId(id)
@@ -36,12 +43,13 @@ const Voucher = ()=>{
     }
 
     let page = <Spinner/>;
-    if(status === "list" && data){
+    if(status === "list" && !voucherLoading){
         page = <DisplayTable 
-        data={data} 
+        data={voucherList} 
         config={voucherTable} 
         type="voucher"
-        setId = {editHandler}/>
+        setId = {editHandler}
+        notificationRef={notificationRef}/>
     }
     if(status === "edit"){
         page = <AddForm formType = "voucher"
@@ -69,7 +77,9 @@ const Voucher = ()=>{
                         Voucher
                     </Typography>
                 </Box>
-                <Button setStatus={setStatus}/>
+                <Button setStatus={setStatus} 
+                status={status}
+                name='Voucher'/>
                 {page}
                 <Notifications ref={notificationRef}/>
             </Box>

@@ -13,6 +13,9 @@ const Input = (props)=>{
         inputClasses.push(classes.Invalid);
         errorMess = <p>{props.errorMess}</p>
     }
+    if(props.elementType === 'select'){
+        inputClasses.push(classes.Capitalize);
+    }
     switch(props.elementType){
         case('text'):
             inputElement = (
@@ -45,7 +48,7 @@ const Input = (props)=>{
                     onChange={props.changed}>
                         {props.elementConfig.options.map(option=>(
                             <option key={option.value} 
-                            value={option.value}>
+                            value={option.value} className={classes.Capitalize}>
                                 {option.display}
                             </option>
                         ))}

@@ -1,13 +1,19 @@
 import React, {useState} from 'react'
 import Input from '../../components/UI/Input/Input';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import {inputChangedHandler, submitHandler} from '../InputHandler';
+import {inputChangedHandler} from '../InputHandler';
 import Notifications from '../../components/UI/Notifications/Notifications'
 import {Box} from '@material-ui/core';
+import {useDispatch} from 'react-redux';
+import {postService, editService} from '../../actions/service';
+import {postType, editType} from '../../actions/type';
+import {postVoucher, editVoucher} from '../../actions/voucher';
+import {postCustomer, editCustomer} from '../../actions/customer';
+import {postStaff, editStaff} from '../../actions/staff';
 const AddForm = (props)=>{
     
     const [formIsValid, setFormIsValid] = useState(false)
-    const [loading, setLoading] = useState(false);
+    const [loading] = useState(false);
     const formArray =[];
     for(let key in props.config){
         formArray.push({
@@ -16,8 +22,58 @@ const AddForm = (props)=>{
             
         });
     }
+    const dispatch = useDispatch();
+    const submitHandler= (event, form, type,currentID, notification, cancel)=>{
+        event.preventDefault();
+        switch(type){
+            case 'service':
+                if(currentID){
+                    dispatch(editService(currentID, form, type, notification, cancel))
+                }
+                else{
+                    dispatch(postService(form, type, notification,cancel))
+                }
+            break;
+            case 'type':
+                if(currentID){
+                    dispatch(editType(currentID, form, type, notification, cancel))
+                }
+                else{
+                    dispatch(postType(form, type, notification,cancel))
+                }
+            break;
+            case 'voucher':
+                if(currentID){
+                    console.log('test');
+                    dispatch(editVoucher(currentID, form, type, notification, cancel))
+                }
+                else{
+                    dispatch(postVoucher(form, type, notification,cancel))
+                }
+            break;
+            case 'customer':
+                if(currentID){
+                    console.log('test');
+                    dispatch(editCustomer(currentID, form, type, notification, cancel))
+                }
+                else{
+                    dispatch(postCustomer(form, type, notification,cancel))
+                }
+            break;
+            case 'staff':
+                if(currentID){
+                    console.log('test');
+                    dispatch(editStaff(currentID, form, type, notification, cancel))
+                }
+                else{
+                    dispatch(postStaff(form, type, notification,cancel))
+                }
+            break;
+        default: break;
+        }
+    }
     let displayForm = (
-        <form onSubmit={(event)=>submitHandler(event,setLoading, props.config, props.formType,props.currentID, props.notificationRef,props.cancel)}>
+        <form onSubmit={(event)=>submitHandler(event, props.config, props.formType,props.currentID, props.notificationRef,props.cancel)}>
             {formArray.map(element=>(
                 <Input
                     key={element.id}

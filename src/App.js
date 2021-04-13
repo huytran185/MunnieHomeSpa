@@ -3,13 +3,13 @@ import Index from './pages/Index/Index';
 import Service from './pages/Service/Service';
 import Contact from './pages/Contact/Contact';
 import Error from './pages/Error/Error';
-import Login from './pages/Login/Login';
 import Dashboard from './pages/Admin/Dashboard';
 import AService from './pages/Admin/Service';
 import Customer from './pages/Admin/Customer';
 import Staff from './pages/Admin/Staff';
 import Type from './pages/Admin/Type';
 import Voucher from './pages/Admin/Voucher';
+import Login from './pages/Auth/Login';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 import Aux from './hoc/Auxulliary'
 function App() {

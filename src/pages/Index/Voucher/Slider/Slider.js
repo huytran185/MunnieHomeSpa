@@ -4,7 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import classes from './Slider.module.css'
 import Spinner from '../../../../components/UI/Spinner/Spinner'
-import {getVoucher} from '../../../getData';
+import { useDispatch, useSelector } from 'react-redux'
+import {getVoucher} from '../../../../actions/voucher';
 const Sliders = ()=>{
     const settings = {
         dots: true,
@@ -16,21 +17,33 @@ const Sliders = ()=>{
         autoplay: true,
         arrows:false
     }
-    const [vouchers, setVouchers]= useState(null);
+    const list = useSelector(state=>state.voucher.list);
+    const loading = useSelector(state=>state.voucher.loading);
+    const error = useSelector(state=>state.voucher.error);
+    const dispatch = useDispatch();
+    if(error){
+        console.log(error);
+    }
     useEffect(()=>{
-        getVoucher(setVouchers);
-        
+        if(Object.keys(list).length === 0){
+            dispatch(getVoucher())
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
+    let voucherDisplay = [];
+    for(let key in list){
+        voucherDisplay.push(
+            <div className={classes.Slide} key={key}>
+                <a href ={list[key].link} target="_blank" rel="noopener noreferrer">
+                    <img src = {list[key].image} alt="Voucher"/>
+                </a>
+            </div>
+        )
+    }
     let display = <Spinner/>;
-    if(vouchers){
+    if(!loading){
         display = (<Slider {...settings}>
-            {Object.values(vouchers).map((voucher, index)=>{
-                return <div className={classes.Slide} key={index}>
-                    <a href ={voucher.link} target="_blank" rel="noopener noreferrer">
-                        <img src = {voucher.image} alt="Voucher"/>
-                    </a>
-                </div>
-            })}
+            {voucherDisplay}
         </Slider>)
     }
     return(

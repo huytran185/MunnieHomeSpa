@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import useStyles from './styles.js';
 import Input from '../../components/UI/Input/Input'
 import Customer from './Customer/Customer'
@@ -8,9 +8,10 @@ import Staff from './Staff/Staff'
 import firebase from '../../components/Firebase/firebaseConfig';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Aux from '../../hoc/Auxulliary';
-import Notifications from '../../components/UI/Notifications/Notifications'
+// import Notifications from '../../components/UI/Notifications/Notifications'
 import {Box, Typography} from '@material-ui/core';
-
+import {postBook} from '../../actions/book';
+import { useDispatch, useSelector } from 'react-redux';
 const Booking = (props) => {
     const classes = useStyles();
     const [bookInfo, setBookInfo] = useState({
@@ -27,7 +28,7 @@ const Booking = (props) => {
         staffName:'',
     })
     const [formIsValid, setFormIsValid] = useState(false);
-    
+    const dispatch = useDispatch();
     useEffect(()=>{
         let formIsValid = true;
         for(let el in bookInfo){
@@ -36,34 +37,19 @@ const Booking = (props) => {
         }
     },[bookInfo])
     const [loading, setLoading]= useState(false);
-    const notificationRef = useRef();
     const submitHandler=(e)=>{
-        setLoading(true);
-        let endTime = null;
         e.preventDefault();
-        endTime = new Date(bookInfo.start);
-        endTime.setMinutes(endTime.getMinutes() + parseInt(bookInfo.duration));
+        let endTime = null;
+        endTime = new Date(bookInfo.start.value);
+        endTime.setMinutes(endTime.getMinutes() + parseInt(bookInfo.duration.value));
         endTime = endTime.toString()
         let formData = {};
         let key = ["customerId", "serviceId","price", "start", "staffId"];
         for(let i in key){
             formData[key[i]] = bookInfo[key[i]];
         }
-        formData["end"] = endTime;
-        console.log(formData)
-        firebase.database().ref().child("book").push(
-            formData,(error)=>{
-                if(error){
-                    console.log("Fail");
-                    setLoading(false);
-                    notificationRef.current.createNotification('error','Không thể tạo booking')
-                }else{
-                    console.log("Success");
-                    setLoading(false)
-                    notificationRef.current.createNotification('success','Tạo booking thành công')
-                }
-            }
-        )
+        formData["end"] = {value:endTime};
+        dispatch(postBook(formData,'book',props.notification,props.setShowForm))
     }
     const cancelHandler= (e)=>{
         e.preventDefault();
@@ -93,7 +79,6 @@ const Booking = (props) => {
     return (
         <Aux>
             {display}
-            <Notifications ref={notificationRef}/>
         </Aux>
     )
 }

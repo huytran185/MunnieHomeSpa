@@ -2,7 +2,6 @@ import React, {useState, useEffect, useRef} from 'react'
 import AddForm from './addForm';
 import Header from '../../components/AHeader/Header'
 import {typeConfig} from './dataConfig';
-import {getType} from '../getData';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import DisplayTable from './displayTable';
 import {typeTable} from './tableConfig';
@@ -10,16 +9,26 @@ import Notifications from '../../components/UI/Notifications/Notifications'
 import {Typography, Box} from '@material-ui/core'
 import Button from './Button.js'
 import useStyles from './styles.js'
+import { useDispatch, useSelector } from 'react-redux';
+import {getType} from '../../actions/type';
 const Type = ()=>{
     const classes = useStyles();
     const [config,setConfig] = useState(typeConfig);
     const [status, setStatus] = useState("list");
-    const [data, setData] = useState(null);
+    // const [data, setData] = useState(null);
     const [editItem, setEditItem]= useState(null);
     const [currentID, setCurrentId] = useState(null)
     const notificationRef = useRef();
+    const typeList = useSelector(state=>state.type.list);
+    const typeLoading = useSelector(state=>state.type.loading);
+    const typeError = useSelector(state=>state.type.error);
+    const dispatch = useDispatch();
     useEffect(()=>{
-        getType(setData);
+        // getType(setData);
+        if(Object.keys(typeList).length === 0){
+            dispatch(getType())
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     useEffect(()=>{
         setConfig(typeConfig);
@@ -28,19 +37,20 @@ const Type = ()=>{
     const editHandler =(id)=>{
         let newConfig = JSON.parse(JSON.stringify(config));
         for(let key in newConfig){
-            newConfig[key]["value"] = data[id][key];
+            newConfig[key]["value"] = typeList[id][key];
         }
         setEditItem(newConfig);
         setCurrentId(id)
         setStatus("edit");
     }
     let page = <Spinner/>;
-    if(status === "list" && data){
+    if(status === "list" && !typeLoading){
         page = <DisplayTable 
         type="type"
-        data={data} 
+        data={typeList} 
         config={typeTable}
-        setId = {editHandler}/>
+        setId = {editHandler}
+        notificationRef={notificationRef}/>
     }
     if(status === "edit"){
         page = <AddForm formType = "type"
@@ -65,10 +75,12 @@ const Type = ()=>{
             <Box className={classes.Display}>
                 <Box textAlign="center">
                     <Typography variant="h3">
-                        Customer
+                        Type
                     </Typography>
                 </Box>
-                <Button setStatus={setStatus}/>
+                <Button setStatus={setStatus} 
+                status={status}
+                name='Type'/>
                 {page}
                 <Notifications ref={notificationRef}/>
             </Box>
