@@ -3,7 +3,7 @@ import Index from './pages/Index/Index';
 import Service from './pages/Service/Service';
 import Contact from './pages/Contact/Contact';
 import Error from './pages/Error/Error';
-import Dashboard from './pages/Admin/Dashboard';
+import ShowBook from './pages/ShowBook/ShowBook';
 import AService from './pages/Admin/Service';
 import Customer from './pages/Admin/Customer';
 import Staff from './pages/Admin/Staff';
@@ -22,7 +22,7 @@ function App() {
             <Route path="/service" exact component={Service}/>
             <Route path="/contact" exact component={Contact}/>
             <Route path="/login" exact component={Login}/>
-            <Route path="/admin/dashboard" exact component={Dashboard}/>
+            <Route path="/admin/dashboard" exact component={ShowBook}/>
             <Route path="/admin/service" exact component={AService}/>
             <Route path="/admin/customer" exact component={Customer}/>
             <Route path="/admin/staff" exact component={Staff}/>

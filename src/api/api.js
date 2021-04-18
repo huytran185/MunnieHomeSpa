@@ -56,7 +56,6 @@ export const postData = async (form, type)=>{
             formData[element] = form[element].value;
         }
     }
-    console.log(formData);
     const postFirebaseData = new Promise((resolve, reject)=>{
         firebase.database().ref().child(type).push(
             formData,(error)=>{

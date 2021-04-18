@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
@@ -17,11 +17,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Time = (props) => {
     const classes = useStyles();
-    // const [time,setTime] = useState();
     const selectTimeHandler = (time)=>{
       props.setInfo({
         ...props.bookInfo,
-        start: {value:time},
+        start: time,
       })
     }
     return (

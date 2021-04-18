@@ -41,15 +41,24 @@ const Service = (props) => {
         if(Object.keys(serviceList).length === 0){
             dispatch(getService())
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
-
-    useEffect(()=>{
         document.addEventListener("mousedown", handlerClickHandler)
         return()=>{
             document.removeEventListener("mousedown", handlerClickHandler);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
+
+    useEffect(()=>{
+        if(props.bookInfo['serviceId'] !== ''){
+            setSearch(props.bookInfo['serviceName']);
+            setSelected(
+                {
+                    name: props.bookInfo['serviceName'], 
+                    time: props.bookInfo['duration'],
+                    price: props.bookInfo['price']
+                })
+        }
+    },[props.bookInfo])
     const handlerClickHandler= (event)=>{
         const {current: wrap}= wrapperRef;
         if(wrap && !wrap.contains(event.target)){
@@ -76,10 +85,10 @@ const Service = (props) => {
         setSelected({name: name, time: time, price: price})
         props.setInfo({
             ...props.bookInfo,
-            serviceId: {value:id}, 
-            serviceName: {value:name}, 
-            duration: {value:time}, 
-            price: {value:price},
+            serviceId:id, 
+            serviceName:name, 
+            duration:time, 
+            price:price,
         })
     }
     const onChangeSearchHandler = (e)=>{

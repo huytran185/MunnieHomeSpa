@@ -34,20 +34,26 @@ const Customer = (props) => {
         type:"text"
     },
     })
-
     useEffect(()=>{
         if(Object.keys(customerList).length === 0){
             dispatch(getCustomer())
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
-    
-    useEffect(()=>{
         document.addEventListener("mousedown", handlerClickHandler)
         return()=>{
             document.removeEventListener("mousedown", handlerClickHandler);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
+    useEffect(()=>{
+        if(props.bookInfo['customerId'] !== ''){
+            setSearch(props.bookInfo['customerName']);
+            setSelected(
+                {
+                    name: props.bookInfo['customerName'], 
+                    phone: props.bookInfo['customerPhone']
+                })
+        }
+    },[props.bookInfo])
     const handlerClickHandler= (event)=>{
         const {current: wrap}= wrapperRef;
         if(wrap && !wrap.contains(event.target)){
@@ -75,11 +81,12 @@ const Customer = (props) => {
         setSelected({name: name, phone: phone})
         props.setInfo({
             ...props.bookInfo,
-            customerId:{value:id}, 
-            customerName:{value:name},
-            customerPhone:{value:phone},
-            customerEmail:{value:email},
+            customerId:id, 
+            customerName:name,
+            customerPhone:phone,
+            customerEmail:email,
         })
+        
     }
     const onChangeSearchHandler = (e)=>{
         setSearch(e.target.value);
@@ -117,8 +124,14 @@ const Customer = (props) => {
                     </div>
                 )}
             </div>
-            <Typography variant="body1" display="block" className={classes.Info}>Tên khách hàng: {selected["name"]}</Typography>
-            <Typography variant="body1" display="block" className={classes.Info}>Số điện thoại: {selected["phone"]}</Typography>
+            <Typography variant="body1" display="block" className={classes.Info}>
+                Tên khách hàng: 
+                {selected["name"]}
+            </Typography>
+            <Typography variant="body1" display="block" className={classes.Info}>
+                Số điện thoại: 
+                {selected["phone"]}
+            </Typography>
         </fieldset>
     )
 }

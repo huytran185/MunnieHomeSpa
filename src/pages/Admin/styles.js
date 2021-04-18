@@ -12,12 +12,5 @@ const useStyles = makeStyles({
             minHeight:'100vh',
             padding: '50px 20px 0 20px',
         },
-    Button:{
-        color: 'green',
-        borderColor:'green',
-        '&:active':{
-            color:'black',
-        }
-    }
 })
 export default useStyles;

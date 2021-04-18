@@ -10,7 +10,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import Aux from '../../hoc/Auxulliary';
 // import Notifications from '../../components/UI/Notifications/Notifications'
 import {Box, Typography} from '@material-ui/core';
-import {postBook} from '../../actions/book';
+import {postBook, editBook} from '../../actions/book';
 import { useDispatch, useSelector } from 'react-redux';
 const Booking = (props) => {
     const classes = useStyles();
@@ -36,20 +36,31 @@ const Booking = (props) => {
             setFormIsValid(formIsValid);
         }
     },[bookInfo])
-    const [loading, setLoading]= useState(false);
+    useEffect(()=>{
+        if(props.currentId){
+            setBookInfo(props.chosenBook);
+        }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
     const submitHandler=(e)=>{
         e.preventDefault();
         let endTime = null;
-        endTime = new Date(bookInfo.start.value);
-        endTime.setMinutes(endTime.getMinutes() + parseInt(bookInfo.duration.value));
+        endTime = new Date(bookInfo.start);
+        endTime.setMinutes(endTime.getMinutes() + parseInt(bookInfo.duration));
         endTime = endTime.toString()
         let formData = {};
-        let key = ["customerId", "serviceId","price", "start", "staffId"];
-        for(let i in key){
-            formData[key[i]] = bookInfo[key[i]];
+        for(let i in bookInfo){
+            formData[i] = {value:bookInfo[i]};
         }
         formData["end"] = {value:endTime};
-        dispatch(postBook(formData,'book',props.notification,props.setShowForm))
+        formData['status']={value:'Coming'};
+        if(props.currentId){
+            dispatch(editBook(props.currentId,formData,'book',props.notification,props.setShowForm))
+        }else{
+            // console.log(formData);
+            dispatch(postBook(formData,'book',props.notification,props.setShowForm))
+        }
     }
     const cancelHandler= (e)=>{
         e.preventDefault();
@@ -68,14 +79,16 @@ const Booking = (props) => {
                 <Time bookInfo={bookInfo} setInfo={setBookInfo}/>
                 <hr/>
                 <Staff bookInfo={bookInfo} setInfo={setBookInfo}/>
-                <Input disabled = {!formIsValid} clicked = {(e)=>submitHandler(e)} elementType="button">Add Booking</Input>
+                <Input disabled = {!formIsValid} clicked = {(e)=>submitHandler(e)} elementType="button">
+                    {props.currentId ? 'Edit Booking': 'Add Booking'}
+                </Input>
                 <Input clicked = {(e)=>cancelHandler(e)} elementType="button">Cancel Booking</Input>
             </form>
         </Box>
     );
-    if(loading){
-        display = <Spinner/>
-    }
+    // if(loading){
+    //     display = <Spinner/>
+    // }
     return (
         <Aux>
             {display}

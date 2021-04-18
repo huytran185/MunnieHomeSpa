@@ -29,15 +29,22 @@ const Staff = (props) => {
         if(Object.keys(staffList).length === 0){
             dispatch(getStaff())
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
-
-    useEffect(()=>{
         document.addEventListener("mousedown", handlerClickHandler)
         return()=>{
             document.removeEventListener("mousedown", handlerClickHandler);
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
+        
+    useEffect(()=>{
+        if(props.bookInfo['staffId'] !== ''){
+            setSearch(props.bookInfo['staffName']);
+            setSelected(
+                {
+                    name: props.bookInfo['staffName'], 
+                })
+        }
+    },[props.bookInfo])
     const handlerClickHandler= (event)=>{
         const {current: wrap}= wrapperRef;
         if(wrap && !wrap.contains(event.target)){
@@ -64,8 +71,8 @@ const Staff = (props) => {
         setSelected({name: name});
         props.setInfo({
             ...props.bookInfo,
-            staffId:{value:id},
-            staffName: {value:name}
+            staffId:id,
+            staffName:name
         })
     }
     const onChangeSearchHandler = (e)=>{

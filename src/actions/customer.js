@@ -14,7 +14,7 @@ import {GET_CUSTOMER_REQUEST,
 } from '../constants/customer';
 
 export const getCustomer = ()=> async dispatch=>{
-    dispatch({type: GET_CUSTOMER_REQUEST,});
+    dispatch({type: GET_CUSTOMER_REQUEST});
     try{
         const list = await getData('customer');
         dispatch({

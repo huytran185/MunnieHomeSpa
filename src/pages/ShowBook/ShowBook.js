@@ -1,19 +1,37 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import {Table, TableBody, TableCell, TableContainer, 
-    TableHead, TableRow, Paper, Box} from '@material-ui/core';
-import Input from '../../components/UI/Input/Input';
-// import {getStaff} from '../getData';
+    TableHead, TableRow, Paper, Box, Button} from '@material-ui/core';
+    import AddCircleIcon from '@material-ui/icons/AddCircle';
+import ShowInfo from './ShowInfo';
+import Spinner from '../../components/UI/Spinner/Spinner'
 import { useDispatch, useSelector } from 'react-redux';
 import {getStaff} from '../../actions/staff';
+import {getBook} from '../../actions/book';
+import SelectStaff from './SelectStaff';
+
+import Booking from '../Booking/Booking';
+import Header from '../../components/AHeader/Header'
+import Aux from '../../hoc/Auxulliary';
+import useStyles from './styles.js';
+import Notifications from '../../components/UI/Notifications/Notifications'
+
 const StyledTableCell = withStyles((theme) => ({
-head: {
-    backgroundColor: '#dbb89a',
-    color: 'black',
-},
-body: {
-    fontSize: 14,
-},
+    root:{
+        '&:first-of-type':{
+            width:'15%',
+        },
+        borderLeft: '1px solid #ebcdb7',
+        borderRight: '1px solid #ebcdb7',
+        verticalAlign: 'top',
+    },
+    head: {
+        backgroundColor: '#dbb89a',
+        color: 'black',
+    },
+    body: {
+        fontSize: 14,
+    },
 }))(TableCell);
 
 const StyledTableRow = withStyles((theme) => ({
@@ -21,20 +39,38 @@ root: {
     '&:nth-of-type(odd)': {
     backgroundColor: '#fff6f3',
     },
+    
 },
 }))(TableRow);
-const useStyles = makeStyles((theme)=>({
-    Table:{
-        margin: '50px 10px 0 10px',
-    }
-}))
-const ShowBook = () => {
+
+const ShowBook = (props) => {
     const classes= useStyles();
+    const [showForm, setShowForm] = useState(false);
+    const notificationRef = useRef();
     const [numberOfColumns, setNumberOfColumns] = useState(3);
     const [staff, setStaff] = useState('All');
     const staffList = useSelector(state=>state.staff.list);
     const staffLoading = useSelector(state=>state.staff.loading);
     const staffError = useSelector(state=>state.staff.error);
+    const bookList = useSelector(state=>state.book.list);
+    const bookLoading = useSelector(state=>state.book.loading);
+    const bookError = useSelector(state=>state.book.error);
+    const [chosenBook, setChosenBook] = useState({
+        customerId: '',
+        customerName: '',
+        customerPhone: '',
+        customerEmail: '',
+        serviceId:'',
+        serviceName:'',
+        duration:'',
+        end:'',
+        price:'',
+        start: '',
+        staffId: '',
+        staffName:'',
+    });
+    const [chosenId, setChosenId] = useState('');
+    const [edit, setEdit] = useState(false)
     const dispatch = useDispatch();
     const [config, setConfig] = useState(
         {
@@ -50,10 +86,12 @@ const ShowBook = () => {
         touched:false
     })
     
-    // const [staffData, setStaffData]= useState([]);
     useEffect(()=>{
         if(Object.keys(staffList).length === 0){
             dispatch(getStaff())
+        }
+        if(Object.keys(bookList).length === 0){
+            dispatch(getBook())
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
@@ -70,7 +108,6 @@ const ShowBook = () => {
                 value: 'All',
                 display: 'All',
             })
-            console.log(staffArray)
             const newData = {...config};
             newData['value'] = staff;
             for(let i in staffArray){
@@ -79,13 +116,12 @@ const ShowBook = () => {
             setConfig(newData);
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[staff])
+    },[staff,staffList])
 
 
-    let rows = [];
     useEffect(()=>{
-        (staff === 'All')? setNumberOfColumns(3): setNumberOfColumns(1)
-    },[staff])
+        (staff === 'All')? setNumberOfColumns(Object.keys(staffList).length): setNumberOfColumns(5)
+    },[staff,staffList])
 
     const formatNumberHandler = (number)=>{
         return number.toLocaleString('en-US',{
@@ -98,72 +134,161 @@ const ShowBook = () => {
         return( number <7? dayArray[number]: dayArray[number - 7])
     }
     let header = [];
-    for(let a = 0; a< numberOfColumns; a++){
-        const date = new Date();
-        date.setDate(date.getDate() + a);
-        header.push(
-                <StyledTableCell key={date}>{getDay(date.getDay())}</StyledTableCell>
-        )
+    if(staff === 'All'){
+        for(let key in staffList){
+            header.push(
+                <StyledTableCell key={key}>{staffList[key]['name']}</StyledTableCell>
+            )
+        }
+    }else{
+        for(let a = 0; a< numberOfColumns; a++){
+            const date = new Date();
+            date.setDate(date.getDate() + a);
+            header.push(
+                    <StyledTableCell key={date}>{getDay(date.getDay())}</StyledTableCell>
+            )
+        }
     }
+    const checkBook =(date,staffName)=>{
+        let checkedStaff = staff
+        if(staffName){
+            checkedStaff = staffName
+        }
+        for(let key in bookList){
+            if(bookList[key]['staffName'] === checkedStaff){
+                let start = new Date(bookList[key]['start']);
+                let end = new Date(bookList[key]['end'])
+                if(start <= date && date<= end){
+                    let dif = (date.getTime() - start.getTime())/60000
+                    let merge = Math.ceil(parseInt(bookList[key]['duration'])/15)
+                    if(dif < 15){
+                        return [bookList[key], true,merge, key]
+                    }
+                    else{
+                        return [true, false]
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    let rows = [];
     for(let i = 0;i < 53; i ++){
         const date = new Date();
         date.setHours(7,0,0);
         date.setMinutes(date.getMinutes() + i*15);
         let column = [];
-        for(let a = 0; a < numberOfColumns; a++){
-            date.setDate(date.getDate() + a);
-            column.push(
-                <StyledTableCell key={date}>{date.toString()}</StyledTableCell>
-            )
+        if(staff === 'All'){
+            for(let b in staffList){
+                let InfoList = checkBook(date,staffList[b]['name']);
+                if(InfoList){
+                    if(InfoList[1]){
+                        column.push(
+                            <StyledTableCell 
+                            className={classes.Booked} 
+                            key={date+b}
+                            rowSpan={InfoList[2]}
+                            onClick={()=>{setChosenBook(InfoList[0]); setChosenId(InfoList[3])}}>
+                                {InfoList[0]['customerName']}
+                                <br/>
+                                {InfoList[0]['serviceName']}
+                            </StyledTableCell>
+                        )
+                    }
+                }
+                else{
+                    column.push(
+                        <StyledTableCell key={date +b}></StyledTableCell>
+                    )
+                }
+            }
+        }else{
+            for(let a = 0; a < numberOfColumns; a++){
+                let date2 = new Date(date);
+                date2.setDate(date2.getDate() + a)
+                let InfoList = checkBook(date2);
+                if(InfoList){
+                    if(InfoList[1]){
+                        column.push(
+                            <StyledTableCell 
+                            className={classes.Booked} 
+                            key={date2}
+                            rowSpan={InfoList[2]}
+                            onClick={()=>{setChosenBook(InfoList[0]); setChosenId(InfoList[3])}}>
+                                {InfoList[0]['customerName']}
+                                <br/>
+                                {InfoList[0]['serviceName']}
+                            </StyledTableCell>
+                        )
+                    }
+                }
+                else{
+                    column.push(
+                        <StyledTableCell key={date2}></StyledTableCell>
+                    )
+                }
+            }
         }
         rows.push(<StyledTableRow key={i}>
                     <StyledTableCell>{formatNumberHandler(date.getHours())}:{formatNumberHandler(date.getMinutes())}</StyledTableCell>
                     {column}
                 </StyledTableRow>);
     }
-    
-    let display = (
-        <Table>
-            <TableHead>
-                <TableRow>
-                    <StyledTableCell>{staff}</StyledTableCell>
-                    {header}
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {rows}
-            </TableBody>
-        </Table>
-    )
+    let showBook= null;
+        showBook = (
+            <Box className={classes.ShowBook}>
+                <Button variant="outlined" 
+                    startIcon={<AddCircleIcon/>}
+                    className={classes.Button}
+                    onClick={()=>{setShowForm(true);setEdit(false)}}>Tạo lịch hẹn</Button>
+                <SelectStaff setStaff={setStaff} staff={staff} config={config}/>
+                <TableContainer component={Paper} className={classes.Table}>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <StyledTableCell>{staff}</StyledTableCell>
+                                {header}
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {rows}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                <ShowInfo 
+                info={chosenBook} 
+                id={chosenId}
+                notification={notificationRef}
+                setChosenBook = {setChosenBook}
+                setShowForm = {setShowForm}
+                setEdit={setEdit}/>
+            </Box>
+        )
+    if(staffLoading || bookLoading){
+        showBook=<Spinner/>
+    }
+
     return (
-        <Box>
-            <SelectStaff setStaff={setStaff} staff={staff} config={config}/>
-            <TableContainer component={Paper} className={classes.Table}>
-                {display}
-            </TableContainer>
-        </Box>
+        <Aux>
+            <Header/>
+            <Box className={classes.Display}>
+                {!showForm && showBook}
+                {showForm && !edit &&
+                <Booking 
+                setShowForm={setShowForm} 
+                notification={notificationRef}
+                />}
+                {showForm && edit &&
+                <Booking 
+                setShowForm={setShowForm} 
+                notification={notificationRef}
+                currentId = {chosenId}
+                chosenBook = {chosenBook}
+                />}
+            </Box>
+            <Notifications ref={notificationRef}/>
+        </Aux>
     )
 }
 
 export default ShowBook;
-
-const SelectStaff = (props)=>{
-    
-    
-    const handleChange = (event) => {
-        const name = event.target.value;
-        props.setStaff(name);
-    };
-    return(
-        <Input
-            elementType={props.config.elementType}
-            elementConfig={props.config.elementConfig}
-            value={props.config.value}
-            invalid={!props.config.valid}
-            shouldValidate={props.config.validation}
-            touched={props.config.touched}
-            errorMess = {props.config.errorMess}
-            changed={(event)=>handleChange(event)}
-        />
-    )
-}

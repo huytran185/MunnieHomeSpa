@@ -38,7 +38,6 @@ const Service = ()=>{
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    console.log(serviceList)
     useEffect(()=>{
         setConfig(serviceConfig);
         if(status === 'add'){
@@ -61,7 +60,7 @@ const Service = ()=>{
 
         setConfig(newConfig);
     }
-    
+    console.log(config)
     const editHandler = (id)=>{
         addTypeData();
         let newConfig = JSON.parse(JSON.stringify(config));
