@@ -39,7 +39,6 @@ export const postType =(form, type, notification,cancel)=> async dispatch=>{
     dispatch({type:POST_TYPE_REQUEST});
     const res = await postData(form,type);
     if(res[0] === 'Success'){
-        console.log('1')
         notification.current.createNotification('success', 'Thêm thông tin thành công')
         cancel('list');
         dispatch({

@@ -60,7 +60,6 @@ const Service = ()=>{
 
         setConfig(newConfig);
     }
-    console.log(config)
     const editHandler = (id)=>{
         addTypeData();
         let newConfig = JSON.parse(JSON.stringify(config));

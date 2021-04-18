@@ -5,6 +5,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import {editBook, deleteBook} from '../../actions/book';
+import ConfirmMessage from '../../components/UI/ConfirmMessage/ConfirmMessage'
 const useStyles = makeStyles({
     Info:{
         width:'35%',
@@ -54,6 +55,13 @@ const ShowInfo = (props) => {
         props.setShowForm(true)
         props.setEdit(true);
     }
+    const [confirmMessage, setConfirmMessage]= useState(false);
+    const closeMessage = ()=>{
+        setConfirmMessage(false)
+    }
+    const deleteItemHandler=()=>{
+        setConfirmMessage(true)
+    }
     const deleteInfo=()=>{
         props.setChosenBook({
         customerId: '',
@@ -91,7 +99,7 @@ const ShowInfo = (props) => {
                 onClick={editInfo}/>
                 <DeleteIcon
                 className={classes.Icon}
-                onClick={deleteInfo}
+                onClick={deleteItemHandler}
                 />
             </Typography>
             <Divider/>
@@ -114,6 +122,10 @@ const ShowInfo = (props) => {
                     <option value='Completed'>Completed</option>
                 </Select>
             </FormControl>
+            <ConfirmMessage open={confirmMessage} 
+            close={closeMessage}
+            yesHandler ={deleteInfo}
+            />
         </Box>
     )
 }

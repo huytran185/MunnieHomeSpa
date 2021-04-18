@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import Aux from '../../hoc/Auxulliary'
 import Search from '../../components/Search/Search';
 import Pagination from '../../components/Pagination/Pagination';
-import Notifications from '../../components/UI/Notifications/Notifications'
+import ConfirmMessage from '../../components/UI/ConfirmMessage/ConfirmMessage'
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Box} from '@material-ui/core';
 import {useDispatch} from 'react-redux';
@@ -42,14 +42,45 @@ const DisplayTable = (props) => {
     const [filteredItem, setFilteredItem] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(3);
+    const [confirmMessage, setConfirmMessage]= useState(false);
     const last = currentPage *itemsPerPage;
     const first = last - itemsPerPage;
     const currentArray = filteredItem.slice(first, last);
-
+    const [currentId, setCurrentId]= useState(null);
+    const closeMessage = ()=>{
+        setConfirmMessage(false)
+    }
+    const deleteItemHandler=(id)=>{
+        setConfirmMessage(true)
+        setCurrentId(id)
+    }
+    const yesHandler = ()=>{
+        deleteHandler(currentId, props.type, props.notificationRef)
+    }
+    const dispatch = useDispatch();
+    const deleteHandler =(id,tableType,notificationRef)=>{
+        switch(tableType){
+            case 'service': 
+                dispatch(deleteService(id,tableType,notificationRef));
+                break;
+            case 'type':
+                dispatch(deleteType(id,tableType,notificationRef));
+                break;
+            case 'voucher':
+                dispatch(deleteVoucher(id,tableType,notificationRef));
+                break;
+            case 'customer':
+                dispatch(deleteCustomer(id,tableType,notificationRef));
+                break;
+            case 'staff':
+                dispatch(deleteStaff(id,tableType,notificationRef));
+                break;
+            default: break;
+        }
+    }
     useEffect(()=>{
         let tableArray = [];
         if(props.data){
-            // console.log(props.data);
             for(let el in props.data){
                 let content=[];
                 for(let key in props.config){
@@ -58,14 +89,12 @@ const DisplayTable = (props) => {
                         type: props.config[key]["type"]
                     })
                 }
-                // console.log(content)
                 tableArray.push({
                     id: el,
                     data: content
                 })
             }
         }
-        // console.log(tableArray)
         setFilteredItem(tableArray.filter(element=>{
             return element["data"][0]["content"].toLowerCase().includes(search.toLowerCase())
         }))
@@ -89,8 +118,7 @@ const DisplayTable = (props) => {
                                 setId = {props.setId}
                                 content = {element} 
                                 key={element.id}
-                                type={props.type} 
-                                notificationRef = {props.notificationRef}/>
+                                deleteItemHandler = {deleteItemHandler}/>
                         )})}
                 </TableBody>
             </Table>
@@ -110,6 +138,9 @@ const DisplayTable = (props) => {
                 totalItems={filteredItem.length}
                 paginate ={paginate}
                 currentPage = {currentPage}/>
+            <ConfirmMessage open={confirmMessage} 
+            close={closeMessage}
+            yesHandler ={yesHandler}/>
         </Aux>
     )
 }
@@ -126,8 +157,7 @@ const Row = (props)=>{
             <Item type="action"
                 id={props.id}
                 setId = {props.setId}
-                tableType = {props.type}
-                notificationRef={props.notificationRef}/>
+                deleteItemHandler = {props.deleteItemHandler}/>
         </StyledTableRow>
     )
     return(
@@ -137,28 +167,6 @@ const Row = (props)=>{
     )
 }
 const Item = (props)=>{
-    const dispatch = useDispatch();
-    const deleteHandler =(id,tableType,notificationRef)=>{
-        switch(tableType){
-            case 'service': 
-                dispatch(deleteService(id,tableType,notificationRef));
-                break;
-            case 'type':
-                dispatch(deleteType(id,tableType,notificationRef));
-                break;
-            case 'voucher':
-                dispatch(deleteVoucher(id,tableType,notificationRef));
-                break;
-            case 'customer':
-                dispatch(deleteCustomer(id,tableType,notificationRef));
-                break;
-            case 'staff':
-                dispatch(deleteStaff(id,tableType,notificationRef));
-                break;
-            default: break;
-        }
-        
-    }
     let display = null;
     if(props.type === "image"){
         display = <img src={props.content} 
@@ -172,8 +180,11 @@ const Item = (props)=>{
         }
     }else if(props.type === "action"){
         display = (<div className="btn text-primary">
-            <i className="fa fa-edit" style={{color: "green"}} onClick = {()=>props.setId(props.id)}/>
-            <i className="fa fa-trash" style={{color: "green"}} onClick = {()=>deleteHandler(props.id,props.tableType,props.notificationRef)}></i>
+            <i className="fa fa-edit" style={{color: "green"}} 
+            onClick = {()=>props.setId(props.id)}/>
+            <i className="fa fa-trash" style={{color: "green"}} 
+            onClick={()=>props.deleteItemHandler(props.id)}
+            />
         </div>)
     }
     else{

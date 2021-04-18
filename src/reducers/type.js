@@ -33,7 +33,6 @@ const typeReducer = (state = initializeState, action)=>{
             return {...state, loading:true}
         }
         case POST_TYPE_SUCCESS:{
-            console.log('test');
             const newList = {...state.list};
             newList[action.id] = action.payload; 
             return {...state, list: newList, loading:false}
