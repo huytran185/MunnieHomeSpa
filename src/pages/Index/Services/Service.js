@@ -3,6 +3,7 @@ import classes from './Service.module.css';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+//Content of Service component
 
 const service = (props)=>(
     <div className = {classes.Service}>

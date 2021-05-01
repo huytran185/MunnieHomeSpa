@@ -1,92 +1,120 @@
-// import React, {useState, useEffect} from 'react';
-// import {Container, Box, Typography, TextField, } from '@material-ui/core'
-// import Input from '../../components/UI/Input/Input';
-// import {inputChangedHandler, submitHandler} from '../InputHandler';
-// import {makeStyles} from '@material-ui/core/styles';
-// const useStyles = makeStyles({
-//     root:{
-//         backgroundColor: '#fff6f3',
-//         minHeight: '100vh',
-//         overflow:'auto'
-//     },
-//     Login:{
-//         width: '50%',
-//         margin: '100px auto 0 auto',
-//         padding: 100,
-//         backgroundColor: 'white',
-//     },
-//     Form:{
-//         margin: '50px auto 0 auto',
+import React, {useState, useEffect} from 'react';
+import { Box, Typography } from '@material-ui/core'
+import Input from '../../components/UI/Input/Input';
+import {inputChangedHandler} from '../InputHandler';
+import {makeStyles} from '@material-ui/core/styles';
+import {useDispatch, useSelector} from 'react-redux';
+import {registerAccount, signInAccount} from '../../actions/auth';
+import {Redirect} from 'react-router-dom';
+import Aux from '../../hoc/Auxulliary';
 
-//     }
-// })
-// const Login = () => {
-//     const classes = useStyles();
-//     const [config, setConfig] = useState({
-//         name:{
-//             elementType: 'text',
-//             elementConfig:{
-//                 type:'text',
-//                 name:'Username',
-//                 label:'Username'
-//             },
-//             value:'',
-//             validation:{
-//                 required: true,
-//             },
-//             valid:false,
-//             touched: true,
-//         },
-//         password:{
-//             elementType: 'text',
-//             elementConfig:{
-//                 type:'password',
-//                 name:'Password',
-//                 label:'Password'
-//             },
-//             value:'',
-//             validation:{
-//                 required: true,
-//             },
-//             valid: false,
-//             touched: true,
-//         }
-//     })
-//     const [formIsValid, setFormIsValid] = useState(false);
-//     const [form, setForm] = useState()
-//     const formArray = [];
-//     for(let key in config){
-//         formArray.push({
-//             id:key,
-//             config: config[key],
-//         });
-//     }
-//     let displayForm = (
-//         <form className={classes.Form}>
-//             {formArray.map(element=>(
-//                 <Input
-//                     key={element.id}
-//                     elementType={element.config.elementType}
-//                     elementConfig={element.config.elementConfig}
-//                     value={element.config.value}
-//                     invalid={!element.config.valid}
-//                     shouldValidate={element.config.validation}
-//                     touched={element.config.touched}
-//                     errorMess = {element.config.errorMess}
-//                     changed={(event)=>inputChangedHandler(config, setFormIsValid, setConfig, event,element.id)}
-//                 />
-//             ))}
-//             <Input elementType="button" disabled={!formIsValid}>Login</Input>
-//         </form>
-//     )
-//     return (
-//         <Box className={classes.root}>
-//             <Box textAlign="center" className={classes.Login}>
-//                 <Typography variant="h2">Login</Typography>
-//                 {displayForm}
-//             </Box>
-//         </Box>
-//     )
-// }
+//Login and register form which allows user to login into their account to perform admin function
+//Or create their account for admin function
 
-// export default Login
+const useStyles = makeStyles({
+    root:{
+        backgroundColor: '#fff6f3',
+        minHeight: '100vh',
+        overflow:'auto'
+    },
+    Login:{
+        width: '50%',
+        margin: '100px auto 0 auto',
+        padding: 100,
+        backgroundColor: 'white',
+    },
+    Form:{
+        margin: '50px auto 0 auto',
+    }
+})
+const Login = () => {
+    const classes = useStyles();
+    const [isLogin, setIsLogin] = useState(true);
+    const user = useSelector(state=>state.auth.user);
+    const userLoading = useSelector(state=>state.auth.loading);
+    const userError = useSelector(state=>state.auth.error);
+    useEffect(()=>{
+        
+        if(user != null){
+            console.log(user);
+            <Redirect to="/admin/dashboard"/>;
+        }
+    },[user])
+    const dispatch = useDispatch();
+    const [config, setConfig] = useState({
+        name:{
+            elementType: 'text',
+            elementConfig:{
+                type:'text',
+                name:'Username',
+                placeholder:'Username'
+            },
+            value:'',
+            validation:{
+                required: true,
+            },
+            valid:false,
+            touched: false,
+        },
+        password:{
+            elementType: 'text',
+            elementConfig:{
+                type:'password',
+                name:'Password',
+                placeholder:'Password'
+            },
+            value:'',
+            validation:{
+                required: true,
+            },
+            valid: false,
+            touched: false,
+        }
+    })
+    const [formIsValid, setFormIsValid] = useState(false);
+    const submitHandler = (e,config)=>{
+        e.preventDefault();
+        isLogin ?dispatch(signInAccount(config)): dispatch(registerAccount(config))
+    }
+    const formArray = [];
+    for(let key in config){
+        formArray.push({
+            id:key,
+            config: config[key],
+        });
+    }
+    const switchFormHandler = ()=>{
+        setIsLogin(!isLogin)
+    }
+    let displayForm = (
+        <Aux>
+            <Typography variant="h2">{isLogin?'Login':'Register'}</Typography>
+            <form className={classes.Form} onSubmit={(e)=>submitHandler(e,config)}>
+                {formArray.map(element=>(
+                    <Input
+                        key={element.id}
+                        elementType={element.config.elementType}
+                        elementConfig={element.config.elementConfig}
+                        value={element.config.value}
+                        invalid={!element.config.valid}
+                        shouldValidate={element.config.validation}
+                        touched={element.config.touched}
+                        errorMess = {element.config.errorMess}
+                        changed={(event)=>inputChangedHandler(config, setFormIsValid, setConfig, event,element.id)}
+                    />
+                ))}
+                <Input elementType="button" disabled={!formIsValid}>{isLogin?'Login':'Register'}</Input>
+                <Input elementType="button" clicked={switchFormHandler}>Switch to {isLogin?'Register':'Login'}</Input>
+            </form>
+        </Aux>
+    )
+    return (
+        <Box className={classes.root}>
+            <Box textAlign="center" className={classes.Login}>
+                {displayForm}
+            </Box>
+        </Box>
+    )
+}
+
+export default Login

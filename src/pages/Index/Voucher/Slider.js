@@ -1,11 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import classes from './Slider.module.css'
-import Spinner from '../../../../components/UI/Spinner/Spinner'
+import Spinner from '../../../components/UI/Spinner/Spinner'
 import { useDispatch, useSelector } from 'react-redux'
-import {getVoucher} from '../../../../actions/voucher';
+import {getVoucher} from '../../../actions/voucher';
+
+//Slider of a list of voucher
+
 const Sliders = ()=>{
     const settings = {
         dots: true,

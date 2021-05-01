@@ -1,6 +1,9 @@
 import React from 'react'
 import classes from './Type.module.css';
 import PropTypes from 'prop-types';
+
+// Type component of Service Page allows customer to choose which type of service they would like to view
+
 const Type = (props)=>{
     return(
         <div 

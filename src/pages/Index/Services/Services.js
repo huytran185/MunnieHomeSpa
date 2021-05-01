@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, {  useEffect } from 'react'
 import classes from './Services.module.css';
 import Button from '../../../components/UI/Button/Button';
-import Service from './Service/Service';
+import Service from './Service';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import {Link} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import {getService} from '../../../actions/service';
+
+//Service part of Home Page display some remarkable services
 
 const Services = () =>{
     const list = useSelector(state=>state.service.list);
@@ -14,7 +16,6 @@ const Services = () =>{
     if(error){
         console.log(error);
     }
-    console.log(list);
     const dispatch = useDispatch();
     useEffect(()=>{
         if(Object.keys(list).length === 0){

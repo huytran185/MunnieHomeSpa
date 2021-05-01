@@ -1,9 +1,11 @@
 import React from 'react'
 import classes from './Welcome.module.css';
 import Hello from '../../../assets/images/hello.png';
-import Book from './Book/Book';
+import Book from './Book';
 
-const welcome = (props)=>(
+//Welcome component of Home Page
+
+const welcome = ()=>(
         <div className={classes.Welcome}>
             <img src={Hello} alt=""/>
             <div className={classes.CompanyName}>Munnie Homéspa</div>

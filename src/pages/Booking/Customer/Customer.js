@@ -4,9 +4,11 @@ import Search from '../../../components/Search/Search';
 import {Typography} from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import {getCustomer} from '../../../actions/customer';
+
+//The component that accept customer information of the booking
+
 const Customer = (props) => {
     const classes = useStyles();
-    // const [data, setData] = useState(null);
     const [search, setSearch] = useState('');
     const [display, setDisplay] = useState(false);
     const customerList = useSelector(state=>state.customer.list);

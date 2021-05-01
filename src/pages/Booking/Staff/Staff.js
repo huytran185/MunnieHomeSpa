@@ -4,6 +4,9 @@ import Search from '../../../components/Search/Search';
 import {Typography} from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux';
 import {getStaff} from '../../../actions/staff';
+
+//The component that accept staff information for the booking
+
 const Staff = (props) => {
     const classes = useStyles();
     // const [data, setData] = useState(null);

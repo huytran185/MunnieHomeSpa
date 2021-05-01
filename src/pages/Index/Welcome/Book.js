@@ -1,7 +1,10 @@
 import React from 'react'
 import classes from './Book.module.css';
-import Button from '../../../../components/UI/Button/Button';
+import Button from '../../../components/UI/Button/Button';
 import {Link} from 'react-router-dom'
+
+//Book component of Home Page
+
 const book = (props)=>(
     <div className={classes.Book}>
         <div>{props.children}</div>

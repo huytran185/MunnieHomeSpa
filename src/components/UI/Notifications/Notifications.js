@@ -1,6 +1,9 @@
 import React, { forwardRef, useImperativeHandle } from 'react'
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
+
+//Notification components which display message after user using a function
+
 const Notifications = forwardRef((props,ref) => {
     useImperativeHandle(ref, ()=>({
         createNotification(type,content){

@@ -1,8 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Typography, Grid} from '@material-ui/core/';
 import {Link} from 'react-router-dom';
-import {List, ListItem, ListItemIcon, ListItemText, Divider} from '@material-ui/core';
+import {List, ListItem, ListItemText, Divider} from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import {logOutAccount} from '../../actions/auth'
+
+//The heading component for admin function
 
 const useStyles = makeStyles({
         root: {
@@ -19,17 +22,20 @@ const useStyles = makeStyles({
         },
         });
 const Header =() => {
+    const userEmail = useSelector(state=>state.auth.userEmail);
+    const dispatch = useDispatch();
+    const logOutHandler = ()=>{
+        dispatch(logOutAccount())
+    }
     const classes = useStyles();
     return(
         <header className={classes.root}>
             <List component="nav">
-                <Link to ="/admin/dashboard">
-                    <ListItem button>
-                        <ListItemText className={classes.Text}>
-                            Welcome, Admin
-                        </ListItemText>
-                    </ListItem>
-                </Link>
+                <ListItem button>
+                   <ListItemText>
+                        Welcome, {userEmail}
+                    </ListItemText>
+                </ListItem> 
             </List>
             <Divider />
             <List component="nav">
@@ -75,6 +81,12 @@ const Header =() => {
                         </ListItemText>
                     </ListItem>
                 </Link>
+                <Divider />
+                <ListItem button onClick={logOutHandler}>
+                   <ListItemText className={classes.Text}>
+                        Logout
+                    </ListItemText>
+                </ListItem> 
             </List>
         </header>
     )

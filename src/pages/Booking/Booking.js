@@ -5,13 +5,13 @@ import Customer from './Customer/Customer'
 import Service from './Service/Service'
 import Time from './Time/Time'
 import Staff from './Staff/Staff'
-import firebase from '../../components/Firebase/firebaseConfig';
-import Spinner from '../../components/UI/Spinner/Spinner';
 import Aux from '../../hoc/Auxulliary';
-// import Notifications from '../../components/UI/Notifications/Notifications'
 import {Box, Typography} from '@material-ui/core';
 import {postBook, editBook} from '../../actions/book';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
+//The component that allows admin to create new booking 
+
 const Booking = (props) => {
     const classes = useStyles();
     const [bookInfo, setBookInfo] = useState({

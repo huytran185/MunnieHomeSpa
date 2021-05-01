@@ -1,11 +1,11 @@
-
+//Data Configuration which uses to for adding Form and Editing form
 export const voucherConfig= {
     link:{
         elementType: 'text',
         elementConfig: {
             type:'text',
             name: 'link',
-            label: 'Facebook Link'
+            placeholder: 'Facebook Link'
         },
         value: '',
         validation:{
@@ -35,7 +35,7 @@ export const serviceConfig = {
         elementConfig: {
             type:'text',
             name: 'name',
-            label: 'Service Name'
+            placeholder: 'Service Name'
         },
         value: '',
         validation:{
@@ -51,7 +51,7 @@ export const serviceConfig = {
         elementConfig: {
             type:'text',
             name: 'english',
-            label: 'English Name'
+            placeholder: 'English Name'
         },
         value: '',
         validation:{
@@ -96,7 +96,7 @@ export const serviceConfig = {
         elementConfig: {
             type:'text',
             name: 'time',
-            label: 'Service Duration'
+            placeholder: 'Service Duration'
         },
         value: '',
         validation:{
@@ -112,7 +112,7 @@ export const serviceConfig = {
         elementConfig: {
             type:'text',
             name: 'price',
-            label: 'Service Price'
+            placeholder: 'Service Price'
         },
         value: '',
         validation:{
@@ -128,7 +128,7 @@ export const serviceConfig = {
         elementConfig: {
             type:'text',
             name: 'rank',
-            label: 'Service Rank'
+            placeholder: 'Service Rank'
         },
         value: '',
         validation:{
@@ -158,7 +158,7 @@ export const customerConfig = {
         elementConfig:{
             type: 'text',
             name: 'name',
-            label: 'Customer Name'
+            placeholder: 'Customer Name'
         },
         value: '',
         validation:{
@@ -174,7 +174,7 @@ export const customerConfig = {
         elementConfig:{
             type: 'text',
             name: 'phone',
-            label: 'Phone Number'
+            placeholder: 'Phone Number'
         },
         value: '',
         validation:{
@@ -190,8 +190,7 @@ export const customerConfig = {
         elementConfig:{
             type: 'text',
             name: 'dob',
-            label: 'Date of Birth',
-            placeholder: 'dd/mm/yyyy',
+            placeholder: 'Date of Birth',
         },
         value:'',
         validation:{
@@ -207,7 +206,7 @@ export const customerConfig = {
         elementConfig:{
             type:'text',
             name: 'email',
-            label:'Customer Email'
+            placeholder:'Customer Email'
         },
         value: '',
         validation:{
@@ -223,7 +222,7 @@ export const customerConfig = {
         elementConfig:{
             type:'text',
             name: 'facebook',
-            label:'Customer Facebook'
+            placeholder:'Customer Facebook'
         },
         value: '',
         validation:{
@@ -266,7 +265,7 @@ export const typeConfig = {
         elementConfig: {
             type:'text',
             name: 'name',
-            label: 'Type ID'
+            placeholder: 'Type ID'
         },
         value: '',
         validation:{
@@ -282,7 +281,7 @@ export const typeConfig = {
         elementConfig: {
             type:'text',
             name: 'name',
-            label: 'Type Name'
+            placeholder: 'Type Name'
         },
         value: '',
         validation:{
@@ -300,7 +299,7 @@ export const staffConfig = {
         elementConfig:{
             type: 'text',
             name: 'name',
-            label: 'Staff Name'
+            placeholder: 'Staff Name'
         },
         value: '',
         validation:{
@@ -316,7 +315,7 @@ export const staffConfig = {
         elementConfig:{
             type: 'text',
             name: 'phone',
-            label: 'Phone Number'
+            placeholder: 'Phone Number'
         },
         value: '',
         validation:{
@@ -332,8 +331,7 @@ export const staffConfig = {
         elementConfig:{
             type: 'text',
             name: 'dob',
-            label: 'Date of Birth',
-            placeholder: 'dd/mm/yyyy'
+            placeholder: 'Date of Birth',
         },
         value:'',
         validation:{
@@ -349,7 +347,7 @@ export const staffConfig = {
         elementConfig:{
             type:'text',
             name: 'email',
-            label:'Staff Email'
+            placeholder:'Staff Email'
         },
         value: '',
         validation:{
@@ -365,7 +363,7 @@ export const staffConfig = {
         elementConfig:{
             type:'text',
             name: 'position',
-            label:'Staff Position'
+            placeholder:'Staff Position'
         },
         value:'',
         validation:{
@@ -381,7 +379,7 @@ export const staffConfig = {
         elementConfig:{
             type:'text',
             name:'commission rate',
-            label: 'Commission Rate',
+            placeholder: 'Commission Rate',
         },
         value: '',
         validation:{
@@ -397,7 +395,7 @@ export const staffConfig = {
         elementConfig:{
             type:'text',
             name:'Salary',
-            label: 'Salary'
+            placeholder: 'Salary'
         },
         value: '',
         validation:{

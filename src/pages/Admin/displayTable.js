@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import Aux from '../../hoc/Auxulliary'
 import Search from '../../components/Search/Search';
 import Pagination from '../../components/Pagination/Pagination';
@@ -36,6 +36,9 @@ const useStyles = makeStyles({
         margin: '0 0 10px 0',
     }
 })
+
+//Table get information from the server and display it to the user in an organized way
+
 const DisplayTable = (props) => {
     const classes = useStyles();
     const [search, setSearch]= useState('');

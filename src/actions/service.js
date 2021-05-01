@@ -13,6 +13,8 @@ import {GET_SERVICE_REQUEST,
     DELETE_SERVICE_FAIL
 } from '../constants/service';
 
+//Getting Service from Firebase Server
+
 export const getService = ()=> async dispatch=>{
     dispatch({type: GET_SERVICE_REQUEST});
     try{
@@ -28,6 +30,8 @@ export const getService = ()=> async dispatch=>{
         })
     }
 }
+
+//Creating new Service
 
 export const postService =(form, type, notification,cancel)=> async dispatch=>{
     dispatch({type:POST_SERVICE_REQUEST,});
@@ -51,6 +55,8 @@ export const postService =(form, type, notification,cancel)=> async dispatch=>{
     }
 }
 
+//Edit Service Information
+
 export const editService = (id, form,type,notification,cancel)=>async dispatch=>{
     dispatch({type:EDIT_SERVICE_REQUEST,});
     const res = await editData(id,form,type);
@@ -72,6 +78,8 @@ export const editService = (id, form,type,notification,cancel)=>async dispatch=>
         
     }
 }
+
+//Delete Service
 
 export const deleteService = (id,type,notificationRef)=>async dispatch=>{
     dispatch({type: DELETE_SERVICE_REQUEST})

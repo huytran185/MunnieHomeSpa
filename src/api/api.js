@@ -1,4 +1,7 @@
-import firebase from '../components/Firebase/firebaseConfig'; 
+import firebase from '../Config/firebaseConfig'; 
+require('firebase/auth');
+
+//The function that allows the application connect to the Firebase and get the information of the chosen data type
 
 export const getData = async (dataType)=>{
     const getFirebaseData = new Promise((resolve, reject)=>{
@@ -13,6 +16,8 @@ export const getData = async (dataType)=>{
     return await getFirebaseData;
 }
 
+// The function allows admin to delete Information of the chosen data type
+
 export const deleteData = async (id, type)=>{
     const deleteFirebaseData = new Promise((resolve, reject)=>{
         firebase.database().ref().child(type+'/'+id).remove(
@@ -25,6 +30,8 @@ export const deleteData = async (id, type)=>{
     })
     return await deleteFirebaseData;
 }
+
+//The function allows admin to create new information based on the chosen data type
 
 export const postData = async (form, type)=>{
     let imageURL = null;
@@ -71,6 +78,8 @@ export const postData = async (form, type)=>{
     return await postFirebaseData;
 }
 
+//The function allows admin to edit specific information of the chosen data type
+
 export const editData = async  (id, form,type)=>{
     let imageURL = null;
     if(type === 'service' || type === 'voucher'){
@@ -113,4 +122,62 @@ export const editData = async  (id, form,type)=>{
             )
     })
     return await editFirebaseData;
+}
+
+//the function allows admin and staff create new account to access admin functions
+
+export const register = async (form)=>{
+    let email = form.name.value;
+    let password = form.password.value;
+    const registerFirebaseAccount = new Promise((resolve,reject)=>{
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then(async(response)=>{
+                let token = await getToken();
+            console.log(token);
+            resolve(['Success', response.user.email, token.token])
+            })
+            .catch((error)=>{
+                reject(['Fail', error.message])
+            })
+    })
+    return await registerFirebaseAccount;
+}
+
+//The function allows authorized user to access admin functions
+
+export const signIn = async(form)=>{
+    let email = form.name.value;
+    let password = form.password.value;
+    const signInFirebaseAccount = new Promise((resolve,reject)=>{
+        firebase.auth().signInWithEmailAndPassword(email,password)
+        .then(async(response)=>{
+            let token = await getToken();
+            resolve(['Success', response.user.email, token.expirationTime, token.token])
+        })
+        .catch((error)=>{
+            reject(['Fail', error.message])
+        })
+    })
+    
+    return await signInFirebaseAccount;
+}
+
+//The functions returns token information after authorized sign in to website
+
+export const getToken = async()=>{
+    const getTokenFirebase = new Promise((resolve, reject)=>{
+        firebase.auth().currentUser.getIdTokenResult(true)
+        .then((idToken)=>{
+            resolve(idToken)
+        }).catch((error)=>{
+            reject(error.message)
+        })
+    })
+    return await getTokenFirebase;
+}
+
+//The functions allows user to sign out from their account
+
+export const logOut = ()=>{
+    firebase.auth().signOut()
 }

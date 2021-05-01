@@ -1,5 +1,7 @@
 import Input from '../../components/UI/Input/Input';
 
+//Select and display list of booking of selected staff
+
 const SelectStaff = (props)=>{
     const handleChange = (event) => {
         const name = event.target.value;

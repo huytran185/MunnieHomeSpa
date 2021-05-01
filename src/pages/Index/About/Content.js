@@ -1,6 +1,8 @@
 import React from 'react'
 import classes from './Content.module.css';
 
+//Content component of About Component
+
 const content = ()=>(
     <div>
         <div className={classes.Title}>Welcome To</div>

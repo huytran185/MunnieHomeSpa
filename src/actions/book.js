@@ -13,8 +13,10 @@ import {GET_BOOK_REQUEST,
     DELETE_BOOK_FAIL
 } from '../constants/book';
 
+
+//Getting Booking information from Firebase Server
 export const getBook = ()=> async dispatch=>{
-    dispatch({type: GET_BOOK_REQUEST,});
+    dispatch({type: GET_BOOK_REQUEST});
     try{
         const list = await getData('book');
         dispatch({
@@ -28,6 +30,8 @@ export const getBook = ()=> async dispatch=>{
         })
     }
 }
+
+//Creating new Booking for the customer
 
 export const postBook =(form, type, notification,cancel)=> async dispatch=>{
     dispatch({type:POST_BOOK_REQUEST});
@@ -50,6 +54,9 @@ export const postBook =(form, type, notification,cancel)=> async dispatch=>{
         
     }
 }
+
+//Edit Booking information
+
 export const editBook = (id, form,type, notification,cancel)=>async dispatch=>{
     dispatch({type:EDIT_BOOK_REQUEST});
     const res = await editData(id, form, type);
@@ -73,6 +80,9 @@ export const editBook = (id, form,type, notification,cancel)=>async dispatch=>{
         
     }
 }
+
+//Removing Booking 
+
 export const deleteBook = (id, type, notificationRef)=>async dispatch=>{
     dispatch({type: DELETE_BOOK_REQUEST})
     const res = await deleteData(id, type);

@@ -1,8 +1,9 @@
 import React from 'react';
 import useStyle from './styles';
 import Aux from '../../../hoc/Auxulliary';
-import {TextField} from '@material-ui/core';
 
+//Input component that includes text, textarea, select, file, button and hidden type
+//The component get input information and display it to the website
 
 const Input = (props)=>{
     const classes = useStyle();
@@ -20,8 +21,7 @@ const Input = (props)=>{
         case('text'):
             inputElement = (
             <div className={classes.Input}>
-                <TextField label="test" variant="outlined"
-                className={inputClasses.join(' ')}
+                <input className={inputClasses.join(' ')}
                 {...props.elementConfig} 
                 value={props.value}
                 onChange={props.changed}/>

@@ -2,7 +2,10 @@ import React from 'react';
 import Aux from '../../../../hoc/Auxulliary';
 import classes from './SideDrawer.module.css';
 import Backdrop from '../../../UI/Backdrop/Backdrop'
-import NavigationItem from '../NavigationItem/NavigationItem';
+import NavigationItem from '../NavigationItem';
+
+//Side Drawer Component for mobile devices
+
 const sideDrawer = (props)=>{
     let attachedClasses = [classes.SideDrawer, classes.Close];
     if(props.open){

@@ -1,21 +1,23 @@
 import React, {useState, useEffect,useRef} from 'react'
 import AddForm from './addForm';
-import Header from '../../components/AHeader/Header'
-import {voucherConfig} from './dataConfig';
+import Header from '../../components/AdminUI/Header'
+import {voucherConfig} from '../../Config/dataConfig';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import DisplayTable from './displayTable';
-import {voucherTable} from './tableConfig';
+import {voucherTable} from '../../Config/tableConfig';
 import Notifications from '../../components/UI/Notifications/Notifications'
 import {Typography, Box} from '@material-ui/core'
-import Button from './Button.js'
+import Button from '../../components/AdminUI/Button'
 import useStyles from './styles.js'
 import { useDispatch, useSelector } from 'react-redux';
 import {getVoucher} from '../../actions/voucher';
+
+//Voucher page which allows admin to manage Voucher Information
+
 const Voucher = ()=>{
     const classes = useStyles();
     const [config,setConfig] = useState(voucherConfig);
     const [status, setStatus] = useState("list");
-    // const [data, setData] = useState(null);
     const [editItem, setEditItem]= useState(null);
     const [currentID, setCurrentId] = useState(null)
     const notificationRef = useRef();
@@ -27,6 +29,7 @@ const Voucher = ()=>{
         if(Object.keys(voucherList).length === 0){
             dispatch(getVoucher())
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     useEffect(()=>{
         setConfig(voucherConfig);

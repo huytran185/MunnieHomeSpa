@@ -35,6 +35,8 @@ export const getType = ()=> async dispatch=>{
     }
 }
 
+//Creating new Type
+
 export const postType =(form, type, notification,cancel)=> async dispatch=>{
     dispatch({type:POST_TYPE_REQUEST});
     const res = await postData(form,type);
@@ -57,6 +59,8 @@ export const postType =(form, type, notification,cancel)=> async dispatch=>{
     }
 }
 
+//Edit Type Information
+
 export const editType = (id, form,type,notification,cancel)=>async dispatch=>{
     dispatch({type:EDIT_TYPE_REQUEST});
     const res = await editData(id,form,type);
@@ -78,6 +82,8 @@ export const editType = (id, form,type,notification,cancel)=>async dispatch=>{
         
     }
 }
+
+//Delete Type
 
 export const deleteType = (id,type,notificationRef)=>async dispatch=>{
     dispatch({type: DELETE_TYPE_REQUEST})

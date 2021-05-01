@@ -1,6 +1,8 @@
-import React, {useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+
+
+//The component that accept time information for the booking
 
 const useStyles = makeStyles((theme) => ({
   container: {

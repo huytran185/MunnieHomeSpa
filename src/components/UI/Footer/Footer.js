@@ -1,7 +1,10 @@
 import React from 'react';
-import FooterColumn from './FooterColumn/FooterColumn';
+import FooterColumn from './FooterColumn';
 import classes from './Footer.module.css';
 import {Link} from 'react-router-dom';
+
+//Footer Component
+
 const footer =()=>(
     <div className ={classes.Footer}>
         <footer>

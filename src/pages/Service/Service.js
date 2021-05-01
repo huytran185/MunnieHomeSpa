@@ -1,14 +1,16 @@
-import React, {useState, useEffect} from 'react'
+import React, { useEffect} from 'react'
 import classes from './Service.module.css';
 import {Helmet} from 'react-helmet';
 import Layout from '../../components/UI/Layout/Layout';
 import Aux from '../../hoc/Auxulliary';
-import ServiceItem from './ServiceItem/ServiceItem';
-import Type from './Type/Type';
+import ServiceItem from './ServiceItem';
+import Type from './Type';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import { useDispatch, useSelector } from 'react-redux'
 import {getService} from '../../actions/service';
 import {getType, selectType} from '../../actions/type';
+
+//Service Page
 
 const Service =()=>{
     const serviceList = useSelector(state=>state.service.list);
@@ -35,7 +37,6 @@ const Service =()=>{
         newTypes[index].under = true;
         dispatch(selectType(newTypes));
     }
-    console.log(serviceList)
     //display Spinner and choose type and services
     let servicePage = <Spinner/>
     if(!serviceLoading && !typeLoading){

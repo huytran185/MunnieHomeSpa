@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
 import classes from './Header.module.css';
-import Navigation from './Navigation/Navigation';
-import Aux from '../../hoc/Auxulliary';
-import SideDrawer from './Navigation/SideDrawer/SideDrawer';
+import Navigation from './Navigation';
+import Aux from '../../../hoc/Auxulliary';
+import SideDrawer from './SideDrawer/SideDrawer';
+
+//Header Component
 
 const Header = props =>{
     const [showDrawer, setShowDrawer]= useState(false);
+
+    //Close Drawer Function for mobile devices
+
     const sideDrawerClosedHandler = ()=>{
         setShowDrawer(false);
     }
+
+    //Side Drawer function for mobile devices
+    
     const sideDrawerToggleHandler = ()=>{
         setShowDrawer((prevState)=>{
             return setShowDrawer(!prevState.showDrawer);

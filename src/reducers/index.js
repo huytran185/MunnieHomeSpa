@@ -4,6 +4,7 @@ import typeReducer from './type';
 import customerReducer from './customer';
 import staffReducer from './staff';
 import bookReducer from './book';
+import authReducer from './auth';
 import {combineReducers} from 'redux';
 
 const rootReducer = combineReducers({
@@ -13,5 +14,6 @@ const rootReducer = combineReducers({
     customer:customerReducer,
     staff:staffReducer,
     book:bookReducer,
+    auth:authReducer,
 })
 export default rootReducer

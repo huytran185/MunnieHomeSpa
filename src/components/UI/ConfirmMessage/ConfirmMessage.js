@@ -9,6 +9,8 @@ import {Button,
     from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 
+//Confirmation Message when admin admit changing information
+
 const ConfirmMessage = (props)=>{
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));

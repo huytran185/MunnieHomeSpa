@@ -1,5 +1,7 @@
 import React from 'react'
 
+//Error 404 Page Not found
+
 const error =()=>{
     return(
         <div>

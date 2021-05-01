@@ -5,9 +5,11 @@ import Layout from '../../components/UI/Layout/Layout';
 import Services from './Services/Services';
 import {Helmet} from 'react-helmet';
 import Voucher from './Voucher/Voucher';
-// import MessengerCustomerChat from 'react-messenger-customer-chat';
 import Aux from '../../hoc/Auxulliary';
-const index = (props)=>{
+
+//Home Page
+
+const Index = ()=>{
     return(
         <Aux>
             <Helmet>
@@ -18,12 +20,8 @@ const index = (props)=>{
                 <About/>
                 <Services/>
                 <Voucher/>
-                {/* <MessengerCustomerChat
-                    pageId="<munniehomespa>"
-                    appId="<309432867282551>"
-                /> */}
             </Layout>
         </Aux>
     )
 }
-export default index;
+export default Index;

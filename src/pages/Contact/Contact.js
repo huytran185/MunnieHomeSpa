@@ -3,8 +3,10 @@ import classes from './Contact.module.css';
 import {Helmet} from 'react-helmet';
 import Layout from '../../components/UI/Layout/Layout';
 import Aux from '../../hoc/Auxulliary';
-import Info from './Info/Info';
+import Info from './Info';
 import {Link} from 'react-router-dom';
+
+//Contact Page
 
 const contact = ()=>(
     <Aux>

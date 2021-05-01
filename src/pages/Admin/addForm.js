@@ -10,6 +10,9 @@ import {postType, editType} from '../../actions/type';
 import {postVoucher, editVoucher} from '../../actions/voucher';
 import {postCustomer, editCustomer} from '../../actions/customer';
 import {postStaff, editStaff} from '../../actions/staff';
+
+//Form that allows admin to adding new information or editing the information
+
 const AddForm = (props)=>{
     
     const [formIsValid, setFormIsValid] = useState(false)
@@ -95,8 +98,7 @@ const AddForm = (props)=>{
     }
     return(
         <Box component="div">
-            {/* <Box component="div" >{props.title}</Box> */}
-                {displayForm}
+            {displayForm}
             <Notifications ref={props.notificationRef}/>
         </Box>
     )

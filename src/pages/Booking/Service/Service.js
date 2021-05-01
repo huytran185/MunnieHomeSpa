@@ -4,6 +4,9 @@ import useStyles from '../styles.js';
 import {Typography} from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import {getService} from '../../../actions/service';
+
+//The component that accept service information for the booking
+
 const Service = (props) => {
     const classes = useStyles();
     // const [data, setData] = useState(null);

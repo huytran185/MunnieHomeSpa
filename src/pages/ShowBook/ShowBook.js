@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react'
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import {Table, TableBody, TableCell, TableContainer, 
     TableHead, TableRow, Paper, Box, Button} from '@material-ui/core';
     import AddCircleIcon from '@material-ui/icons/AddCircle';
@@ -9,12 +9,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import {getStaff} from '../../actions/staff';
 import {getBook} from '../../actions/book';
 import SelectStaff from './SelectStaff';
-
 import Booking from '../Booking/Booking';
-import Header from '../../components/AHeader/Header'
+import Header from '../../components/AdminUI/Header'
 import Aux from '../../hoc/Auxulliary';
 import useStyles from './styles.js';
 import Notifications from '../../components/UI/Notifications/Notifications'
+
+//Dashboard display list of booking to admin
 
 const StyledTableCell = withStyles((theme) => ({
     root:{
@@ -55,6 +56,7 @@ const ShowBook = (props) => {
     const bookList = useSelector(state=>state.book.list);
     const bookLoading = useSelector(state=>state.book.loading);
     const bookError = useSelector(state=>state.book.error);
+
     const [chosenBook, setChosenBook] = useState({
         customerId: '',
         customerName: '',
@@ -267,7 +269,6 @@ const ShowBook = (props) => {
     if(staffLoading || bookLoading){
         showBook=<Spinner/>
     }
-
     return (
         <Aux>
             <Header/>

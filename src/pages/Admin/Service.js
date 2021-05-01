@@ -1,17 +1,19 @@
 import React, {useState, useEffect, useRef} from 'react'
 import AddForm from './addForm';
-import Header from '../../components/AHeader/Header'
-import {serviceConfig} from './dataConfig';
+import Header from '../../components/AdminUI/Header'
+import {serviceConfig} from '../../Config/dataConfig';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Notifications from '../../components/UI/Notifications/Notifications'
 import DisplayTable from './displayTable';
-import {serviceTable} from './tableConfig';
+import {serviceTable} from '../../Config/tableConfig';
 import {Box, Typography} from '@material-ui/core'
 import useStyles from './styles.js';
-import Button from './Button.js';
+import Button from '../../components/AdminUI/Button';
 import { useDispatch, useSelector } from 'react-redux'
 import {getService} from '../../actions/service';
 import {getType} from '../../actions/type';
+
+//Service page which allows admin to manage Service Information
 
 const Service = ()=>{
     const classes = useStyles();
@@ -23,7 +25,6 @@ const Service = ()=>{
     const typeError = useSelector(state=>state.type.error);
     const dispatch = useDispatch();
     const [config,setConfig] = useState(serviceConfig);
-    // const [workingConfig, setWorkingConfig] = useState(null);
     const [status, setStatus] = useState("list");
     const [editItem, setEditItem]= useState(null);
     const [currentID, setCurrentId] = useState(null);
@@ -67,7 +68,6 @@ const Service = ()=>{
         for(let key in newConfig){
             newConfig[key]["value"] = serviceList[id][key];
         }
-        // console.log(newConfig)
         setEditItem(newConfig);
         setCurrentId(id)
         setStatus("edit");

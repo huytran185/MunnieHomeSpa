@@ -1,9 +1,12 @@
 import React, {useState} from 'react';
 import classes from './ServiceItem.module.css';
-import Button from '../../../components/UI/Button/Button';
-import Backdrop from '../../../components/UI/Backdrop/Backdrop';
+import Button from '../../components/UI/Button/Button';
+import Backdrop from '../../components/UI/Backdrop/Backdrop';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+//Service Item information of Service Page
+
 const Item =(props)=>{
     let attachedClasses = [classes.Info, classes.Close];
 

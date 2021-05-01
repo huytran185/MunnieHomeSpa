@@ -13,6 +13,8 @@ import {GET_CUSTOMER_REQUEST,
     DELETE_CUSTOMER_FAIL
 } from '../constants/customer';
 
+//Getting Customer information from Firebase Server
+
 export const getCustomer = ()=> async dispatch=>{
     dispatch({type: GET_CUSTOMER_REQUEST});
     try{
@@ -28,6 +30,8 @@ export const getCustomer = ()=> async dispatch=>{
         })
     }
 }
+
+//Creating new Customer
 
 export const postCustomer =(form, type, notification,cancel)=> async dispatch=>{
     dispatch({type:POST_CUSTOMER_REQUEST});
@@ -51,6 +55,8 @@ export const postCustomer =(form, type, notification,cancel)=> async dispatch=>{
     }
 }
 
+//Edit Customer Information
+
 export const editCustomer = (id, form,type,notification,cancel)=>async dispatch=>{
     dispatch({type:EDIT_CUSTOMER_REQUEST});
     const res = await editData(id,form,type);
@@ -72,6 +78,8 @@ export const editCustomer = (id, form,type,notification,cancel)=>async dispatch=
         
     }
 }
+
+//Delete Customer 
 
 export const deleteCustomer = (id,type,notificationRef)=>async dispatch=>{
     dispatch({type: DELETE_CUSTOMER_REQUEST})

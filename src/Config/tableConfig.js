@@ -1,4 +1,4 @@
-// export const typeTable = ["id", "name"];
+//Table configuration information which determine the information that display to the user
 export const typeTable = {
     id:{
         title:"Type ID",

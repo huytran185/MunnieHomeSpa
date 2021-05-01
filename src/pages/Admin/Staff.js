@@ -1,21 +1,23 @@
 import React, {useState,useEffect, useRef} from 'react'
 import AddForm from './addForm';
-import Header from '../../components/AHeader/Header'
-import {staffConfig} from './dataConfig';
+import Header from '../../components/AdminUI/Header'
+import {staffConfig} from '../../Config/dataConfig';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import DisplayTable from './displayTable';
-import {staffTable} from './tableConfig';
+import {staffTable} from '../../Config/tableConfig';
 import Notifications from '../../components/UI/Notifications/Notifications'
 import {Typography, Box} from '@material-ui/core'
-import Button from './Button.js'
+import Button from '../../components/AdminUI/Button'
 import useStyles from './styles.js';
 import { useDispatch, useSelector } from 'react-redux';
 import {getStaff} from '../../actions/staff';
+
+//Staff page which allows admin to manage Staff Information
+
 const Staff = ()=>{
     const classes = useStyles();
     const [config,setConfig] = useState(staffConfig);
     const [status, setStatus] = useState("list");
-    // const [data, setData] = useState(null);
     const [editItem, setEditItem]= useState(null);
     const [currentID, setCurrentId] = useState(null)
     const notificationRef = useRef();

@@ -13,6 +13,8 @@ import {GET_STAFF_REQUEST,
     DELETE_STAFF_FAIL
 } from '../constants/staff';
 
+//Getting Staff information from Firebase Server
+
 export const getStaff = ()=> async dispatch=>{
     dispatch({type: GET_STAFF_REQUEST});
     try{
@@ -28,6 +30,8 @@ export const getStaff = ()=> async dispatch=>{
         })
     }
 }
+
+//Creating new Staff
 
 export const postStaff =(form, type, notification,cancel)=> async dispatch=>{
     dispatch({type:POST_STAFF_REQUEST});
@@ -51,6 +55,8 @@ export const postStaff =(form, type, notification,cancel)=> async dispatch=>{
     }
 }
 
+//Edit Staff Information
+
 export const editStaff = (id, form,type,notification,cancel)=>async dispatch=>{
     dispatch({type:EDIT_STAFF_REQUEST});
     const res = await editData(id,form,type);
@@ -72,19 +78,8 @@ export const editStaff = (id, form,type,notification,cancel)=>async dispatch=>{
         
     }
 }
-export const deleteStaffStart = ()=>({
-    type: DELETE_STAFF_REQUEST,
-})
 
-export const deleteStaffSuccess = (data)=>({
-    type:DELETE_STAFF_SUCCESS,
-    payload:data
-})
-
-export const deleteStaffFail = (error)=>({
-    type:DELETE_STAFF_FAIL,
-    payload: error
-})
+//Delete Staff 
 
 export const deleteStaff = (id,type,notificationRef)=>async dispatch=>{
     dispatch({type: DELETE_STAFF_REQUEST})

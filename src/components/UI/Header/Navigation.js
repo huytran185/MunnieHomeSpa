@@ -1,7 +1,10 @@
 import React from 'react'
 import classes from './Navigation.module.css';
-import NavigationItem from './NavigationItem/NavigationItem'
+import NavigationItem from './NavigationItem'
 import {Link} from 'react-router-dom';
+
+//Navigation Bar Component
+
 const navigation = (props)=>(
     <nav className={classes.Navigation}>
         <i className="fa fa-bars" id="nav-button" onClick={props.toggleClicked}></i>

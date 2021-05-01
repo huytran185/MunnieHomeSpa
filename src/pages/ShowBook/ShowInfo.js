@@ -3,9 +3,12 @@ import {makeStyles} from '@material-ui/core/styles'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import DeleteIcon from '@material-ui/icons/Delete';
 import React, {useState} from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {editBook, deleteBook} from '../../actions/book';
 import ConfirmMessage from '../../components/UI/ConfirmMessage/ConfirmMessage'
+
+//Show detailed information of selected booking
+
 const useStyles = makeStyles({
     Info:{
         width:'35%',

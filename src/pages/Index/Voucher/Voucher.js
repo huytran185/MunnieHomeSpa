@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './Voucher.module.css';
-import Slider from './Slider/Slider';
+import Slider from './Slider';
+
+//Voucher component of the Home Page which display list of vouchers
 
 const Voucher = ()=>{
     return(

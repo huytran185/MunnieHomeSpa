@@ -1,16 +1,19 @@
 import React, {useState, useEffect, useRef} from 'react'
 import AddForm from './addForm';
-import Header from '../../components/AHeader/Header'
-import {typeConfig} from './dataConfig';
+import Header from '../../components/AdminUI/Header'
+import {typeConfig} from '../../Config/dataConfig';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import DisplayTable from './displayTable';
-import {typeTable} from './tableConfig';
+import {typeTable} from '../../Config/tableConfig';
 import Notifications from '../../components/UI/Notifications/Notifications'
 import {Typography, Box} from '@material-ui/core'
-import Button from './Button.js'
+import Button from '../../components/AdminUI/Button'
 import useStyles from './styles.js'
 import { useDispatch, useSelector } from 'react-redux';
 import {getType} from '../../actions/type';
+
+//Type page which allows admin to manage Type Information
+
 const Type = ()=>{
     const classes = useStyles();
     const [config,setConfig] = useState(typeConfig);
@@ -24,7 +27,6 @@ const Type = ()=>{
     const typeError = useSelector(state=>state.type.error);
     const dispatch = useDispatch();
     useEffect(()=>{
-        // getType(setData);
         if(Object.keys(typeList).length === 0){
             dispatch(getType())
         }

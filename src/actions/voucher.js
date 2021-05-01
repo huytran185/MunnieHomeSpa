@@ -12,6 +12,8 @@ import {GET_VOUCHER_REQUEST,
     DELETE_VOUCHER_SUCCESS,
     DELETE_VOUCHER_FAIL} from '../constants/voucher';
 
+//Getting Voucher Information from Firebase Server
+
 export const getVoucher = ()=> async dispatch=>{
     dispatch({type: GET_VOUCHER_REQUEST});
     try{
@@ -27,6 +29,8 @@ export const getVoucher = ()=> async dispatch=>{
         })
     }
 }
+
+//Creating new Voucher
 
 export const postVoucher =(form, type, notification,cancel)=> async dispatch=>{
     dispatch({type:POST_VOUCHER_REQUEST});
@@ -50,6 +54,8 @@ export const postVoucher =(form, type, notification,cancel)=> async dispatch=>{
     }
 }
 
+//Edit Voucher Information
+
 export const editVoucher = (id, form,type,notification,cancel)=>async dispatch=>{
     dispatch({type:EDIT_VOUCHER_REQUEST});
     const res = await editData(id,form,type);
@@ -71,6 +77,8 @@ export const editVoucher = (id, form,type,notification,cancel)=>async dispatch=>
         
     }
 }
+
+//Delete Voucher
 
 export const deleteVoucher = (id,type,notificationRef)=>async dispatch=>{
     dispatch({type: DELETE_VOUCHER_REQUEST})
