@@ -17,11 +17,11 @@
     float: left;
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 14px;
     padding: 20px 0;
     line-height: 12px;
     letter-spacing: 1px;
-    margin-left: 60%;
+    margin-left: 40%;
 }
 
 .Book {
@@ -71,7 +71,6 @@
 }
 
 @media only screen and (min-width: 992px) {
-    .Call {}
     .Navigation ul {
         margin-left: 15%;
     }

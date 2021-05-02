@@ -45,7 +45,7 @@ const Sliders = ()=>{
     }
     let display = <Spinner/>;
     if(!loading){
-        display = (<Slider {...settings}>
+        display = (<Slider {...settings} className={classes.Slider}>
             {voucherDisplay}
         </Slider>)
     }

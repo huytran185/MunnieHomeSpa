@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Box, Typography } from '@material-ui/core'
-import Input from '../../components/UI/Input/Input';
+import Input from '../../components/Input/Input';
 import {inputChangedHandler} from '../InputHandler';
 import {makeStyles} from '@material-ui/core/styles';
 import {useDispatch, useSelector} from 'react-redux';

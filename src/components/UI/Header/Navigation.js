@@ -14,7 +14,7 @@ const navigation = (props)=>(
             <NavigationItem link='/contact'>Contact</NavigationItem>
         </ul>
         <Link to="/service"className={classes.Book}>Book Now</Link>
-        <div className={classes.Call}>CALL US: 09xx xxx xxx</div>
+        <div className={classes.Call}>CALL US: 0903 180 594</div>
     </nav>
 );
 

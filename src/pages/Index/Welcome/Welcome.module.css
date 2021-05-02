@@ -1,8 +1,7 @@
 .Welcome {
     float: left;
     width: 100%;
-    max-width: 100%;
-    min-width: 550px;
+    min-width: 320px;
     margin-top: 50px;
     height: 500px;
     background-image: url("../../../assets/images/background-greet.gif");
@@ -36,7 +35,7 @@
 }
 
 .CompanyName {
-    font-size: 60px;
+    font-size: 40px;
     position: absolute;
     font-weight: 550;
     animation-name: company-name;
@@ -46,6 +45,7 @@
     width: 100%;
     font-family: Coquette-Regular;
     text-align: center;
+    min-width: 300px;
 }
 
 .Welcome blockquote {
@@ -55,7 +55,7 @@
     font-style: italic;
     letter-spacing: 3px;
     width: 100%;
-    min-width: 550px;
+    min-width: 320px;
     animation-name: quote;
     animation-duration: 2s;
     animation-fill-mode: forwards;

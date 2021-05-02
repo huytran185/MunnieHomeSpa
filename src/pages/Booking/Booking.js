@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import useStyles from './styles.js';
-import Input from '../../components/UI/Input/Input'
+import Input from '../../components/Input/Input'
 import Customer from './Customer/Customer'
 import Service from './Service/Service'
 import Time from './Time/Time'

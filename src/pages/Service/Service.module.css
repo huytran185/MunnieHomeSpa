@@ -2,7 +2,7 @@
     background-color: #f8e3d4;
     float: left;
     width: 100%;
-    min-width: 550px;
+    min-width: 320px;
 }
 
 .Header {
@@ -35,18 +35,26 @@
 .TypeList {
     margin: 0 auto;
     text-align: center;
-    width: 80%;
-    min-width: 460px;
+    width: 100%;
+    min-width: 320px;
     padding-top: 80px;
 }
 
 .ServiceList {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
     margin: 100px auto 0 auto;
     width: 100%;
-    padding: 50px 10px;
+    padding: 50px 0px;
+}
+
+@media only screen and (min-width: 481px) {
+    .Page {
+        min-width: 481px;
+    }
+    .ServiceList {
+        width: 80%;
+    }
 }
 
 @media only screen and (min-width: 758px) {

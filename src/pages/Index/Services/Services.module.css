@@ -1,7 +1,7 @@
 .Services {
     float: left;
     width: 100%;
-    min-width: 550px;
+    min-width: 320px;
     background: url(../../../assets/images/background-service.gif);
     background-repeat: no-repeat;
     background-size: cover;
@@ -38,6 +38,7 @@
     font-style: italic;
     letter-spacing: 5px;
     font-size: 22px;
+    padding: 0 10px;
 }
 
 @media only screen and (min-width:768px) {

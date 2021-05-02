@@ -1,9 +1,9 @@
 .ServiceItem {
-    width: 70%;
-    min-width: 330px;
+    width: 100%;
     background-color: #fff6f3;
     text-align: center;
     margin: 0 auto 30px auto;
+    max-width: 450px;
 }
 
 .ServiceItem img {

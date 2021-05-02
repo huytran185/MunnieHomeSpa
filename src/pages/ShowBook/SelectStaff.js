@@ -1,4 +1,4 @@
-import Input from '../../components/UI/Input/Input';
+import Input from '../../components/Input/Input';
 import PropTypes from 'prop-types';
 //Select and display list of booking of selected staff
 

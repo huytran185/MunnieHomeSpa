@@ -1,6 +1,6 @@
 import React from 'react';
 import useStyle from './styles';
-import Aux from '../../../hoc/Auxulliary';
+import Aux from '../../hoc/Auxulliary';
 import PropTypes from 'prop-types';
 //Input component that includes text, textarea, select, file, button and hidden type
 //The component get input information and display it to the website

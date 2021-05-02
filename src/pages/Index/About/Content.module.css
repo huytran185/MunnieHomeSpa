@@ -19,10 +19,11 @@
     font-size: 17px;
     margin: 15px auto 0 auto;
     width: 70%;
-    min-width: 350px;
+    min-width: 320px;
     letter-spacing: 1px;
     text-align: justify;
     margin-bottom: 30px;
+    padding: 0 10px;
 }
 
 .Des ul {

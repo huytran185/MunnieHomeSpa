@@ -1,7 +1,5 @@
 .Book {
     font-family: Cookie;
-    /* margin-top: 450px;
-    margin-bottom: 70px; */
     position: absolute;
     top: 300px;
     font-size: 22px;
@@ -9,6 +7,8 @@
     width: 100%;
     height: 170px;
     text-align: center;
+    padding: 0 20px;
+    min-width: 320px;
 }
 
 @media only screen and (min-width:768px) {

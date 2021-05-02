@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import Input from '../../components/UI/Input/Input';
+import Input from '../../components/Input/Input';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import {inputChangedHandler} from '../InputHandler';
 import Notifications from '../../components/UI/Notifications/Notifications'

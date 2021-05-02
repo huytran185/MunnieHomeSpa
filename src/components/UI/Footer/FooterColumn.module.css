@@ -1,7 +1,8 @@
 .FooterColumn {
-    width: 50%;
+    width: 100%;
     float: left;
-    padding-left: 3%;
+    padding: 0 3%;
+    /* min-width: 300px; */
 }
 
 .FooterColumn:last-child {
@@ -12,6 +13,12 @@
     width: 100%;
     text-align: center;
     font-weight: bold;
+}
+
+@media only screen and (min-width: 481px) {
+    .FooterColumn {
+        width: 50%;
+    }
 }
 
 @media only screen and (min-width: 768px) {

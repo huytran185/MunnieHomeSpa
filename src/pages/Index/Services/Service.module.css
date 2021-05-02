@@ -1,7 +1,6 @@
 .Service {
     width: 60%;
-    min-width: 330px;
-    /* background-color: #fff6f3; */
+    min-width: 300px;
     margin: 0px auto 30px auto;
     float: center;
 }
