@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './Info.module.css';
-
+import PropTypes from 'prop-types';
 //Company Information Component
 
 const info = (props)=>(
@@ -9,4 +9,9 @@ const info = (props)=>(
         <div className={classes.Content}>{props.children}</div>
     </div>
 )
+
+info.propTypes={
+    title: PropTypes.string,
+    children: PropTypes.string,
+}
 export default info;

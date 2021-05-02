@@ -4,7 +4,7 @@ import useStyles from '../styles.js';
 import {Typography} from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import {getService} from '../../../actions/service';
-
+import PropTypes from 'prop-types';
 //The component that accept service information for the booking
 
 const Service = (props) => {
@@ -137,4 +137,8 @@ const Service = (props) => {
     )
 }
 
+Service.propTypes={
+    bookInfo: PropTypes.object,
+    setInfo: PropTypes.func,
+}
 export default Service

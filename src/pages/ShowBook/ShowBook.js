@@ -2,7 +2,9 @@ import React, {useState, useEffect, useRef} from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import {Table, TableBody, TableCell, TableContainer, 
     TableHead, TableRow, Paper, Box, Button} from '@material-ui/core';
-    import AddCircleIcon from '@material-ui/icons/AddCircle';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ShowInfo from './ShowInfo';
 import Spinner from '../../components/UI/Spinner/Spinner'
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,9 +46,10 @@ root: {
 },
 }))(TableRow);
 
-const ShowBook = (props) => {
+const ShowBook = () => {
     const classes= useStyles();
     const [showForm, setShowForm] = useState(false);
+    const [selectedDate, setSelectedDate] = useState(new Date());
     const notificationRef = useRef();
     const [numberOfColumns, setNumberOfColumns] = useState(3);
     const [staff, setStaff] = useState('All');
@@ -144,7 +147,7 @@ const ShowBook = (props) => {
         }
     }else{
         for(let a = 0; a< numberOfColumns; a++){
-            const date = new Date();
+            const date = new Date(selectedDate);
             date.setDate(date.getDate() + a);
             header.push(
                     <StyledTableCell key={date}>{getDay(date.getDay())}</StyledTableCell>
@@ -176,7 +179,7 @@ const ShowBook = (props) => {
     }
     let rows = [];
     for(let i = 0;i < 53; i ++){
-        const date = new Date();
+        const date = new Date(selectedDate);
         date.setHours(7,0,0);
         date.setMinutes(date.getMinutes() + i*15);
         let column = [];
@@ -236,6 +239,19 @@ const ShowBook = (props) => {
                     {column}
                 </StyledTableRow>);
     }
+    const previousDateHandler =()=>{
+        staff === 'All'?
+        setSelectedDate(new Date(selectedDate.setDate(selectedDate.getDate() -1))):
+        setSelectedDate(new Date(selectedDate.setDate(selectedDate.getDate() -5)));
+    }
+    const nextDateHandler=()=>{
+        staff === 'All'?
+        setSelectedDate(new Date(selectedDate.setDate(selectedDate.getDate() +1))):
+        setSelectedDate(new Date(selectedDate.setDate(selectedDate.getDate() +5)));
+    }
+    const selectCurrentHandler=()=>{
+        setSelectedDate(new Date())
+    }
     let showBook= null;
         showBook = (
             <Box className={classes.ShowBook}>
@@ -245,6 +261,20 @@ const ShowBook = (props) => {
                     onClick={()=>{setShowForm(true);setEdit(false)}}>Tạo lịch hẹn</Button>
                 <SelectStaff setStaff={setStaff} staff={staff} config={config}/>
                 <TableContainer component={Paper} className={classes.Table}>
+                    <Box className={classes.selectDate}>
+                        <Button
+                            startIcon={<ArrowBackIcon/>}
+                            onClick={previousDateHandler}
+                        />
+                        <Button
+                            onClick={selectCurrentHandler}>
+                            {selectedDate.toString()}
+                        </Button>
+                        <Button
+                            startIcon={<ArrowForwardIcon/>}
+                            onClick={nextDateHandler}
+                        />
+                    </Box>
                     <Table>
                         <TableHead>
                             <TableRow>

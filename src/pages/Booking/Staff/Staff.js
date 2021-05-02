@@ -4,7 +4,7 @@ import Search from '../../../components/Search/Search';
 import {Typography} from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux';
 import {getStaff} from '../../../actions/staff';
-
+import PropTypes from 'prop-types';
 //The component that accept staff information for the booking
 
 const Staff = (props) => {
@@ -116,4 +116,8 @@ const Staff = (props) => {
     )
 }
 
+Staff.propTypes={
+    bookInfo: PropTypes.object,
+    setInfo: PropTypes.func,
+}
 export default Staff

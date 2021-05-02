@@ -30,6 +30,11 @@ const useStyles = makeStyles({
     },
     ShowBook:{
         height:3200,
+    },
+    selectDate:{
+        width: '100%',
+        textAlign:'center',
+        padding:20,
     }
 })
 export default useStyles;

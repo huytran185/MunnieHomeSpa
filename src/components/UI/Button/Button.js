@@ -1,11 +1,35 @@
 import React from 'react';
-import classes from './Button.module.css';
-
+import PropTypes from 'prop-types';
+import {makeStyles} from '@material-ui/core/styles';
 //Button Component
 
-const button = (props)=>(
-    <div onClick= {props.clicked}className={classes.Button}>
+const useStyles = makeStyles({
+    Button:{
+        width: '215px',
+        height: '45px',
+        margin: '50px auto',
+        lineHeight: '45px',
+        fontSize: '16px',
+        fontFamily: 'Caudex-Regular',
+        border: '1px solid black',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontStyle: 'italic',
+        cursor: 'pointer',
+    }
+})
+const Button = (props)=>{
+    const classes = useStyles();
+    return(
+    <div onClick= {props.clicked}
+    className={classes.Button}>
         {props.children}
     </div>
-);
-export default button;
+)}
+
+Button.propTypes={
+    clicked: PropTypes.func,
+    children:PropTypes.string,
+}
+
+export default Button;

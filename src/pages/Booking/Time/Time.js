@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-
+import PropTypes from 'prop-types';
 
 //The component that accept time information for the booking
 
@@ -41,4 +41,8 @@ const Time = (props) => {
     )
 }
 
+Time.propTypes={
+    bookInfo: PropTypes.object,
+    setInfo: PropTypes.func,
+}
 export default Time

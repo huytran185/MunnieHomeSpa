@@ -3,10 +3,10 @@ import Aux from '../../../hoc/Auxulliary';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Social from '../Social/Social';
-
+import PropTypes from 'prop-types';
 //Layout component
 
-const layout = props =>{
+const layout = (props) =>{
         return(
             <Aux>
                 <Header/>
@@ -19,4 +19,7 @@ const layout = props =>{
         )
     }
 
+layout.propTypes={
+    children: PropTypes.node,
+}
 export default layout;

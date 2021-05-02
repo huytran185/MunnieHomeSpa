@@ -3,7 +3,7 @@ import Aux from '../../../../hoc/Auxulliary';
 import classes from './SideDrawer.module.css';
 import Backdrop from '../../../UI/Backdrop/Backdrop'
 import NavigationItem from '../NavigationItem';
-
+import PropTypes from 'prop-types';
 //Side Drawer Component for mobile devices
 
 const sideDrawer = (props)=>{
@@ -25,4 +25,8 @@ const sideDrawer = (props)=>{
     )
 }
 
+sideDrawer.propTypes={
+    open: PropTypes.bool,
+    closed: PropTypes.func,
+}
 export default sideDrawer;

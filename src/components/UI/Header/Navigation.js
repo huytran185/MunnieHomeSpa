@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './Navigation.module.css';
 import NavigationItem from './NavigationItem'
 import {Link} from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 //Navigation Bar Component
 
 const navigation = (props)=>(
@@ -18,4 +18,7 @@ const navigation = (props)=>(
     </nav>
 );
 
+navigation.propTypes={
+    toggleClicked: PropTypes.func,
+}
 export default navigation;

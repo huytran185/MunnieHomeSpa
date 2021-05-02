@@ -4,7 +4,7 @@ import Search from '../../../components/Search/Search';
 import {Typography} from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import {getCustomer} from '../../../actions/customer';
-
+import PropTypes from 'prop-types';
 //The component that accept customer information of the booking
 
 const Customer = (props) => {
@@ -138,4 +138,8 @@ const Customer = (props) => {
     )
 }
 
+Customer.propTypes={
+    bookInfo: PropTypes.object,
+    setInfo: PropTypes.func,
+}
 export default Customer

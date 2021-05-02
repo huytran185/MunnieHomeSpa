@@ -1,4 +1,4 @@
-import { Box, Typography,Divider, FormControl, InputLabel, Select } from '@material-ui/core'
+import { Box, Typography,Divider, FormControl, Select } from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -6,7 +6,7 @@ import React, {useState} from 'react'
 import { useDispatch } from 'react-redux';
 import {editBook, deleteBook} from '../../actions/book';
 import ConfirmMessage from '../../components/UI/ConfirmMessage/ConfirmMessage'
-
+import PropTypes from 'prop-types';
 //Show detailed information of selected booking
 
 const useStyles = makeStyles({
@@ -133,4 +133,12 @@ const ShowInfo = (props) => {
     )
 }
 
+ShowInfo.propTypes={
+    id: PropTypes.string,
+    info: PropTypes.object,
+    setShowForm: PropTypes.func,
+    setEdit: PropTypes.func,
+    setChosenBook: PropTypes.func,
+    notification: PropTypes.object,
+}
 export default ShowInfo

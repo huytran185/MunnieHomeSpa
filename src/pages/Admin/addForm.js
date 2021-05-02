@@ -10,7 +10,7 @@ import {postType, editType} from '../../actions/type';
 import {postVoucher, editVoucher} from '../../actions/voucher';
 import {postCustomer, editCustomer} from '../../actions/customer';
 import {postStaff, editStaff} from '../../actions/staff';
-
+import PropTypes from 'prop-types';
 //Form that allows admin to adding new information or editing the information
 
 const AddForm = (props)=>{
@@ -104,4 +104,13 @@ const AddForm = (props)=>{
     )
 }
 
+AddForm.propTypes={
+    config: PropTypes.object,
+    formType: PropTypes.string,
+    currentID: PropTypes.string,
+    notificationRef: PropTypes.object,
+    cancel: PropTypes.func,
+    setCon: PropTypes.func,
+    title: PropTypes.string,
+}
 export default AddForm;

@@ -1,7 +1,7 @@
 import React from 'react'
 import {TextField} from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-
+import PropTypes from 'prop-types';
 //Search Component
 
 const useStyles = makeStyles({
@@ -23,5 +23,10 @@ const Search = (props) => {
         </div>
     )
 }
-
+Search.propTypes={
+    valued: PropTypes.string,
+    placeholder: PropTypes.string,
+    onChanged: PropTypes.func,
+    onClicked: PropTypes.func
+}
 export default Search

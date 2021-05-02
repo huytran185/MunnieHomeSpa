@@ -5,7 +5,6 @@ import './Pagination.css'
 
 const Pagination = ({itemsPerPage, totalItems, paginate, currentPage}) => {
     const pageNumber = [];
-
     for(let i = 1; i <=Math.ceil(totalItems/itemsPerPage);i++){
         pageNumber.push(i);
     }
@@ -17,13 +16,13 @@ const Pagination = ({itemsPerPage, totalItems, paginate, currentPage}) => {
                     let display = null;
                     if(number === currentPage){
                         display = <li key={number} className="page-item active">
-                                    <div onClick={()=>paginate(number)} className="page-link" >
+                                    <div onClick={()=>paginate(number)} className='page-link'>
                                         {number}
                                     </div>
                                 </li>
                     }
                     else{ display =<li key={number} className="page-item">
-                        <div onClick={()=>paginate(number)} className="page-link" >
+                        <div onClick={()=>paginate(number)} className='page-link' >
                             {number}
                         </div>
                     </li>}

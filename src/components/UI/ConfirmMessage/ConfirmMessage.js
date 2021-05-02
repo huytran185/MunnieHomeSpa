@@ -8,7 +8,7 @@ import {Button,
     useMediaQuery}
     from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
-
+import PropTypes from 'prop-types';
 //Confirmation Message when admin admit changing information
 
 const ConfirmMessage = (props)=>{
@@ -47,4 +47,11 @@ const ConfirmMessage = (props)=>{
         </Dialog>
     )
 }
+
+ConfirmMessage.propTypes={
+    close:PropTypes.func,
+    yesHandler: PropTypes.func,
+    open:PropTypes.bool,
+}
+
 export default ConfirmMessage;

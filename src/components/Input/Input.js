@@ -1,7 +1,7 @@
 import React from 'react';
 import useStyle from './styles';
 import Aux from '../../../hoc/Auxulliary';
-
+import PropTypes from 'prop-types';
 //Input component that includes text, textarea, select, file, button and hidden type
 //The component get input information and display it to the website
 
@@ -85,5 +85,17 @@ const Input = (props)=>{
         </Aux>
             
     )
+}
+
+Input.propTypes={
+    invalid: PropTypes.bool,
+    shouldValidate: PropTypes.object,
+    touched: PropTypes.bool,
+    errorMess: PropTypes.string,
+    elementType: PropTypes.string,
+    value: PropTypes.string,
+    changed: PropTypes.func,
+    elementConfig:PropTypes.object,
+    // children:PropTypes.string,
 }
 export default Input;

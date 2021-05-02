@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './FooterColumn.module.css'
-
+import PropTypes from 'prop-types';
 //Footer Column component
 
 const footerColumn = (props)=>(
@@ -9,4 +9,10 @@ const footerColumn = (props)=>(
         {props.children}
     </div>
 );
+
+footerColumn.propTypes={
+    title: PropTypes.string,
+    children: PropTypes.object,
+}
+
 export default footerColumn;

@@ -11,6 +11,7 @@ import {deleteType} from '../../actions/type';
 import {deleteVoucher} from '../../actions/voucher';
 import {deleteCustomer} from '../../actions/customer';
 import {deleteStaff} from '../../actions/staff';
+import PropTypes from 'prop-types';
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: '#dbb89a',
@@ -147,6 +148,14 @@ const DisplayTable = (props) => {
         </Aux>
     )
 }
+
+DisplayTable.propTypes={
+    type: PropTypes.string,
+    notificationRef: PropTypes.object,
+    data: PropTypes.object,
+    config: PropTypes.object,
+    setId: PropTypes.func,
+}
 export default DisplayTable;
 
 const Row = (props)=>{
@@ -168,6 +177,13 @@ const Row = (props)=>{
             {display}
         </Aux>
     )
+}
+
+Row.propTypes={
+    content: PropTypes.array,
+    id: PropTypes.string,
+    setId: PropTypes.func,
+    deleteItemHandler: PropTypes.func
 }
 const Item = (props)=>{
     let display = null;
@@ -198,4 +214,11 @@ const Item = (props)=>{
             {display}
         </StyledTableCell>
     )
+}
+
+Item.propTypes={
+    type: PropTypes.string,
+    content: PropTypes.string || PropTypes.bool,
+    setId: PropTypes.func,
+    deleteItemHandler: PropTypes.func
 }

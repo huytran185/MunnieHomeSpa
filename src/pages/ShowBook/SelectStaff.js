@@ -1,5 +1,5 @@
 import Input from '../../components/UI/Input/Input';
-
+import PropTypes from 'prop-types';
 //Select and display list of booking of selected staff
 
 const SelectStaff = (props)=>{
@@ -19,5 +19,10 @@ const SelectStaff = (props)=>{
             changed={(event)=>handleChange(event)}
         />
     )
+}
+
+SelectStaff.propTypes={
+    config: PropTypes.object,
+    setStaff:PropTypes.func
 }
 export default SelectStaff;

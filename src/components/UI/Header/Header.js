@@ -6,7 +6,7 @@ import SideDrawer from './SideDrawer/SideDrawer';
 
 //Header Component
 
-const Header = props =>{
+const Header = () =>{
     const [showDrawer, setShowDrawer]= useState(false);
 
     //Close Drawer Function for mobile devices

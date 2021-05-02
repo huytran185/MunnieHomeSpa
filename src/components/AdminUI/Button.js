@@ -3,6 +3,7 @@ import {Box, Button} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import InfoIcon from '@material-ui/icons/Info';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import PropTypes from 'prop-types';
 
 //Button Component
 
@@ -42,7 +43,11 @@ const ButtonBox = (props) => {
         </Box>
     )
 }
-
+ButtonBox.propTypes={
+    setStatus: PropTypes.func,
+    status: PropTypes.string,
+    name: PropTypes.string,
+}
 
 const ButtonItem = (props)=>{
     const classes = useStyles();
@@ -64,4 +69,11 @@ const ButtonItem = (props)=>{
         </Button>
     )
 }
+ButtonItem.propTypes={
+    setStatus: PropTypes.func,
+    status: PropTypes.string,
+    name: PropTypes.string,
+    children: PropTypes.string,
+}
+
 export default ButtonBox;

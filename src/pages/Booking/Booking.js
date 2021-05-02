@@ -9,7 +9,7 @@ import Aux from '../../hoc/Auxulliary';
 import {Box, Typography} from '@material-ui/core';
 import {postBook, editBook} from '../../actions/book';
 import { useDispatch } from 'react-redux';
-
+import PropTypes from 'prop-types';
 //The component that allows admin to create new booking 
 
 const Booking = (props) => {
@@ -86,9 +86,7 @@ const Booking = (props) => {
             </form>
         </Box>
     );
-    // if(loading){
-    //     display = <Spinner/>
-    // }
+
     return (
         <Aux>
             {display}
@@ -96,4 +94,10 @@ const Booking = (props) => {
     )
 }
 
+Booking.propTypes={
+    currentId: PropTypes.string,
+    chosenBook: PropTypes.object,
+    setShowForm: PropTypes.func,
+    notification: PropTypes.object,
+}
 export default Booking

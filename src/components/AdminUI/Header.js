@@ -23,6 +23,10 @@ const useStyles = makeStyles({
         });
 const Header =() => {
     const userEmail = useSelector(state=>state.auth.userEmail);
+    let email = null;
+    if(userEmail){
+        email = userEmail.split('@')[0];
+    }
     const dispatch = useDispatch();
     const logOutHandler = ()=>{
         dispatch(logOutAccount())
@@ -32,8 +36,8 @@ const Header =() => {
         <header className={classes.root}>
             <List component="nav">
                 <ListItem button>
-                   <ListItemText>
-                        Welcome, {userEmail}
+                   <ListItemText >
+                        Welcome, {email}
                     </ListItemText>
                 </ListItem> 
             </List>
