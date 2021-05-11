@@ -8,7 +8,7 @@
 .ServiceItem img {
     width: 70%;
     height: 180px;
-    margin: 40px auto;
+    margin: 20px auto;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -41,12 +41,13 @@
 .Box {
     width: 100%;
     float: left;
-    padding: 40px;
+    padding: 0px 20px;
+    font-size: 14px;
     text-align: center;
 }
 
 .Box:first-child {
-    padding: 40px 40px 0 40px;
+    padding: 0px 40px 0 40px;
 }
 
 .Box .Des {
@@ -57,6 +58,16 @@
     .ServiceItem {
         width: 45%;
         margin: 0 0 30px 30px;
+    }
+    .ServiceItem img {
+        margin: 40px auto;
+    }
+    .Box {
+        padding: 40px;
+        font-size: 18px;
+    }
+    .Box:first-child {
+        padding: 40px 40px 0 40px;
     }
 }
 
