@@ -302,7 +302,8 @@ const ShowBook = () => {
                 notification={notificationRef}
                 setChosenBook = {setChosenBook}
                 setShowForm = {setShowForm}
-                setEdit={setEdit}/>}
+                setEdit={setEdit}
+                setShowInfo={setShowInfo}/>}
             </Box>
         )
     if(staffLoading || bookLoading){
@@ -325,7 +326,7 @@ const ShowBook = () => {
                 notification={notificationRef}
                 currentId = {chosenId}
                 chosenBook = {chosenBook}
-                setShowInfo={setShowInfo}
+                
                 />}
             </Box>
             <Notifications ref={notificationRef}/>

@@ -19,7 +19,7 @@ export const registerAccount = (form)=>async dispatch=>{
     dispatch({type:AUTH_START});
     const res =  await register(form);
     if(res[0] === 'Success'){
-        console.log(res)
+        setLocal(res[1],res[2]);
         dispatch({
             type: AUTH_SUCCESS,
             userEmail: res[1],
@@ -40,6 +40,7 @@ export const signInAccount = (form)=> async dispatch=>{
     const res = await signIn(form);
     if(res[0] === 'Success'){
         setLocal(res[1],res[2]);
+        dispatch(checkTimeOut())
         dispatch({
             type: SIGN_SUCCESS,
             userEmail: res[1],
@@ -69,7 +70,7 @@ export const logOutAccount = ()=> async dispatch=>{
 
 export const checkTimeOut = ()=> async dispatch=>{
     setTimeout(()=>{
-        dispatch(logOutAccount)
+        dispatch(logOutAccount())
     },3600*1000)
 }
 
@@ -79,7 +80,7 @@ const setLocal = (user,token )=>{
     localStorage.setItem('token', token);
     localStorage.setItem('userEmail', user);
     const expireTime = new Date(new Date().getTime() + 3600*1000);
-    localStorage.setItem('expireTime', expireTime)
+    localStorage.setItem('expireTime', expireTime);
 }
 
 //Check if user is authorized to access Dashboard
