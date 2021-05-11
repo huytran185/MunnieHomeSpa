@@ -1,16 +1,15 @@
 .Service {
     width: 60%;
-    min-width: 300px;
     margin: 0px auto 30px auto;
     float: center;
 }
 
 .Service img {
     width: 60%;
-    height: 150px;
-    cursor: pointer;
+    height: 120px;
     border-radius: 50%;
     margin: 50px auto;
+    cursor: pointer;
 }
 
 .Title {
@@ -22,7 +21,7 @@
 
 .Price {
     margin-top: 30px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 @media only screen and (min-width:768px) {
@@ -30,12 +29,6 @@
         width: 40%;
         float: left;
     }
-    .Service:nth-child(3) {
-        display: none;
-    }
-}
-
-@media only screen and (min-width:992px) {
     .Service:nth-child(3) {
         display: none;
     }

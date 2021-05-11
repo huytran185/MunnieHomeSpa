@@ -11,22 +11,30 @@ import Aux from '../../hoc/Auxulliary';
 //Login and register form which allows user to login into their account to perform admin function
 //Or create their account for admin function
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme)=>({
     root:{
         backgroundColor: '#fff6f3',
-        minHeight: '100vh',
         overflow:'auto'
     },
     Login:{
         width: '50%',
-        margin: '100px auto 0 auto',
+        margin: '100px auto 100px auto',
         padding: 100,
         backgroundColor: 'white',
+        [theme.breakpoints.down('sm')]:{
+            width:'90%',
+            padding:' 20px  20px',
+        },
+        [theme.breakpoints.only('sm')]:{
+            width:'80%',
+            padding: 60,
+            
+        },
     },
     Form:{
         margin: '50px auto 0 auto',
     }
-})
+}))
 const Login = () => {
     const classes = useStyles();
     const [isLogin, setIsLogin] = useState(true);

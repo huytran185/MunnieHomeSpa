@@ -12,6 +12,7 @@ import {deleteVoucher} from '../../actions/voucher';
 import {deleteCustomer} from '../../actions/customer';
 import {deleteStaff} from '../../actions/staff';
 import PropTypes from 'prop-types';
+
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: '#dbb89a',
@@ -130,7 +131,7 @@ const DisplayTable = (props) => {
     //Change Page
     const paginate = (pageNumber)=>setCurrentPage(pageNumber)
     return (
-        <Aux>
+        <Aux className={classes.root}>
             <Box className={classes.Search}>
                     <Search onChanged={(e)=>setSearch(e.target.value)}/>
                 </Box>

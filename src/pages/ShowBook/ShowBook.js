@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import {Table, TableBody, TableCell, TableContainer, 
     TableHead, TableRow, Paper, Box, Button} from '@material-ui/core';
+import Backdrop from '../../components/UI/Backdrop/Backdrop';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
@@ -46,9 +47,16 @@ root: {
 },
 }))(TableRow);
 
+const ArrowButton = withStyles((theme)=>({
+    root:{
+        padding: '6px 0',
+        minWidth: 0,
+    }
+}))(Button)
 const ShowBook = () => {
     const classes= useStyles();
     const [showForm, setShowForm] = useState(false);
+    const [showInfo, setShowInfo] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const notificationRef = useRef();
     const [numberOfColumns, setNumberOfColumns] = useState(3);
@@ -75,7 +83,7 @@ const ShowBook = () => {
         staffName:'',
     });
     const [chosenId, setChosenId] = useState('');
-    const [edit, setEdit] = useState(false)
+    const [edit, setEdit] = useState(false);
     const dispatch = useDispatch();
     const [config, setConfig] = useState(
         {
@@ -138,6 +146,7 @@ const ShowBook = () => {
         const dayArray = ['Chủ nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy']
         return( number <7? dayArray[number]: dayArray[number - 7])
     }
+
     let header = [];
     if(staff === 'All'){
         for(let key in staffList){
@@ -193,7 +202,7 @@ const ShowBook = () => {
                             className={classes.Booked} 
                             key={date+b}
                             rowSpan={InfoList[2]}
-                            onClick={()=>{setChosenBook(InfoList[0]); setChosenId(InfoList[3])}}>
+                            onClick={()=>{setChosenBook(InfoList[0]); setChosenId(InfoList[3]); setShowInfo(true)}}>
                                 {InfoList[0]['customerName']}
                                 <br/>
                                 {InfoList[0]['serviceName']}
@@ -219,7 +228,7 @@ const ShowBook = () => {
                             className={classes.Booked} 
                             key={date2}
                             rowSpan={InfoList[2]}
-                            onClick={()=>{setChosenBook(InfoList[0]); setChosenId(InfoList[3])}}>
+                            onClick={()=>{setChosenBook(InfoList[0]); setChosenId(InfoList[3]); setShowInfo(true)}}>
                                 {InfoList[0]['customerName']}
                                 <br/>
                                 {InfoList[0]['serviceName']}
@@ -262,15 +271,15 @@ const ShowBook = () => {
                 <SelectStaff setStaff={setStaff} staff={staff} config={config}/>
                 <TableContainer component={Paper} className={classes.Table}>
                     <Box className={classes.selectDate}>
-                        <Button
+                        <ArrowButton
                             startIcon={<ArrowBackIcon/>}
                             onClick={previousDateHandler}
                         />
                         <Button
                             onClick={selectCurrentHandler}>
-                            {selectedDate.toString()}
+                                {getDay(selectedDate.getDay())}, {selectedDate.getDate()} Tháng {selectedDate.getMonth()}, {selectedDate.getFullYear()}
                         </Button>
-                        <Button
+                        <ArrowButton
                             startIcon={<ArrowForwardIcon/>}
                             onClick={nextDateHandler}
                         />
@@ -287,13 +296,13 @@ const ShowBook = () => {
                         </TableBody>
                     </Table>
                 </TableContainer>
-                <ShowInfo 
+                {showInfo && <ShowInfo 
                 info={chosenBook} 
                 id={chosenId}
                 notification={notificationRef}
                 setChosenBook = {setChosenBook}
                 setShowForm = {setShowForm}
-                setEdit={setEdit}/>
+                setEdit={setEdit}/>}
             </Box>
         )
     if(staffLoading || bookLoading){
@@ -301,6 +310,7 @@ const ShowBook = () => {
     }
     return (
         <Aux>
+            <Backdrop show={showInfo} clicked={()=>setShowInfo(false)}/>
             <Header/>
             <Box className={classes.Display}>
                 {!showForm && showBook}
@@ -315,6 +325,7 @@ const ShowBook = () => {
                 notification={notificationRef}
                 currentId = {chosenId}
                 chosenBook = {chosenBook}
+                setShowInfo={setShowInfo}
                 />}
             </Box>
             <Notifications ref={notificationRef}/>

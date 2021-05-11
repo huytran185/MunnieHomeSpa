@@ -1,17 +1,16 @@
 .ServiceItem {
-    width: 100%;
+    width: 85%;
+    margin: 0 auto 30px auto;
     background-color: #fff6f3;
     text-align: center;
-    margin: 0 auto 30px auto;
-    max-width: 450px;
 }
 
 .ServiceItem img {
     width: 70%;
     height: 180px;
     margin: 40px auto;
-    cursor: pointer;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .Title {
@@ -24,27 +23,30 @@
 }
 
 .Info {
-    width: 60%;
-    height: 400px;
+    width: 80%;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
     margin: 10% auto;
     float: left;
+    position: fixed;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: row-reverse wrap;
     z-index: 200;
     background-color: #fff6f3;
-    position: fixed;
     transition: transform 0.3s ease-out;
-    display: flex;
-    border-radius: 10px;
 }
 
 .Box {
-    width: 50%;
+    width: 100%;
     float: left;
     padding: 40px;
     text-align: center;
+}
+
+.Box:first-child {
+    padding: 40px 40px 0 40px;
 }
 
 .Box .Des {
@@ -62,6 +64,12 @@
     .ServiceItem {
         width: 45%;
     }
+    .Box {
+        width: 50%;
+    }
+    .Box:last-child {
+        display: block;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -71,7 +79,7 @@
 }
 
 .Open {
-    display: block
+    display: flex;
 }
 
 .Close {

@@ -1,10 +1,10 @@
 .Social {
-    display: none;
     width: 50px;
-    padding-left: 20px;
     position: fixed;
     left: 0;
     top: 250px;
+    display: none;
+    padding-left: 20px;
 }
 
 .Social img {

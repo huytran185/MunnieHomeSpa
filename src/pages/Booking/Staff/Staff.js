@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 
 const Staff = (props) => {
     const classes = useStyles();
-    // const [data, setData] = useState(null);
     const [search, setSearch] = useState('');
     const [display, setDisplay] = useState(false);
     const [selected, setSelected] = useState({

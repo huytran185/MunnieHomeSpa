@@ -5,10 +5,10 @@
     left: 0;
     top: 0;
     float: left;
-    z-index: 200;
-    background-color: #dbb89a;
     position: fixed;
     padding: 32px 16px;
+    z-index: 200;
+    background-color: #dbb89a;
     transition: transform 0.3s ease-out;
 }
 

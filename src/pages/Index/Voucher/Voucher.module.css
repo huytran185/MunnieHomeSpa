@@ -1,41 +1,28 @@
 .Voucher {
-    background-color: #f2c9aa;
-    float: left;
     width: 100%;
-    text-align: center;
-    min-width: 320px;
+    float: left;
     padding: 70px 0 100px 0;
-    /* overflow: hidden; */
+    background-color: #f2c9aa;
+    text-align: center;
 }
 
 .Title {
+    width: 70%;
     margin: 0 auto 30px auto;
-    width: 280px;
     height: 50px;
     background-color: #ffde5f;
     color: white;
     letter-spacing: 0.1em;
     text-align: center;
-    font-size: 24px;
+    font-size: 16px;
     line-height: 50px;
     text-transform: uppercase;
     box-shadow: 5px 10px #dbba3b;
 }
 
-@media only screen and (min-width:768px) {
-    .Voucher {
-        min-width: 768px;
-    }
-}
-
-@media only screen and (min-width:992px) {
-    .Voucher {
-        min-width: 992px;
-    }
-}
-
-@media only screen and (min-width:1200px) {
-    .Voucher {
-        min-width: 1200px;
+@media only screen and (min-width: 768px) {
+    .Title {
+        width: 50%;
+        font-size: 24px;
     }
 }

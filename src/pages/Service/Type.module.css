@@ -1,10 +1,10 @@
 .Type {
-    float: left;
     width: 50%;
-    padding-bottom: 15px;
+    height: 50px;
+    float: left;
+    padding: 0 0 15px 0;
     cursor: pointer;
     font-size: 15px;
-    height: 50px;
 }
 
 .Under {

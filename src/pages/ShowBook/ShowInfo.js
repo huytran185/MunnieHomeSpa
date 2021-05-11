@@ -9,17 +9,22 @@ import ConfirmMessage from '../../components/UI/ConfirmMessage/ConfirmMessage'
 import PropTypes from 'prop-types';
 //Show detailed information of selected booking
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme)=>({
     Info:{
-        width:'35%',
-        // overflow:'hidden',
+        width:'60%',
         display:'block',
         float:'left',
         backgroundColor: '#ebcdb7',
         borderRadius: 20,
-        margin: '50px 0 0 10px',
-        position: 'sticky',
-        top:20,
+        margin: '50px auto 0 auto',
+        position: 'fixed',
+        top:10,
+        left: 0,
+        right:0,
+        zIndex:200,
+        [theme.breakpoints.down('xs')]:{
+            width:'80%',
+        }
     },
     Title:{
         textAlign: 'center',
@@ -41,7 +46,7 @@ const useStyles = makeStyles({
         minWidth: '80%',
         margin: '20px'
     },
-});
+}));
 
 const ShowInfo = (props) => {
     const classes = useStyles();
@@ -57,6 +62,7 @@ const ShowInfo = (props) => {
     const editInfo = ()=>{
         props.setShowForm(true)
         props.setEdit(true);
+        props.setShowInfo(false)
     }
     const [confirmMessage, setConfirmMessage]= useState(false);
     const closeMessage = ()=>{

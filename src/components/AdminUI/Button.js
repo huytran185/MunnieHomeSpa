@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 //Button Component
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme)=>({
     root:{
         margin: '20px 0',
     },
@@ -15,6 +15,10 @@ const useStyles = makeStyles({
         color: 'green',
         borderColor:'green',
         margin: '0 10px',
+        [theme.breakpoints.down('xs')]:{
+            margin: '10px 0',
+            width:'100%',
+        }
     },
     Active:{
         color:'white',
@@ -23,9 +27,13 @@ const useStyles = makeStyles({
         '&:hover':{
             backgroundColor:'green',
             borderColor: 'green',
+        },
+        [theme.breakpoints.down('xs')]:{
+            margin: '10px 0',
+            width:'100%',
         }
     }
-});
+}));
 const ButtonBox = (props) => {
     const classes = useStyles();
     return (

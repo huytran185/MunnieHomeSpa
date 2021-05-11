@@ -20,14 +20,17 @@ const Item =(props)=>{
             <Backdrop show = {showInfo} clicked = {()=>setShowInfo(false)}/>
             <div className = {attachedClasses.join(' ')}>
                 <div className={classes.Box}>
-                    <div className={classes.Title} onClick = {()=>setShowInfo(!showInfo)}>{props.service}</div>
+                    <img src = {props.image} alt = {props.service}/>
+                </div>
+                <div className={classes.Box}>
+                    <div className={classes.Title} onClick = {()=>setShowInfo(!showInfo)}>
+                        {props.service}
+                    </div>
                     <div className={classes.Des}>{props.des}</div>
                     <div className={classes.Price}>{props.time} minutes | ${props.price}</div>
                     <Link to="/route" target="_blank" onClick={(event)=>{event.preventDefault(); window.open("https://www.facebook.com/munniehomespa")}}><Button>Book</Button></Link>
                 </div>
-                <div className={classes.Box}>
-                    <img src = {props.image} alt = {props.service}/>
-                </div>
+                
             </div>
             <img src = {props.image} alt = {props.service} onClick = {()=>setShowInfo(!showInfo)}/>
             <div className={classes.Title} onClick = {()=>setShowInfo(!showInfo)}>{props.service}</div>

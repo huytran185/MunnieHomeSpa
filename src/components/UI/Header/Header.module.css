@@ -1,34 +1,9 @@
 .Header {
-    height: 80px;
-    min-width: 320px;
     width: 100%;
-    background-color: #dbb89a;
+    height: 80px;
     position: fixed;
-    z-index: 100;
     float: left;
     padding: 10px 0;
-}
-
-@media only screen and (min-width: 481px) {
-    .Header {
-        min-width: 481px;
-    }
-}
-
-@media only screen and (min-width: 768px) {
-    .Header {
-        min-width: 768px;
-    }
-}
-
-@media only screen and (min-width: 992px) {
-    .Header {
-        min-width: 992px;
-    }
-}
-
-@media only screen and (min-width: 1200px) {
-    .Header {
-        min-width: 1200px;
-    }
+    background-color: #dbb89a;
+    z-index: 100;
 }

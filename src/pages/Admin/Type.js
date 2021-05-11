@@ -18,7 +18,6 @@ const Type = ()=>{
     const classes = useStyles();
     const [config,setConfig] = useState(typeConfig);
     const [status, setStatus] = useState("list");
-    // const [data, setData] = useState(null);
     const [editItem, setEditItem]= useState(null);
     const [currentID, setCurrentId] = useState(null)
     const notificationRef = useRef();

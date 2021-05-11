@@ -1,16 +1,22 @@
 import {makeStyles} from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme)=>({
     root:{
         width: '70%',
         margin: '50px auto',
         backgroundColor: 'white',
+        [theme.breakpoints.down('md')]:{
+            width:'100%',
+        }
     },
     Form:{
         border: '3px solid #dbb89a',
         padding: '50px',
         borderRadius: '55px',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        [theme.breakpoints.down('xs')]:{
+            padding: '50px 30px',
+        }
     },
     Suggest:{
         backgroundColor: 'lightgrey',
@@ -22,23 +28,23 @@ const useStyles = makeStyles({
         }
     },
     SuggestContainer: {
-        zIndex: '999',
-        position: 'absolute',
         width:'100%',
-        overflow:'auto',
         maxHeight:130,
+        position: 'absolute',
+        overflow:'auto',
+        zIndex: '999',
     },
     Add:{
         cursor: 'pointer'
     },
     Search:{
-        marginLeft: 3,
         width: '100%',
         height: 'auto',
-        position:'relative'
+        position:'relative',
+        marginLeft: 3,
     },
     Info:{
         padding: '15px 20px',
     }
-})
+}))
 export default useStyles;

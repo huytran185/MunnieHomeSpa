@@ -1,12 +1,7 @@
 .Slide img {
-    min-width: 320px;
     height: 200px;
     margin: 0 auto;
     text-align: center;
-}
-
-.Slider {
-    min-width: 320px;
 }
 
 .slick-dots {
