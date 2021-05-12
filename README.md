@@ -1,6 +1,23 @@
-# Getting Started with Create React App
+# Welcome to Munnie HomeSpa
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Munnie HomeSpa, is an online platform for Spa lover who want to access company's services. The application includes 2 sites which are customer site and admin site. For customer site, our customer can view our services' information, our contact details and instantly online chat service on our website. For the admin site, authorized admin can access the site by entering their username and password. They can manage the website content by adding, editing and deleting services' information. They also can add new booking by entering booking information which is collected from the customer.
+
+Website Link: https://munnie-homespa.herokuapp.com/
+
+## Table of contents
+
+1. [Tech stack](#tech-stack)
+2. [Available Script](#Available-scripts)
+3. [Features](#Features)
+4. [Screenshots](#screenshots)
+
+## Tech Stack
+
+1. [React.js](https://reactjs.org/)
+2. [Redux](https://redux.js.org/)
+3. [React Router](https://reactrouter.com/web/guides/quick-start)
+4. [Material UI](https://material-ui.com/)
+5. [Firebase](https://firebase.google.com/)
 
 ## Available Scripts
 
@@ -68,3 +85,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Features
+
+1. Home Page
+2. Service Page
+3. Contact page
+4. Login Page, Sign Up Page
+5. Dashboard Page
+6. Admin Customer Page
+7. Admin Service Page
+8. Admin Service Type Page
+9. Admin Staff Page
+10. Admin Voucher Page
+
+## Screenshot
