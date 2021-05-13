@@ -91,7 +91,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 1. Home Page
 2. Service Page
 3. Contact page
-4. Login Page, Sign Up Page
+4. Login Page, Register
+ Page
 5. Dashboard Page
 6. Admin Customer Page
 7. Admin Service Page
@@ -99,4 +100,44 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 9. Admin Staff Page
 10. Admin Voucher Page
 
-## Screenshot
+## Screenshots
+
+### Home Page
+
+![Home](https://user-images.githubusercontent.com/63865397/117955784-99886b80-b342-11eb-867d-c0506b2a22dc.JPG)
+
+### Customer Service Page
+
+![Service](https://user-images.githubusercontent.com/63865397/117955835-a73df100-b342-11eb-8c2b-27a2a811eac8.JPG)
+
+### Contact Page
+
+![Contact](https://user-images.githubusercontent.com/63865397/117955859-adcc6880-b342-11eb-8a5e-20640b5ee095.JPG)
+
+### Login/ Register Page
+
+![Login](https://user-images.githubusercontent.com/63865397/117955983-cd639100-b342-11eb-9abb-72a5accaced4.JPG)
+
+### Dashboard Page
+
+![Dashboard](https://user-images.githubusercontent.com/63865397/117956027-d94f5300-b342-11eb-8c63-74e0e43b1829.JPG)
+
+### Create Booking
+
+![CreateBook](https://user-images.githubusercontent.com/63865397/117956055-e2402480-b342-11eb-8bba-0ffef0652e21.JPG)
+
+### View Booking
+
+![BookInfo](https://user-images.githubusercontent.com/63865397/117956104-ed935000-b342-11eb-84e7-c82d248bf225.JPG)
+
+### Admin Service
+
+![AdminService](https://user-images.githubusercontent.com/63865397/117956156-fa17a880-b342-11eb-9a83-7d8fd46d27f6.JPG)
+
+### Add Service
+
+![AddService](https://user-images.githubusercontent.com/63865397/117956196-069c0100-b343-11eb-964d-c7810ae9d9e1.JPG)
+
+### Remove Service
+
+![Remove Confirm Message](https://user-images.githubusercontent.com/63865397/117956232-0ef43c00-b343-11eb-9d9d-ca59a1b32940.JPG)
