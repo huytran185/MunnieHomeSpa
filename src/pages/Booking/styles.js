@@ -5,6 +5,7 @@ const useStyles = makeStyles((theme)=>({
         width: '70%',
         margin: '50px auto',
         backgroundColor: 'white',
+        borderRadius: '55px',
         [theme.breakpoints.down('md')]:{
             width:'100%',
         }

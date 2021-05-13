@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react'
+import React, { useEffect, useState, useRef} from 'react'
 import classes from './Service.module.css';
 import {Helmet} from 'react-helmet';
 import Layout from '../../components/UI/Layout/Layout';
@@ -6,10 +6,11 @@ import Aux from '../../hoc/Auxulliary';
 import ServiceItem from './ServiceItem';
 import Type from './Type';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import Notifications from '../../components/UI/Notifications/Notifications'
 import { useDispatch, useSelector } from 'react-redux'
 import {getService} from '../../actions/service';
 import {getType, selectType} from '../../actions/type';
-
+import Booking from '../Booking/Booking';
 //Service Page
 
 const Service =()=>{
@@ -19,6 +20,9 @@ const Service =()=>{
     const typeList = useSelector(state=>state.type.list);
     const typeLoading = useSelector(state=>state.type.loading);
     const typeError = useSelector(state=>state.type.error);
+    const [showBook, setShowBook] = useState(false);
+    const [chosenService, setChosenService] = useState(null);
+    const notificationRef = useRef();
     const dispatch = useDispatch();
     //get data from firebase using firebase npm
     useEffect(() => {
@@ -66,12 +70,15 @@ const Service =()=>{
                 serviceDisplay.push(
                     <ServiceItem
                     key = {key}
+                    id = {key}
                     service = {serviceList[key]['name']}
                     image = {serviceList[key]['image']}
                     des = {serviceList[key]['des']}
                     english = {serviceList[key]['english']}
                     time = {serviceList[key]['time']}
                     price = {serviceList[key]['price']}
+                    setShowBook = {setShowBook}
+                    setChosenService = {setChosenService}
                     />
                 )
             }
@@ -99,8 +106,14 @@ const Service =()=>{
                         <div className={classes.Title}>Service</div>
                     </div>
                     <div className={classes.Content}>
-                        {servicePage}
+                        {!showBook && servicePage}
+                        {showBook && <Booking
+                        setShowForm={setShowBook}
+                        chosenBook = {chosenService}
+                        notification={notificationRef}
+                        />}
                     </div>
+                    <Notifications ref={notificationRef}/>
                 </div>
             </Layout>
         </Aux>

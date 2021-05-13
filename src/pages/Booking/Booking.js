@@ -32,12 +32,12 @@ const Booking = (props) => {
     useEffect(()=>{
         let formIsValid = true;
         for(let el in bookInfo){
-            formIsValid = bookInfo[el];
+            formIsValid = bookInfo[el] && formIsValid;
             setFormIsValid(formIsValid);
         }
     },[bookInfo])
     useEffect(()=>{
-        if(props.currentId){
+        if(props.chosenBook){
             setBookInfo(props.chosenBook);
         }
 

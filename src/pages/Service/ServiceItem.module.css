@@ -59,6 +59,9 @@
         width: 45%;
         margin: 0 0 30px 30px;
     }
+    .Info {
+        width: 60%;
+    }
     .ServiceItem img {
         margin: 40px auto;
     }
@@ -75,6 +78,9 @@
     .ServiceItem {
         width: 45%;
     }
+    .Info {
+        width: 70%;
+    }
     .Box {
         width: 50%;
     }
@@ -86,6 +92,9 @@
 @media only screen and (min-width: 1200px) {
     .ServiceItem {
         width: 30%;
+    }
+    .Info {
+        width: 60%;
     }
 }
 
