@@ -12,6 +12,6 @@ const info = (props)=>(
 
 info.propTypes={
     title: PropTypes.string,
-    children: PropTypes.string,
+    children: PropTypes.array,
 }
 export default info;

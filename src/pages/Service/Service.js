@@ -16,10 +16,8 @@ import Booking from '../Booking/Booking';
 const Service =()=>{
     const serviceList = useSelector(state=>state.service.list);
     const serviceLoading = useSelector(state=>state.service.loading);
-    const serviceError = useSelector(state=>state.service.error);
     const typeList = useSelector(state=>state.type.list);
     const typeLoading = useSelector(state=>state.type.loading);
-    const typeError = useSelector(state=>state.type.error);
     const [showBook, setShowBook] = useState(false);
     const [chosenService, setChosenService] = useState(null);
     const notificationRef = useRef();

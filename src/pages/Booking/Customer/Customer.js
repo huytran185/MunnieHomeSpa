@@ -14,7 +14,6 @@ const Customer = (props) => {
     const [display, setDisplay] = useState(false);
     const customerList = useSelector(state=>state.customer.list);
     const customerLoading = useSelector(state=>state.customer.loading);
-    const customerError = useSelector(state=>state.customer.error);
     const [customerType, setCustomerType] = useState('Guest');
     const dispatch = useDispatch();
     const [selected, setSelected] = useState({
@@ -227,7 +226,7 @@ const Customer = (props) => {
             default: break;
         }
     }
-    console.log(props.bookInfo);
+
     let customerForm = null;
     if(customerType === 'Member'){
         customerForm = <div>

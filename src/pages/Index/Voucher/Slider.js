@@ -18,7 +18,7 @@ const Sliders = ()=>{
         slidesToScroll: 1,
         centerMode: true,
         autoplay: true,
-        arrows:false
+        arrows: false,
     }
     const list = useSelector(state=>state.voucher.list);
     const loading = useSelector(state=>state.voucher.loading);
@@ -37,7 +37,7 @@ const Sliders = ()=>{
     for(let key in list){
         voucherDisplay.push(
             <div className={classes.Slide} key={key}>
-                <a href ={list[key].link} target="_blank" rel="noopener noreferrer">
+                <a className={classes.Image}href ={list[key].link} target="_blank" rel="noopener noreferrer">
                     <img src = {list[key].image} alt="Voucher"/>
                 </a>
             </div>

@@ -23,7 +23,6 @@ const Customer = ()=>{
     const notificationRef = useRef();
     const customerList = useSelector(state=>state.customer.list);
     const customerLoading = useSelector(state=>state.customer.loading);
-    const customerError = useSelector(state=>state.customer.error);
     const dispatch = useDispatch();
     useEffect(()=>{
         if(Object.keys(customerList).length === 0){

@@ -14,7 +14,6 @@ const Service = (props) => {
     const wrapperRef = useRef(null);
     const serviceList = useSelector(state=>state.service.list);
     const serviceLoading = useSelector(state=>state.service.loading);
-    const serviceError = useSelector(state=>state.service.error);
     const dispatch = useDispatch();
     const [selected, setSelected] = useState({
         name:'',

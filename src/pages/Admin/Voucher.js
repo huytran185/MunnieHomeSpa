@@ -23,7 +23,6 @@ const Voucher = ()=>{
     const notificationRef = useRef();
     const voucherList = useSelector(state=>state.voucher.list);
     const voucherLoading = useSelector(state=>state.voucher.loading);
-    const voucherError = useSelector(state=>state.voucher.error);
     const dispatch = useDispatch();
     useEffect(()=>{
         if(Object.keys(voucherList).length === 0){

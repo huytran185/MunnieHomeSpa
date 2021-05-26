@@ -17,7 +17,6 @@ const Staff = (props) => {
     const wrapperRef = useRef(null);
     const staffList = useSelector(state=>state.staff.list);
     const staffLoading = useSelector(state=>state.staff.loading);
-    const staffError = useSelector(state=>state.staff.error);
     const dispatch = useDispatch();
     const [config] = useState({
         name:{

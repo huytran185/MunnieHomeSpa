@@ -23,7 +23,6 @@ const Type = ()=>{
     const notificationRef = useRef();
     const typeList = useSelector(state=>state.type.list);
     const typeLoading = useSelector(state=>state.type.loading);
-    const typeError = useSelector(state=>state.type.error);
     const dispatch = useDispatch();
     useEffect(()=>{
         if(Object.keys(typeList).length === 0){

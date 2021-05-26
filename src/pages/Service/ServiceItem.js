@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 //Service Item information of Service Page
 
 const Item =(props)=>{
-    let attachedClasses = [classes.Info, classes.Close];
-// attachedClasses.join(' ')
     const [showInfo, setShowInfo]= useState(false);
     
     const choseService = ()=>{

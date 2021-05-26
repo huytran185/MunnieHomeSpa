@@ -63,10 +63,8 @@ const ShowBook = () => {
     const [staff, setStaff] = useState('All');
     const staffList = useSelector(state=>state.staff.list);
     const staffLoading = useSelector(state=>state.staff.loading);
-    const staffError = useSelector(state=>state.staff.error);
     const bookList = useSelector(state=>state.book.list);
     const bookLoading = useSelector(state=>state.book.loading);
-    const bookError = useSelector(state=>state.book.error);
 
     const [chosenBook, setChosenBook] = useState({
         customerId: '',

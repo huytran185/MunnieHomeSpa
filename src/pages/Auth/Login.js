@@ -39,8 +39,6 @@ const Login = () => {
     const classes = useStyles();
     const [isLogin, setIsLogin] = useState(true);
     const user = useSelector(state=>state.auth.user);
-    const userLoading = useSelector(state=>state.auth.loading);
-    const userError = useSelector(state=>state.auth.error);
     useEffect(()=>{
         
         if(user != null){

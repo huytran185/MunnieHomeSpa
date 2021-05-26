@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import {Link} from 'react-router-dom';
 import {List, ListItem, ListItemText, Divider} from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {logOutAccount} from '../../actions/auth'
 import Aux from '../../hoc/Auxulliary';
 import Backdrop from '../UI/Backdrop/Backdrop';

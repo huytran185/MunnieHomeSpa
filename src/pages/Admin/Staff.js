@@ -23,7 +23,6 @@ const Staff = ()=>{
     const notificationRef = useRef();
     const staffList = useSelector(state=>state.staff.list);
     const staffLoading = useSelector(state=>state.staff.loading);
-    const staffError = useSelector(state=>state.staff.error);
     const dispatch = useDispatch();
     useEffect(()=>{
         if(Object.keys(staffList).length === 0){
