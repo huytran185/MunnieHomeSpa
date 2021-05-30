@@ -14,7 +14,8 @@ import Aux from '../../hoc/Auxulliary';
 const useStyles = makeStyles((theme)=>({
     root:{
         backgroundColor: '#fff6f3',
-        overflow:'auto'
+        overflow:'auto',
+        height:'100vh'
     },
     Login:{
         width: '50%',

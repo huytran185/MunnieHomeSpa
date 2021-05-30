@@ -153,7 +153,7 @@ const DisplayTable = (props) => {
 DisplayTable.propTypes={
     type: PropTypes.string,
     notificationRef: PropTypes.object,
-    data: PropTypes.object,
+    data: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     config: PropTypes.object,
     setId: PropTypes.func,
 }
@@ -181,7 +181,7 @@ const Row = (props)=>{
 }
 
 Row.propTypes={
-    content: PropTypes.array,
+    content: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
     id: PropTypes.string,
     setId: PropTypes.func,
     deleteItemHandler: PropTypes.func
@@ -218,8 +218,7 @@ const Item = (props)=>{
 }
 
 Item.propTypes={
-    type: PropTypes.string,
-    content: PropTypes.string || PropTypes.bool,
+    type: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     setId: PropTypes.func,
     deleteItemHandler: PropTypes.func
 }

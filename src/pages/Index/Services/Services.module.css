@@ -54,4 +54,7 @@
         float: right;
         text-align: right;
     }
+    .Service {
+        width: 60%;
+    }
 }

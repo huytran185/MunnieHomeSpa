@@ -134,7 +134,7 @@ export const register = async (form)=>{
             .then(async(response)=>{
                 let token = await getToken();
             console.log(token);
-            resolve(['Success', response.user.email, token.token])
+            resolve(['Success', response.user.email, token])
             })
             .catch((error)=>{
                 reject(['Fail', error.message])
@@ -152,7 +152,7 @@ export const signIn = async(form)=>{
         firebase.auth().signInWithEmailAndPassword(email,password)
         .then(async(response)=>{
             let token = await getToken();
-            resolve(['Success', response.user.email, token.expirationTime, token.token])
+            resolve(['Success', response.user.email, token])
         })
         .catch((error)=>{
             reject(['Fail', error.message])
@@ -180,4 +180,18 @@ export const getToken = async()=>{
 
 export const logOut = ()=>{
     firebase.auth().signOut()
+}
+
+export const checkLogin = async()=>{
+    const checkLogin = new Promise((resolve, reject)=>{
+        firebase.auth().onAuthStateChanged(user=>{
+            if(user){
+                resolve(user)
+            }
+            else{
+                reject(false)
+            }
+        })
+    })
+    return await checkLogin;
 }

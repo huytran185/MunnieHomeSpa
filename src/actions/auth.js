@@ -11,6 +11,8 @@ import {AUTH_START,
 import {register,
     signIn, 
     logOut,
+    getToken,
+    checkLogin
     } from '../api/api';
 
 //Creating new Account for Admin function
@@ -46,6 +48,7 @@ export const signInAccount = (form)=> async dispatch=>{
             userEmail: res[1],
             token: res[2],
         })
+        
     }else{
         dispatch({
             type:SIGN_FAIL,
@@ -76,30 +79,42 @@ export const checkTimeOut = ()=> async dispatch=>{
 
 //set Account information to localStorage
 
-const setLocal = (user,token )=>{
-    localStorage.setItem('token', token);
+const setLocal = (user,token)=>{
+    localStorage.setItem('token', token.token);
     localStorage.setItem('userEmail', user);
-    const expireTime = new Date(new Date().getTime() + 3600*1000);
-    localStorage.setItem('expireTime', expireTime);
+    localStorage.setItem('expireTime', token.expirationTime);
 }
 
 //Check if user is authorized to access Dashboard
 
 export const authCheckState = ()=>async dispatch=>{
-    const token = localStorage.getItem('token');
-    if(!token){
-        dispatch(logOutAccount());
-    }else{
-        const expireTime = new Date(localStorage.getItem('expireTime'))
-        if(expireTime <= new Date()){
+    const isLogin = await checkLogin();
+    if(isLogin){
+        const token = await getToken();
+        let tokenLocal = localStorage.getItem('token');
+        let expireTime = new Date(localStorage.getItem('expireTime'));
+        let userEmail = localStorage.getItem('userEmail');
+        const localTime = new Date().toUTCString();
+        if(token.expirationTime <= localTime || expireTime <= localTime){
             dispatch(logOutAccount());
         }else{
-            const userEmail = localStorage.getItem('userEmail');
-            dispatch({
-                type: SIGN_SUCCESS,
-                userEmail: userEmail,
-                token: token,
-            })
+            if(!tokenLocal|| !expireTime || !userEmail){
+                setLocal(isLogin.email, token);
+                dispatch({
+                        type: SIGN_SUCCESS,
+                        userEmail: isLogin.login,
+                        token: token,
+                    })
+            }else{
+                dispatch({
+                    type: SIGN_SUCCESS,
+                    userEmail: userEmail,
+                    token: tokenLocal,
+                })
+            }
         }
+    }
+    else{
+        dispatch(logOutAccount());
     }
 }

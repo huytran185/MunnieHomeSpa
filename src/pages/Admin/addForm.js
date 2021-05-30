@@ -25,7 +25,6 @@ const AddForm = (props)=>{
             
         });
     }
-    console.log(props.config);
     const dispatch = useDispatch();
     const submitHandler= (event, form, type,currentID, notification, cancel)=>{
         event.preventDefault();
