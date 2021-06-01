@@ -1,8 +1,0 @@
-.page-link {
-    color: green;
-}
-
-.page-item.active .page-link {
-    background-color: green;
-    border-color: green;
-}
