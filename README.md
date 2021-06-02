@@ -1,6 +1,6 @@
 # Welcome to Munnie HomeSpa
 
-Munnie HomeSpa, is an online platform for Spa lover who want to access company's services. The application includes 2 sites which are customer site and admin site. For customer site, our customer can view our services' information, our contact details and instantly online chat service on our website. For the admin site, authorized admin can access the site by entering their username and password. They can manage the website content by adding, editing and deleting services' information. They also can add new booking by entering booking information which is collected from the customer.
+Munnie HomeSpa, is an online platform for Spa lover who want to access company's services. The application includes 2 sites which are customer site and admin site. For customer site, our customer can view our services' information, our contact details and instantly online chat service on our website. For the admin site, authorized admin can access the site by entering their username and password. They can manage the website content by adding, editing and deleting services' information. They also can add new booking by entering booking information which is collected from the customer..
 
 Website Link: https://munnie-homespa.herokuapp.com/
 
@@ -92,7 +92,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 2. Service Page
 3. Contact page
 4. Login Page, Register
- Page
+   Page
 5. Dashboard Page
 6. Admin Customer Page
 7. Admin Service Page
