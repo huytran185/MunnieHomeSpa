@@ -1,0 +1,60 @@
+.Services {
+    float: left;
+    width: 100%;
+    background: url(../../../assets/images/background-service.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+.Title {
+    width: 70%;
+    margin: 80px auto 0 auto;
+    padding: 5px;
+    background-color: white;
+    font-size: 20px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.Service {
+    width: 100%;
+    margin: 70px auto 0 auto;
+    padding: 50px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff6f3;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.Qoute {
+    width: 100%;
+    margin: 45px 210px 0 0;
+    padding: 0 10px;
+    font-size: 22px;
+    font-family: Cookie;
+    text-align: center;
+    font-style: italic;
+    letter-spacing: 5px;
+}
+
+@media only screen and (min-width:768px) {
+    .Service {
+        width: 80%;
+    }
+    .Title {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width:992px) {
+    .Qoute {
+        width: 50%;
+        float: right;
+        text-align: right;
+    }
+    .Service {
+        width: 60%;
+    }
+}

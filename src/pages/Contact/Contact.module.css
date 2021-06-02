@@ -1,0 +1,88 @@
+.Contact {
+    width: 100%;
+    margin-top: 80px;
+    padding: 40px 0;
+    float: left;
+    background-color: #f8e3d4;
+}
+
+.Title {
+    width: 100%;
+    float: left;
+    top: -20px;
+    margin: 0 0 20px 0;
+    padding-left: 30px;
+    line-height: 1em;
+    font-size: 40px;
+    z-index: 99;
+    vertical-align: 30px;
+    font-style: italic;
+}
+
+.Content {
+    width: 85%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px 0;
+    background-color: white;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover,
+a:active,
+a.active {
+    text-decoration: none;
+    color: black;
+}
+
+.Map {
+    width: 50%;
+    display: none;
+    float: left;
+    clear: both;
+}
+
+.Map iframe {
+    width: 90%;
+    height: 300px;
+    border: 0;
+    margin: 30px 0px 0px 50px;
+    allowfullscreen: true;
+    loading: lazy;
+}
+
+.Info {
+    width: 100%;
+    padding: 0px 0px 0px 40px;
+    float: left;
+}
+
+@media only screen and (min-width: 768px) {
+    .Title {
+        top: -30px;
+        padding: 0 0 0 70px;
+        font-size: 57px;
+    }
+    .Content {
+        width: 65%;
+        margin: 0 auto;
+    }
+    .Info {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .Map {
+        display: block;
+    }
+    .Info {
+        width: 50%;
+        margin: 0 auto;
+    }
+}

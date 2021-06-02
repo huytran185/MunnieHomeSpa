@@ -1,0 +1,156 @@
+.Welcome {
+    width: 100%;
+    height: 500px;
+    /* margin: 50px 0 0 0; */
+    float: left;
+    background-image: url("../../../assets/images/background-greet.gif");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.Welcome img {
+    width: 500px;
+    height: 300px;
+    display: none;
+    position: absolute;
+    animation-name: hello;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    opacity: 0.6;
+}
+
+@keyframes hello {
+    from {
+        top: 90px;
+        right: 80%;
+        display: none;
+    }
+    to {
+        top: 90px;
+        right: 30%;
+    }
+}
+
+.CompanyName {
+    width: 100%;
+    font-size: 35px;
+    position: absolute;
+    animation-name: company-name;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    transform-origin: bottom right;
+    font-family: Coquette-Regular;
+    text-align: center;
+    font-weight: 550;
+}
+
+.Welcome blockquote {
+    width: 100%;
+    position: absolute;
+    animation-name: quote;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    font-family: Cookie;
+    text-align: center;
+    font-size: 22px;
+    font-style: italic;
+    letter-spacing: 3px;
+}
+
+@keyframes quote {
+    from {
+        top: 220px;
+        right: 0;
+        opacity: 0;
+    }
+    to {
+        top: 220px;
+        opacity: 1;
+    }
+}
+
+@keyframes company-name {
+    from {
+        transform: rotate(90deg);
+        top: 0px;
+        right: 0px;
+        opacity: 0;
+    }
+    to {
+        transform: rotate(0deg);
+        top: 120px;
+        opacity: 1;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .Welcome {
+        height: 1000px;
+    }
+    .Welcome img {
+        display: block;
+    }
+    @keyframes company-name {
+        from {
+            transform: rotate(90deg);
+            top: 0px;
+            right: 0px;
+            opacity: 0;
+        }
+        to {
+            transform: rotate(0deg);
+            top: 350px;
+            opacity: 1;
+        }
+    }
+    @keyframes quote {
+        from {
+            top: 450px;
+            right: -50%;
+            opacity: 0;
+        }
+        to {
+            top: 450px;
+            right: 0px;
+            opacity: 1;
+        }
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .CompanyName {
+        font-size: 80px;
+        min-width: 665px;
+    }
+    @keyframes company-name {
+        from {
+            transform: rotate(90deg);
+            top: 0px;
+            right: 0px;
+            opacity: 0;
+        }
+        to {
+            transform: rotate(0deg);
+            top: 350px;
+            right: 10%;
+            opacity: 1;
+        }
+    }
+    .Welcome blockquote {
+        font-size: 25px;
+    }
+    @keyframes quote {
+        from {
+            top: 450px;
+            right: -50%;
+            opacity: 0;
+        }
+        to {
+            top: 450px;
+            right: 0;
+            opacity: 1;
+        }
+    }
+}

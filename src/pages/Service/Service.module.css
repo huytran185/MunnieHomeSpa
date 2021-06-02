@@ -1,0 +1,81 @@
+.Page {
+    width: 100%;
+    float: left;
+    background-color: #f8e3d4;
+}
+
+.Header {
+    width: 75%;
+    height: 50px;
+    background-color: white;
+    margin-top: 170px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Title {
+    width: 100%;
+    float: left;
+    position: relative;
+    top: -30px;
+    padding-left: 30px;
+    z-index: 99;
+    line-height: 1em;
+    font-size: 57px;
+    vertical-align: 30px;
+    font-style: italic;
+}
+
+.Content {
+    width: 100%;
+    float: left;
+}
+
+.TypeList {
+    width: 85%;
+    margin: 80px auto 0 auto;
+    text-align: center;
+}
+
+.ServiceList {
+    width: 100%;
+    margin: 100px auto 0 auto;
+    padding: 50px 0px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media only screen and (min-width: 481px) {
+    .ServiceList {
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 758px) {
+    .Header {
+        width: 65%;
+    }
+    .TypeList {
+        width: 60%;
+    }
+    .Title {
+        padding-left: 70px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .TypeList {
+        width: 60%;
+    }
+    .ServiceList {
+        width: 80%;
+        margin: 100px auto 0 auto;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .ServiceList {
+        width: 77%;
+        margin: 100px auto 0 auto;
+    }
+}
