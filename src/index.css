@@ -1,0 +1,39 @@
+@font-face {
+    font-family: "Caudex-Regular";
+    src: url("assets/fonts/Caudex-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Coquette-Regular";
+    src: url("./assets/fonts/coquette.ttf");
+}
+
+@font-face {
+    font-family: "Cookie";
+    src: url("./assets/fonts/Cookie-Regular.ttf");
+}
+
+
+/* html,
+body,
+#root {
+    background-color: #f8e3d4;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+} */
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+* {
+    box-sizing: border-box;
+}

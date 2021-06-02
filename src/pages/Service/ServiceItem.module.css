@@ -1,0 +1,107 @@
+.ServiceItem {
+    width: 85%;
+    margin: 0 auto 30px auto;
+    background-color: #fff6f3;
+    text-align: center;
+}
+
+.ServiceItem img {
+    width: 70%;
+    height: 180px;
+    margin: 20px auto;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.Title {
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 25px;
+    cursor: pointer;
+    font-family: Coquette-Regular;
+    color: #dbb89a;
+}
+
+.Info {
+    width: 80%;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 10% auto;
+    float: left;
+    position: fixed;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: row-reverse wrap;
+    z-index: 200;
+    background-color: #fff6f3;
+    transition: transform 0.3s ease-out;
+}
+
+.Box {
+    width: 100%;
+    float: left;
+    padding: 0px 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.Box:first-child {
+    padding: 0px 40px 0 40px;
+}
+
+.Box .Des {
+    text-align: justify;
+}
+
+@media only screen and (min-width:768px) {
+    .ServiceItem {
+        width: 45%;
+        margin: 0 0 30px 30px;
+    }
+    .Info {
+        width: 60%;
+    }
+    .ServiceItem img {
+        margin: 40px auto;
+    }
+    .Box {
+        padding: 40px;
+        font-size: 18px;
+    }
+    .Box:first-child {
+        padding: 40px 40px 0 40px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .ServiceItem {
+        width: 45%;
+    }
+    .Info {
+        width: 70%;
+    }
+    .Box {
+        width: 50%;
+    }
+    .Box:last-child {
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .ServiceItem {
+        width: 30%;
+    }
+    .Info {
+        width: 60%;
+    }
+}
+
+.Open {
+    display: flex;
+}
+
+.Close {
+    display: none;
+}

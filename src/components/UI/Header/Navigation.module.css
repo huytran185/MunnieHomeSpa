@@ -1,0 +1,84 @@
+.Navigation {
+    width: 100%;
+    height: 52px;
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
+    display: flex;
+    list-style: none;
+    color: black;
+}
+
+.Navigation ul {
+    display: none;
+}
+
+.Call {
+    float: left;
+    margin-left: 40%;
+    padding: 20px 0;
+    font-family: corben, serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 12px;
+    letter-spacing: 1px;
+}
+
+.Book {
+    display: none;
+    cursor: pointer;
+}
+
+.Navigation i {
+    height: 52px;
+    position: fixed;
+    left: 5%;
+    padding: 15px 0;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+    .Navigation ul {
+        float: left;
+        margin: 0 0 0 10%;
+        padding: 0;
+        list-style-type: none;
+        display: initial;
+    }
+    .Navigation i {
+        display: none;
+    }
+    .Book {
+        width: 120px;
+        float: right;
+        margin: 7.5px 0 7.5px 2%;
+        border: 2px solid black;
+        border-radius: 25px;
+        display: block;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 15px;
+        line-height: 27px;
+        font-weight: 550;
+    }
+    .Call {
+        float: left;
+        margin-left: 20px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .Navigation ul {
+        margin-left: 15%;
+    }
+    .Book {
+        margin: 7.5px 0 7.5px 20%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .Navigation ul {
+        margin-left: 20%;
+    }
+}

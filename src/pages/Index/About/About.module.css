@@ -1,0 +1,39 @@
+.About {
+    width: 100%;
+    display: flex;
+    float: left;
+}
+
+.About .Box {
+    width: 100%;
+}
+
+.About .Box:first-child {
+    display: none;
+    background-size: 100% 70%;
+    background: url("../../../assets/images/about1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.About .Box:last-child {
+    position: static;
+    background-image: url("../../../assets/images/about2.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media only screen and (min-width:992px) {
+    .About .Box {
+        width: 50%;
+    }
+    .About .Box:first-child {
+        display: block;
+    }
+}
+
+@media only screen and (min-width:1200px) {
+    .About .Box:first-child {
+        background-size: 100%;
+    }
+}

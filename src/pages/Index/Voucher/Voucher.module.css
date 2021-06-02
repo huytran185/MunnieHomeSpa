@@ -1,0 +1,35 @@
+.Voucher {
+    width: 100%;
+    float: left;
+    padding: 70px 0 100px 0;
+    background-color: #f2c9aa;
+    text-align: center;
+}
+
+.Title {
+    width: 70%;
+    margin: 0 auto 30px auto;
+    height: 50px;
+    background-color: #ffde5f;
+    color: white;
+    letter-spacing: 0.1em;
+    text-align: center;
+    font-size: 16px;
+    line-height: 50px;
+    text-transform: uppercase;
+    box-shadow: 5px 10px #dbba3b;
+}
+
+@media only screen and (min-width: 768px) {
+    .Title {
+        width: 50%;
+        font-size: 24px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .Title {
+        width: 30%;
+        font-size: 24px;
+    }
+}

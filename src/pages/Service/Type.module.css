@@ -1,0 +1,16 @@
+.Type {
+    width: 50%;
+    height: 50px;
+    float: left;
+    padding: 0 0 15px 0;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.Under {
+    border-bottom: 2px solid black;
+}
+
+.NotUnder {
+    border-bottom: 2px groove #e5d2c4;
+}

@@ -1,0 +1,30 @@
+.FooterColumn {
+    width: 100%;
+    float: left;
+    padding: 0 3%;
+}
+
+.FooterColumn:last-child {
+    display: none;
+}
+
+.Title {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+@media only screen and (min-width: 481px) {
+    .FooterColumn {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .FooterColumn {
+        width: 30%
+    }
+    .FooterColumn:last-child {
+        display: initial;
+    }
+}
